@@ -1,0 +1,26 @@
+//
+@mixin break ($width: 768px){
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+label {
+    margin: 10px;
+    display: inline-block;
+}
+div {
+    box-sizing: border-box;
+}
+.left,.right {
+    display: inline-block;
+}
+.left {
+    max-width: 400px;
+}
+.right {
+    max-width: 50%;
+    padding: 10%;
+}
+#sprite {
+    max-width: 100%;
+}

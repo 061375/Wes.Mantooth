@@ -1,0 +1,25 @@
+/* line 7, ../components/sass/style.scss */
+label {
+  margin: 10px;
+  display: inline-block; }
+
+/* line 11, ../components/sass/style.scss */
+div {
+  box-sizing: border-box; }
+
+/* line 14, ../components/sass/style.scss */
+.left, .right {
+  display: inline-block; }
+
+/* line 17, ../components/sass/style.scss */
+.left {
+  max-width: 400px; }
+
+/* line 20, ../components/sass/style.scss */
+.right {
+  max-width: 50%;
+  padding: 10%; }
+
+/* line 24, ../components/sass/style.scss */
+#sprite {
+  max-width: 100%; }
