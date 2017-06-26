@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <title>Wes Mantooth - Sprite Animation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once('scripts.php'); ?>
     <script src="../_/js/sprite_animation.js?a=<?php echo strtotime('now'); ?>"></script>
     <link rel="stylesheet" href="../_/css/style.css" />

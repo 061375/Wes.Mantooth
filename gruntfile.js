@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         uglify: {
           my_target: {
             files: {
-                '_/js/script.js':['_/components/js/*.js'] 
+                '_/js/wes.mantooth.js':['_/components/js/*.js'] 
             }
           }
         },

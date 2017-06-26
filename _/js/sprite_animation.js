@@ -3,6 +3,7 @@
  *
  * */
 window.onload = function(){
+    // comment to pass logs
     //$w.boolLog = false;
     $w.canvas.init(document.getElementById('target'),
               400,
@@ -15,8 +16,10 @@ window.onload = function(){
     }); 
 }
 /**
- *
- *
+ * Sprite
+ * @version 1.0.0
+ * @author Jeremy Heminger <j.heminger@gmail.com>
+ * 2017
  * */
 var Sprite = (function() {
 
@@ -60,13 +63,14 @@ var Sprite = (function() {
     var bind = function() {
         document.getElementById('start').addEventListener("click",function(){$w.log('start');if (O.dir == 0)start()});
         document.getElementById('stop').addEventListener("click",function(){$w.log('stop');if (O.dir != 0)stop()});
-        document.getElementById('left').addEventListener("click",function(){$w.log('left');if (O.dir != 1){O.dir = 1;left()}});
-        document.getElementById('right').addEventListener("click",function(){$w.log('right');if (O.dir != 2){O.dir = 2;right()}});
+        document.getElementById('left').addEventListener("click",function(){$w.log('left');if (O.dir != 1){stop();O.dir = 1;left()}});
+        document.getElementById('right').addEventListener("click",function(){$w.log('right');if (O.dir != 2){stop();O.dir = 2;right()}});
         document.getElementById('turntable').addEventListener("change",function(){$w.log('turntable');turntable()});
         document.getElementById('speed').addEventListener("change",function(e){$w.log('speed');speed(this.value)});
         document.getElementById('direction').addEventListener("change",function(e){$w.log('direction');direction(this.value)});
     }
     /**
+     * @returns {Void}
      * */
     var left = function() {
         
@@ -83,6 +87,7 @@ var Sprite = (function() {
         draw(function(){left()});
     }
     /**
+     * @returns {Void}
      * */
     var right = function() {
 
@@ -98,12 +103,14 @@ var Sprite = (function() {
         draw(function(){right()});
     }
     /**
+     * @returns {Void}
      * */
     var start = function() {
         O.dir = 1;
         left();
     }
     /**
+     * @returns {Void}
      * */
     var stop = function() {
         O.dir = 0;
@@ -117,6 +124,8 @@ var Sprite = (function() {
         document.getElementById('speed-range').innerHTML = s;
     }
     /**
+     * @param {Number}
+     * @returns {Void}
      * */
     var direction = function(d) {
         O.frameY = d;
@@ -172,7 +181,7 @@ var Sprite = (function() {
             $w.canvas.has_error();
         }else{
             // else request animation frame and loop
-            //$w.canvas.draw({},Sprite.left());
+            
             // setInterval is faster and $w.canvas.draw is faster still (based on your machine)
             // but in this case setTimeout is appropriate
             if (O.dir != 0)

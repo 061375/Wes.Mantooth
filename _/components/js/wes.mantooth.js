@@ -16,6 +16,13 @@ var WesMantooth = function(){
     this.draw = Draw;
     this.color = Color;
     this.boolLog = true;
+    this.assets = {
+        img:[],
+        audio:[],
+        midi:[],
+        scripts:[],
+        link:[]
+    }
     /**
      * log
      * if this.boolLog console.log exists this renders a string
@@ -28,6 +35,22 @@ var WesMantooth = function(){
                     console.log( text );
             }
         }
+    }
+    /**
+     * get currentlocation of the wes.mantooth.js script
+     * @returns {String}
+     * */
+    this.slocation = function() {
+        var s = document.getElementsByTagName('script');
+        var l = s.length;
+        var r = '';
+        for(var i = 0; i<l; i++) {
+            if (s[i].src.indexOf('wes.mantooth.js') > -1) {
+                r = s[i].src;
+                r = r.replace('wes.mantooth.js','');
+            }
+        }
+        return r; 
     }
 };
 // instantiate class an set an alias

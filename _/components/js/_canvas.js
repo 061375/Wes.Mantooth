@@ -320,7 +320,7 @@ var Canvas = (function() {
         if (errors.length > 0) {
             var l = errors.length;
             for(var i = 0; i < l; i++) {
-                console.log(errors[i]);   
+                $w.log(errors[i]);   
             }
         }
     }
