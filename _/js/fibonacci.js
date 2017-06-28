@@ -4,7 +4,7 @@
  * */
 window.onload = function(){
     //$w.boolLog = false;
-    $w.canvas.init(document.getElementsByTagName("body")[0],
+    $w.canvas.init(document.getElementById("target"),
               (window.innerWidth - 25),
               (window.innerHeight - 25),
     function(i){
