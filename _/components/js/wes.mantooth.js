@@ -15,6 +15,7 @@ var WesMantooth = function(){
     this.mouse = Mouse;
     this.draw = Draw;
     this.color = Color;
+    this.loading = Loading; 
     this.boolLog = true;
     this.assets = {
         img:[],
@@ -47,10 +48,39 @@ var WesMantooth = function(){
         for(var i = 0; i<l; i++) {
             if (s[i].src.indexOf('wes.mantooth.js') > -1) {
                 r = s[i].src;
-                r = r.replace('wes.mantooth.js','');
+                r = r.replace(r.substr(r.indexOf('wes.mantooth.js'),r.length),'');
+                r = r.replace('components/','');
             }
         }
         return r; 
+    }
+    /**
+     * @param {Boolean}
+     * @returns {Void}
+     * */
+    this.makeFPS = function(s) {
+        if (typeof s === 'undefined')
+            s = true;
+        
+        if (s) {
+            s = 'show';
+        }else{
+            s = '';
+        }
+        var b = document.createElement('div');
+            b.setAttribute('id','wm_show_fps');
+            b.setAttribute('class',s);
+        document.getElementsByTagName('body')[0].appendChild(b);    
+    }
+    /**
+     * @param {Object}
+     * @returns {Void}
+     * */
+    this.upFPS = function($t) {
+        if (typeof $t === 'undefined')
+            $t = document.getElementById('wm_show_fps');
+            
+        $t.innerHTML = countFPS()+' fps';
     }
 };
 // instantiate class an set an alias

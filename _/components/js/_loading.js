@@ -33,7 +33,7 @@ var Loading = (function() {
      * */
     var init = function($t,i,c,callback) {
         
-        O.assets_path = $w.sloading()+'../assets/';
+        O.assets_path = $w.slocation()+'../assets/loaders/';
         
         // if c not set make it an empty string
         if (typeof c === 'undefined') c = '';
@@ -41,6 +41,7 @@ var Loading = (function() {
         // create fader background
         var fader = document.createElement('div');
             fader.setAttribute('class','loader_fader '+c);
+            fader.setAttribute('style','width:'+$t.offsetWidth+'px;height:'+$t.offsetHeight+'px');
         // if the 
         if (typeof O.loaders[i] === 'undefined') {
             set_error('selected loader reference does not exist');
@@ -52,9 +53,12 @@ var Loading = (function() {
         }
         var loader = document.createElement('div');
             loader.setAttribute('class','loader_container '+c);
-            if (loader_images.indexOf(O.loaders[i]) > -1) {
+            loader.setAttribute('style','width:'+$t.offsetWidth+'px;height:'+$t.offsetHeight+'px');
+            var p = /\.[0-9a-z]+$/i;
+            if (loader_images.indexOf(O.loaders[i].match(p)[0]) > -1) {
                 var img = document.createElement('img');
                     img.setAttribute('src',O.assets_path+O.loaders[i]);
+                    
                 loader.appendChild(img);
             }else{
                 loader.innerHTML = O.loaders[i];
@@ -72,45 +76,56 @@ var Loading = (function() {
     * @return {Function} callback
     * */ 
     var load = function(a,callback) {
+        //var l = a.length;
+        var l = Object.keys(a).length;
+
         var tcount = 0;
         var p = /\.[0-9a-z]+$/i;
-        _.each(a, function(value, key){
-            var e = value.match(p);
-            switch (e) {
-                case '.jpg':
-                case '.gif':
-                case '.png':
-                case '.svg':
-                case '.bmp':
-                    load_images(value,key);
-                    break;
-                case '.js':
-                case '.json':
-                    load_script(value,key);
-                    break;
-                case '.txt':
-                case '.css':
-                    load_link(value,key);
-                    break;
-                case '.ogg':
-                case '.mp3':
-                    load_audio(value,key);
-                    break;
-                case '.midi': // @todo 
-                    break;
-                case '.mp4': // @todo
-                    break;
-                default:
-                   set_error('requested MIME type not supported');
-                   callback(false);
+        //_.each(a, function(value, key){
+     
+        for (var k in a){
+            if (a.hasOwnProperty(k)) {
+                var e = a[k].match(p)[0];
+            
+                switch (e) {
+                    case '.jpg':
+                    case '.gif':
+                    case '.png':
+                    case '.svg':
+                    case '.bmp':
+                        load_images(a[k],k);
+                        break;
+                    case '.js':
+                    case '.json':
+                        load_script(a[k],k);
+                        break;
+                    case '.txt':
+                    case '.css':
+                        load_link(a[k],k);
+                        break;
+                    case '.ogg':
+                    case '.mp3':
+                        load_audio(a[k],k);
+                        break;
+                    case '.midi': // @todo 
+                        break;
+                    case '.mp4': // @todo
+                        break;
+                    default:
+                       set_error('requested MIME type not supported');
+                       callback(false);
+                }
+                has_error();
             }
-            has_error();
-        });
+        }
         // this will loop and check if the number of assets loaded is equal to the number of requested assets
         O.loading = setInterval(function(){
             // true return true
             if(O.loaded == l) {
-                callback(true);
+                complete(function(){
+                    clearInterval(O.loading);
+                    callback(true);
+                });
             }
             // increment timeout counter
             tcount++;
@@ -128,10 +143,11 @@ var Loading = (function() {
      * @returns {Function} callback
      * */
     var complete = function(callback) {
+        $w.log('Loading.complete');
         var c = ['loader_fader','loader_container'];
         for(var x = 0; x<=2;x++) {
             var lo = document.getElementsByClassName(c[x]);
-            var l = l.length;
+            var l = lo.length;
             for(var i=0; i<l; i++) {
                 lo[i].parentElement.removeChild(lo[i]);
             }
@@ -144,6 +160,7 @@ var Loading = (function() {
      * @returns {Void}
      * */
     var load_images = function(img,key) {
+        $w.log('Loading.load_images '+img);
         var r = new Image();
         r.src = img;
         r.onload = function() {
@@ -244,6 +261,7 @@ var Loading = (function() {
     }
     return {
         init: init,
+        load: load,
         setO_val: setO_val,
         has_error:has_error
     };   

@@ -20,3 +20,20 @@ Math.sqr = function(number) {
 Math.dist = function(x1,y1,x2,y2) {
   return Math.hypot(x2-x1, y2-y1);
 }
+window.countFPS = (function () {
+  var lastLoop = (new Date()).getMilliseconds();
+  var count = 1;
+  var fps = 0;
+
+  return function () {
+    var currentLoop = (new Date()).getMilliseconds();
+    if (lastLoop > currentLoop) {
+      fps = count;
+      count = 1;
+    } else {
+      count += 1;
+    }
+    lastLoop = currentLoop;
+    return fps;
+  };
+}());

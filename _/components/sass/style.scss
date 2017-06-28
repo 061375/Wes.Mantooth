@@ -53,6 +53,35 @@ footer {
     clear: both;
     padding: 10px;
 }
+.loader_fader {
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 9998;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.loader_container {
+    margin: 10%;
+    position: absolute;
+    z-index: 9999;
+    left: 0px;
+    top: 0px;
+}
+#wm_show_fps {
+    background: #000;
+    z-index: 9999;
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    color: #ffff00;
+    right: 0;
+    top: 0;
+    padding: 5px;
+    display: none;
+    &.show {
+        display: block;
+    }
+}
 /* Main Page */
 .wes_main {
     pre {

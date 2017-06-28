@@ -5,13 +5,16 @@
 window.onload = function(){
     // comment to pass logs
     //$w.boolLog = false;
+    $w.makeFPS();
     $w.canvas.init(document.getElementById('target'),
               400,
               300,
     function(i){
-        Sprite.init(i,document.getElementById('sprite').src,function() {
-            Sprite.setO_val('i',i);
-            Sprite.left();    
+        Sprite.init(i,document.getElementById('sprite').src,function(r) {
+            if (r) {
+                Sprite.setO_val('i',i);
+                Sprite.left();
+            }
         });
     }); 
 }
@@ -47,14 +50,16 @@ var Sprite = (function() {
      * @return {Object} image object
      * */
     var init = function(i,img,callback) {
-        // @todo this should be added to the WMT library with a preloader animation function
-        var r = new Image();
-        r.src = img;
-        r.onload = function() {
-            bind();
-            O.img = r;
-            if (typeof callback === 'function') callback();
-        }
+        $w.loading.init(document.getElementById('target'),0,'',function(r){
+            if (!r) {
+                callback(false);
+            }
+            $w.loading.load({running_man:img},function(){
+               bind();
+               O.img = $w.assets.img.running_man;
+               if (typeof callback === 'function') callback();
+            });
+        });
     }
     /**
      * bind events to dom nodes
@@ -185,7 +190,7 @@ var Sprite = (function() {
             // setInterval is faster and $w.canvas.draw is faster still (based on your machine)
             // but in this case setTimeout is appropriate
             if (O.dir != 0)
-            setTimeout(function(){callback()},O.speed);
+            setTimeout(function(){$w.upFPS();callback()},O.speed);
         }
     }
     /**

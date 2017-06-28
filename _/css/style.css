@@ -451,29 +451,61 @@ footer {
   clear: both;
   padding: 10px; }
 
+/* line 56, ../components/sass/style.scss */
+.loader_fader {
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 9998;
+  position: absolute;
+  left: 0px;
+  top: 0px; }
+
+/* line 63, ../components/sass/style.scss */
+.loader_container {
+  margin: 10%;
+  position: absolute;
+  z-index: 9999;
+  left: 0px;
+  top: 0px; }
+
+/* line 70, ../components/sass/style.scss */
+#wm_show_fps {
+  background: #000;
+  z-index: 9999;
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  color: #ffff00;
+  right: 0;
+  top: 0;
+  padding: 5px;
+  display: none; }
+  /* line 81, ../components/sass/style.scss */
+  #wm_show_fps.show {
+    display: block; }
+
 /* Main Page */
-/* line 58, ../components/sass/style.scss */
+/* line 87, ../components/sass/style.scss */
 .wes_main pre {
   font: 10px/4px monospace; }
   @media screen and (max-width: 1440px) {
-    /* line 58, ../components/sass/style.scss */
+    /* line 87, ../components/sass/style.scss */
     .wes_main pre {
       font: 8px/3px monospace; } }
   @media screen and (max-width: 769px) {
-    /* line 58, ../components/sass/style.scss */
+    /* line 87, ../components/sass/style.scss */
     .wes_main pre {
       overflow: hidden; } }
   @media screen and (max-width: 420px) {
-    /* line 58, ../components/sass/style.scss */
+    /* line 87, ../components/sass/style.scss */
     .wes_main pre {
       font: 4px/1px monospace; } }
-/* line 70, ../components/sass/style.scss */
+/* line 99, ../components/sass/style.scss */
 .wes_main h1 {
   display: block;
   box-shadow: inset 100px 200px 120px rgba(153, 151, 197, 0.1);
   margin: 0;
   padding: 20px; }
-/* line 76, ../components/sass/style.scss */
+/* line 105, ../components/sass/style.scss */
 .wes_main .right {
   background: #fff;
   box-shadow: inset -90px -165px 120px rgba(153, 151, 197, 0.1); }
