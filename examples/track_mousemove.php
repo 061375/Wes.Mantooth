@@ -4,8 +4,8 @@
 <head>
     <title>Wes Mantooth - Track Mouse Movement</title>
     <?php require_once('scripts.php'); ?>
-    <script src="../_/js/track_mousemove.js?a=<?php echo strtotime('now'); ?>"></script>
-    <link rel="stylesheet" href="../_/css/style.css?a=<?php echo strtotime('now'); ?>" />
+    <script src="../_/js/track_mousemove.js<?php echo $dev ?>"></script>
+    <link rel="stylesheet" href="../_/css/style.css<?php echo $dev ?>" />
 </head>
 <body>
     <div class="left" id="target">
@@ -35,6 +35,6 @@ window.onload = function() {
 }  
         </pre>
     </div>
-    <script src="http://192.168.1.154:35729/livereload.js"></script>
+    <?php echo $grunt; ?> 
 </body>
 </html>

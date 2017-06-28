@@ -4,8 +4,8 @@
 <head>
     <title>Wes Mantooth - Sprite Animation</title>
     <?php require_once('scripts.php'); ?>
-    <script src="../_/js/sprite_animation.js?a=<?php echo strtotime('now'); ?>"></script>
-    <link rel="stylesheet" href="../_/css/style.css" />
+    <script src="../_/js/sprite_animation.js<?php echo $dev ?>"></script>
+    <link rel="stylesheet" href="../_/css/style.css<?php echo $dev ?>" />
     <style>
         #target {
             position: relative;
@@ -258,6 +258,6 @@ var Sprite = (function() {
 }());
         </pre>
     </div>
-    <script src="http://192.168.1.154:35729/livereload.js"></script>
+    <?php echo $grunt; ?> 
 </body>
 </html>
