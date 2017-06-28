@@ -1,3 +1,11 @@
+<?php
+$grunt = '';
+$dev = isset($_GET['dev']) ? true : false;
+if(true === $dev) {
+    $dev = '?a='.strtotime('now');
+    $grunt = '<script src="http://192.168.1.154:35729/livereload.js"></script>';
+}
+?>
 <!doctype html>
 
 <html lang="en">
@@ -6,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Simple HTML5 Canvas game engine project">
         <meta name="keywords" content="html5,canvas,javascript,wes,mantooth,anchorman,ron,burgundy,game,development,programming,hobby,project,engine">
-        <link rel="stylesheet" href="_/css/style.css?a=<?php echo strtotime('now'); ?>" />
+        <link rel="stylesheet" href="_/css/style.css<?php echo $dev ?>" />
 </head>
 <body class="wes_main">
     <div class="container">
@@ -194,30 +202,30 @@
                 <li>
                     <a href="examples/draw_simplegrid.php" target="_blank">Draw a simple grid</a>
                 </li>
-                <li>
+                <!--li>
                     <a href="examples/" target="_blank">Draw Text</a>
-                </li>
+                </li-->
                 <li>
                     <a href="examples/track_mousemove.php" target="_blank">Track Mouse Movement</a>
                 </li>
-                <li>
+                <!--li>
                     <a href="examples/" target="_blank">Keyboard Movement</a>
-                </li>
-                <li>
+                </li-->
+                <!--li>
                     <a href="examples/" target="_blank">Draw Shapes</a>
-                </li>
+                </li-->
                 <li>
                     <a href="examples/fibonacci.php" target="_blank">Fibonacci's Golden Ratio</a>
                 </li>
                 <li>
                     <a href="examples/sprite_animation.php" target="_blank">Sprite Animation</a>
                 </li>
-                <li>
+                <!--li>
                     <a href="examples/" target="_blank">Multiple Canvases</a>
-                </li>
-                <li>
+                </li-->
+                <!--li>
                     <a href="examples/paint.php" target="_blank">Paint Program</a>
-                </li>
+                </li-->
             </ul>
         </div>
         <footer>
@@ -228,6 +236,6 @@
             <p>My name is <a href="http://www.jeremyheminger.com" target="_blank">Jeremy Heminger</a> and I am a full LAMP stack developer located in Redlands California</p>
         </footer>
     </div>
-    <script src="http://192.168.1.154:35729/livereload.js"></script>
+    <?php echo $grunt; ?> 
 </body>
 </html>
