@@ -16,8 +16,14 @@ var WesMantooth = function(){
     this.mouse = Mouse;
     this.draw = Draw;
     this.color = Color;
-    this.loading = Loading; 
+    this.loading = Loading;
+    this.game = Game; 
+    
+    
+    
+    
     this.boolLog = true;
+    this.objects = {};
     this.assets = {
         img:[],
         audio:[],
@@ -82,6 +88,12 @@ var WesMantooth = function(){
             $t = document.getElementById('wm_show_fps');
             
         $t.innerHTML = countFPS()+' fps';
+    }
+    
+    /* Game Hooks */
+    
+    this.add_object = function(r,o,p,$t) {
+        return $w.game.add_object(r,o,p,$t);    
     }
 };
 // instantiate class an set an alias
