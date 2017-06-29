@@ -10,6 +10,7 @@
 var WesMantooth = function(){
     this.canvas = Canvas;
     this._3D = _3D;
+    this.math = _Math;
     this.motion = Motion;
     this.collision = Collision;
     this.mouse = Mouse;

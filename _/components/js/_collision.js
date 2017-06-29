@@ -41,6 +41,17 @@ var Collision = {
         }
         return false;
     },
+    insideCanvas: function(x1,y1) {
+         var w = $w.canvas.get(0,'canvas').width;
+         var h = $w.canvas.get(0,'canvas').height;
+
+         if (x1 < 0) return 1;
+         if (x1 > w) return 3;
+         if (y1 > h) return 4;
+         if (y1 < 0) return 2;
+         
+         return 0;
+    },
     inside: function (point, vs) {
       // ray-casting algorithm based on
       // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html

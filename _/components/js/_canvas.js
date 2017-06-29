@@ -299,6 +299,7 @@ var Canvas = (function() {
      * @returns {Object}
      * */
     var get = function(i,o) {
+        
         switch(o) {
             case 'canvas':o = C;break;
             case 'ctx':o = ctx[i];break;

@@ -215,14 +215,14 @@ if(true === $dev) {
                     <a href="examples/" target="_blank">Draw Shapes</a>
                 </li-->
                 <li>
-                    <a href="examples/fibonacci.php" target="_blank">Fibonacci's Golden Ratio</a>
-                </li>
-                <li>
                     <a href="examples/sprite_animation.php" target="_blank">Sprite Animation</a>
                 </li>
-                <!--li>
-                    <a href="examples/" target="_blank">Multiple Canvases</a>
-                </li-->
+                <li>
+                    <a href="examples/multiple_canvases.php" target="_blank">Multiple Canvases</a>
+                </li>
+                <li>
+                    <a href="examples/fibonacci.php" target="_blank">Fibonacci's Golden Ratio</a>
+                </li>
                 <!--li>
                     <a href="examples/paint.php" target="_blank">Paint Program</a>
                 </li-->
