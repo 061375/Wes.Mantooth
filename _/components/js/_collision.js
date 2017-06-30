@@ -41,7 +41,7 @@ var Collision = {
         }
         return false;
     },
-    checkCollisionCircle: function(x1,y1,r1,x2,y2,r2) {
+    checkCircle: function(x1,y1,r1,x2,y2,r2) {
         var d = $w.motion.distance_to_point(x1,y1,x2,y2);
         var s = r1 + r2;
         if ((d - s) > 0) {
@@ -50,8 +50,20 @@ var Collision = {
             return false;
         }
     },
-    checkCollisionCircleRectangle: function(x1,y1,x2,y2,x3,y3,r) {
-        // [c = (d = x1,y1,x2,y2) - r]   
+    checkCircleRectangle: function(x1,y1,x2,y2,x3,y3,r) {
+        // [c = (d = x1,y1,x2,y2) - r]
+        var c = [
+            {x:x1,y:y1},
+            {x:(x1+x2),y:y1},
+            {x:x2,y:(y1+y2)},
+            {x:(x1+x2),y:(y1+y2)}
+        ];
+        var md = 0;
+        for(var i=0;i<4;i++) {
+            var d = $w.motion.distance_to_point(c[i].x,c[i].y,x3,y3);
+            
+        }
+        
     },
     insideCanvas: function(x1,y1) {
          var w = $w.canvas.get(0,'canvas').width;
