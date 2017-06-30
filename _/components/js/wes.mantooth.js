@@ -94,9 +94,12 @@ var WesMantooth = function(){
     this.loop = function() {
         for (var prop in this.objects) {
             if (this.objects.hasOwnProperty(prop)) {
-                var l = this.objects[prop].length;
-                for(var i=0; i<l; i++)
-                    this.objects[prop][i].loop();   
+                //var l = this.objects[prop].length;
+                
+                for (var obj in this.objects[prop]) {
+                    //console.log(this.objects[prop][obj]);
+                    this.objects[prop][obj].loop();
+                }
             }
         }
     }

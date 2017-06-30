@@ -41,6 +41,18 @@ var Collision = {
         }
         return false;
     },
+    checkCollisionCircle: function(x1,y1,r1,x2,y2,r2) {
+        var d = $w.motion.distance_to_point(x1,y1,x2,y2);
+        var s = r1 + r2;
+        if ((d - s) > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    },
+    checkCollisionCircleRectangle: function(x1,y1,x2,y2,x3,y3,r) {
+        // [c = (d = x1,y1,x2,y2) - r]   
+    },
     insideCanvas: function(x1,y1) {
          var w = $w.canvas.get(0,'canvas').width;
          var h = $w.canvas.get(0,'canvas').height;

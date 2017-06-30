@@ -75,11 +75,11 @@ var Motion = {
 var Mouse = {
     mouseX:0,
     mouseY:0,
-    trackMouse: function($target,callback) {
+    trackMouse: function($target,callback,o) {
         $target.addEventListener("mousemove", function(e) {
             this.mouseX = e.clientX;
             this.mouseY = e.clientY;
-            callback({x:e.clientX,y:e.clientY});
+            callback({x:e.clientX,y:e.clientY},o);
         });
     }
 }

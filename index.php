@@ -209,6 +209,9 @@ if(true === $dev) {
                     <a href="examples/track_mousemove.php" target="_blank">Track Mouse Movement</a>
                 </li>
                 <!--li>
+                    <a href="examples/collisions.php" target="_blank">Collisions</a>
+                </li-->
+                <!--li>
                     <a href="examples/" target="_blank">Keyboard Movement</a>
                 </li-->
                 <!--li>
