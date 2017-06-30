@@ -27,6 +27,11 @@
  *
  * @function has_error
  *
+ * @param fint
+ * Mozilla suggests using integers and not float point numbers to optimize drawing to canvas
+ * https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas
+ * but I still want to allow the option
+ *
  * 
  * */
 var Canvas = (function() {
@@ -86,9 +91,15 @@ var Canvas = (function() {
      * @param {Number} y
      * @param {Number} radius
      * @param {String} color (hex #000000)
+     * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */
-    var circle = function(i,x,y,r,c) {
+    var circle = function(i,x,y,r,c,fint) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            x = Math.floor(x);
+            y = Math.floor(y);
+        }
         if (typeof c === 'undefined')c = _color;
         ctx[i].fillStyle=c;       
         ctx[i].beginPath();
@@ -105,9 +116,15 @@ var Canvas = (function() {
      * @param {Number} end angle
      * @param {Boolean} counterclockwize
      * @param {String} color (hex #000000)
+     * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */ 
-    var arc = function(i,x,y,r,s,e,cc,color) {
+    var arc = function(i,x,y,r,s,e,cc,color,fint) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            x = Math.floor(x);
+            y = Math.floor(y);
+        }
         if (typeof color === 'undefined') color = _color;
         ctx[i].beginPath();
         ctx[i].strokeStyle = color;
@@ -124,9 +141,19 @@ var Canvas = (function() {
      * @param {Number} x3
      * @param {Number} y3
      * @param {String} color (hex #000000)
+     * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */ 
-    var qArc = function(i,x1,y1,x2,y2,x3,y3,color) {
+    var qArc = function(i,x1,y1,x2,y2,x3,y3,color,fint) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            x1 = Math.floor(x1);
+            y1 = Math.floor(y1);
+            x2 = Math.floor(x2);
+            y2 = Math.floor(y2);
+            x3 = Math.floor(x3);
+            y3 = Math.floor(y3);
+        }
         if (typeof color === 'undefined') color = _color;
         ctx[i].beginPath();
         ctx[i].strokeStyle = color;
@@ -146,9 +173,21 @@ var Canvas = (function() {
      * @param {Number} x4
      * @param {Number} y4
      * @param {String} color (hex #000000)
+     * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */ 
-    var bArc = function(i,x1,y1,x2,y2,x3,y3,x4,y4,color) {
+    var bArc = function(i,x1,y1,x2,y2,x3,y3,x4,y4,color,fint) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            x1 = Math.floor(x1);
+            y1 = Math.floor(y1);
+            x2 = Math.floor(x2);
+            y2 = Math.floor(y2);
+            x3 = Math.floor(x3);
+            y3 = Math.floor(y3);
+            x4 = Math.floor(x4);
+            y4 = Math.floor(y4);
+        }
         if (typeof color === 'undefined') color = _color;
         ctx[i].beginPath();
         ctx[i].strokeStyle = color;
@@ -163,9 +202,15 @@ var Canvas = (function() {
      * @param {String} txt
      * @param {String} stroke or fill
      * @param {String} font
+     * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */
-    var text = function(i,x,y,txt,m,font) {
+    var text = function(i,x,y,txt,m,font,fint) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            x = Math.floor(x);
+            y = Math.floor(y);
+        }
         if (typeof font === 'undefined') font = _font;
         if (typeof m === 'undefined') m = 'fill';
         ctx[i].font = font;
@@ -183,9 +228,17 @@ var Canvas = (function() {
      * @param {Number} y2
      * @param {String} color
      * @param {Number} linewidth
+     * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */
     var line = function(i,x1,y1,x2,y2,color,linewidth) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            x1 = Math.floor(x1);
+            y1 = Math.floor(y1);
+            x2 = Math.floor(x2);
+            y2 = Math.floor(y2);
+        }
         if (typeof color === 'undefined') color = _color;
         if (typeof linewidth === 'undefined') linewidth = _linewidth;
         ctx[i].beginPath();
@@ -206,9 +259,17 @@ var Canvas = (function() {
      * @param {String} method ( fill , stroke, both )
      * @param {String} hex color (alternate color)
      * @param {Number} opacity (Float 0 - 1)
+     * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */
-    var rectangle = function(i,x1,y1,x2,y2,color,m,acolor,o) {
+    var rectangle = function(i,x1,y1,x2,y2,color,m,acolor,o,fint) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            x1 = Math.floor(x1);
+            y1 = Math.floor(y1);
+            x2 = Math.floor(x2);
+            y2 = Math.floor(y2);
+        }
         if (typeof m === 'undefined') m = 'stroke';
         switch (m) {
             case 'fill':
@@ -237,13 +298,30 @@ var Canvas = (function() {
      * @param {Object} obj
      * @return {Boolean}
      * */
-    var image = function(i,obj){
+    var image = function(i,obj,fint){
+        
             clear(i);
+        
             ctx[i].save();
+        
+            // see fint
+            if (typeof fint === 'undefined') {
+                obj.sx = Math.floor(obj.sx);
+                obj.sy = Math.floor(obj.sy);
+                obj.sWidth = Math.floor(obj.sWidth);
+                obj.sHeight = Math.floor(obj.sHeight);
+                obj.dx = Math.floor(obj.dx);
+                obj.dy = Math.floor(obj.dy);
+                obj.dWidth = Math.floor(obj.dWidth);
+                obj.dHeight = Math.floor(obj.dHeight);
+            }
+            
+            // 
             if (typeof obj.img === 'undefined') {
                 set_error('image not set');
                 return false;
             }
+        
             if (typeof obj.sWidth !== 'undefined') {
                 ctx[i].drawImage(obj.img,obj.sx,obj.sy,obj.sWidth,obj.sHeight,obj.dx,obj.dy,obj.dWidth,obj.dHeight);
             } else if (typeof obj.dWidth !== 'undefined') {
@@ -251,6 +329,7 @@ var Canvas = (function() {
             } else {
                 ctx[i].drawImage(obj.img,obj.dx,obj.dy);
             }
+            
             // Put it on the canvas
             ctx[i].restore();
             
@@ -263,7 +342,7 @@ var Canvas = (function() {
      * @returns {Void}
      * */
     var clear = function(i,save) {
-    
+        
             if (typeof save === 'undefined' || save) {
                 ctx[i].clearRect(0, 0, C.width, C.height);
             }else{
