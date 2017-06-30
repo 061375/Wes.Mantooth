@@ -48,9 +48,18 @@ var Cursor = function(o) {
     }
 }
 var Circle = function(o) {
-    this.loop = function(){
-        $w.canvas.circle(o.i,o.x,o.y,o.radius,o.color);
+    var x = o.x;
+    var y = o.y;
+    var r = o.radius;
+    var loop = function(){
+        $w.canvas.circle(o.i,x,y,r,o.color);
     };
+    return {
+        loop:loop,
+        x:x,
+        y:y,
+        r:r
+    }
 }
 var Square = function(o) {
     this.loop = function(){};
