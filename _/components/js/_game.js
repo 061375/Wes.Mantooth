@@ -7,8 +7,16 @@ var Game = {
             // its true that this loop will result in the same as i
             // but it demonstrates that the funcxtion returns the ID of the canavas object
             var j = $w.canvas.init($t);
+            p.i = j;
+    
             // instaniate a new ball
-            this.objects[o] = new o(j,p);
+            if (typeof $w.objects[o.name] === 'object') {
+
+                 $w.objects[o.name][j] = new o(p);
+            }else{
+                $w.objects[o.name] = [];
+                $w.objects[o.name][j] = new o(p);
+            }
             ids.push(j);
         }
         return ids;

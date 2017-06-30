@@ -48,7 +48,7 @@ var WesMantooth = function(){
      * get currentlocation of the wes.mantooth.js script
      * @returns {String}
      * */
-    this.slocation = function() {
+    this.slocation = function() { 
         var s = document.getElementsByTagName('script');
         var l = s.length;
         var r = '';
@@ -89,11 +89,30 @@ var WesMantooth = function(){
             
         $t.innerHTML = countFPS()+' fps';
     }
+    /**
+     * */
+    this.loop = function() {
+        for (var prop in this.objects) {
+            if (this.objects.hasOwnProperty(prop)) {
+                var l = this.objects[prop].length;
+                for(var i=0; i<l; i++)
+                    this.objects[prop][i].loop();   
+            }
+        }
+    }
+    
     
     /* Game Hooks */
     
     this.add_object = function(r,o,p,$t) {
         return $w.game.add_object(r,o,p,$t);    
+    }
+    this.all = function(ids,o,f,p) {
+        var l = ids.length;
+        for (var i=0; i<l; i++) {
+            p.i = i;
+            $w.objects[o][i][f](p);
+        }
     }
 };
 // instantiate class an set an alias
