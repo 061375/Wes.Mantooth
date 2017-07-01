@@ -22,7 +22,7 @@ var WesMantooth = function(){
     
     
     
-    this.boolLog = true;
+    this.boolLog = false;
     this.objects = {};
     this.assets = {
         img:[],

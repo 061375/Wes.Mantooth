@@ -3,7 +3,7 @@
 $dev = isset($_GET['dev']) ? true : false;
 if(true === $dev) {
     $dev = '?a='.strtotime('now');
-    $grunt = '<script src="http://192.168.1.154:35729/livereload.js"></script>';
+    $grunt = '<script src="http://192.168.1.154:35729/livereload.js"></script><script>$w.boolLog = true;</script>';
     ?>
         <script src="../_/components/js/_canvas.js<?php echo $dev; ?>"></script>
         <script src="../_/components/js/_collision.js<?php echo $dev; ?>"></script>

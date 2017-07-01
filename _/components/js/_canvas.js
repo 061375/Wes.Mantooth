@@ -94,13 +94,17 @@ var Canvas = (function() {
      * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */
-    var circle = function(i,x,y,r,c,fint) {
+    var circle = function(i,x,y,r,c,o,fint) {
         // see fint
         if (typeof fint === 'undefined') {
             x = Math.floor(x);
             y = Math.floor(y);
         }
-        if (typeof c === 'undefined')c = _color;
+        if (typeof c === 'undefined')
+            c = _color;
+        if (typeof o !== 'undefined')
+            ctx[i].globalAlpha = o;
+                
         ctx[i].fillStyle=c;       
         ctx[i].beginPath();
         ctx[i].arc(x,y,r,0,Math.PI*2,true);
@@ -295,6 +299,49 @@ var Canvas = (function() {
     }
     /**
      * @param {Number}
+     * @param {Array}
+     * @param {String} hex color
+     * @param {String} method ( fill , stroke, both )
+     * @param {String} hex color (alternate color)
+     * @param {Number} opacity (Float 0 - 1)
+     * @param {Boolean} optional if true the operation allows float point numbers
+     * @returns {Void}
+     * */
+    var polygon = function(i,a,color,m,acolor,o,fint) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            fint = false;
+        }
+        if (typeof m === 'undefined') m = 'stroke';
+        switch (m) {
+            case 'fill':
+                ctx[i].fillStyle=color;
+                if (typeof o !== 'undefined') {
+                    ctx[i].globalAlpha = o;
+                }
+                break;
+            case 'stroke':
+                ctx[i].strokeStyle=color;
+                
+                break;
+            default:
+                ctx[i].fillStyle=acolor;
+                if (typeof o !== 'undefined') {
+                    ctx[i].globalAlpha = o;
+                }
+                ctx[i].fillRect(x1,y1,x2,y2);
+                ctx[i].strokeStyle=color;
+        }
+        ctx[i].beginPath();
+        ctx[i].moveTo(a[0][0],a[0][1]);
+        var l = a.length;
+        for(var j=1;j<l;j++){
+            ctx[i].lineTo(a[j][0],a[j][1]);    
+        }
+        ctx[i].fill();
+    }
+    /**
+     * @param {Number}
      * @param {Object} obj
      * @return {Boolean}
      * */
@@ -415,6 +462,7 @@ var Canvas = (function() {
         line:line,
         image:image,
         rectangle:rectangle,
+        polygon:polygon,
         clear:clear,
         get:get,
         has_error:has_error
