@@ -13,10 +13,19 @@
     </div>
     <div class="right">
         <pre class="brush: js">
+/**
+ * draws a grid using 2 lines of code
+ */
 window.onload = function() {
-    // initialize Wes Mantooth
+    // initialize a Wes Mantooth canvas
     var i = $w.canvas.init(document.getElementById('target'));
-    // get the canvas object
+    // draw the grid
+    /**
+     * @param {Number} reference the canvas
+     * @param {Number} width
+     * @param {Number} height
+     * @param {Number} grid unit
+     */
     $w.draw.grid(i,1000,1000,10);
 }   
         </pre>

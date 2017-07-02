@@ -33,7 +33,15 @@ window.onload = function() {
     // add the cursor object
     $w.add_object(
         1,
-        Cursor,{width:100,height:100,color:{fill:'#ffec00',stroke:'#000000'},opacity:0.7},
+        Cursor,{
+            width:100,
+            height:100,
+            color:{
+                fill:'#ffec00',
+                stroke:'#000000'
+            },
+            opacity:0.7
+        },
         $t
     );
     // add a circle
@@ -56,7 +64,10 @@ window.onload = function() {
             y:($t.scrollHeight/3),
             width:150,
             height:150,
-            color:{fill:'#ff0000',stroke:'#000000'},
+            color:{
+                fill:'#ff0000',
+                stroke:'#000000'
+            },
             opacity:0.7
         },
         $t
@@ -74,7 +85,10 @@ window.onload = function() {
                 [x+100,y+60],
                 [x-60,y+180]
             ],
-            color:{fill:'#73621e',stroke:'#000000'},
+            color:{
+                fill:'#73621e',
+                stroke:'#000000'
+            },
             opacity:0.7
         },
         $t
@@ -108,7 +122,17 @@ var Cursor = function(o) {
             // clear the canvas
             $w.canvas.clear(o.i);
             // draw the rectangle
-            $w.canvas.rectangle(o.i,x,y,o.width,o.height,o.color.stroke,'both',o.color.fill,o.opacity);
+            $w.canvas.rectangle(
+                                o.i,
+                                x,
+                                y,
+                                o.width,
+                                o.height,
+                                o.color.stroke,
+                                'both',
+                                o.color.fill,
+                                o.opacity
+                            );
             /**
              * normally we might use the engines game loop
              * but in this case we'll use the mouse event and loop through
@@ -150,7 +174,14 @@ var Cursor = function(o) {
  * */
 var Circle = function(o) {
     var loop = function(){
-        $w.canvas.circle(o.i,o.x,o.y,o.radius,o.color,o.opacity);
+        $w.canvas.circle(
+                         o.i,
+                         o.x,
+                         o.y,
+                         o.radius,
+                         o.color,
+                         o.opacity
+                        );
     };
     var checkCollision = function() {
         // get the cursor mouse position
@@ -167,7 +198,17 @@ var Circle = function(o) {
  * */
 var Square = function(o) {
     var loop = function(){
-        $w.canvas.rectangle(o.i,o.x,o.y,o.width,o.height,o.color.stroke,"both",o.color.fill,o.opacity);
+        $w.canvas.rectangle(
+                            o.i,
+                            o.x,
+                            o.y,
+                            o.width,
+                            o.height,
+                            o.color.stroke,
+                            "both",
+                            o.color.fill,
+                            o.opacity
+                        );
     };
     var checkCollision = function() {
         var b = $w.objects.Cursor[0].get_pos();
@@ -194,10 +235,16 @@ var Square = function(o) {
  * */
 var Polygon = function(o) {
     var loop = function(){
-        $w.canvas.polygon(o.i,o.a,o.color.fill,"fill",o.color.stroke,o.opacity);
+        $w.canvas.polygon(
+                            o.i,
+                            o.a,
+                            o.color.fill,
+                            "fill",
+                            o.color.stroke,
+                            o.opacity
+                        );
     };
     var checkCollision = function() {
-        console.log(o);
         var b = $w.objects.Cursor[0].get_pos();
         var isc = false;
         var l = o.a.length;

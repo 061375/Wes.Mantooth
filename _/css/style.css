@@ -429,8 +429,8 @@ div {
 
 /* line 35, ../components/sass/style.scss */
 .right {
-  max-width: 50%;
-  padding: 10%;
+  max-width: 60%;
+  padding: 5% 10%;
   float: right; }
   @media screen and (max-width: 420px) {
     /* line 35, ../components/sass/style.scss */

@@ -24,7 +24,7 @@
     <div class="right">
         <pre class="brush: js">
 // @param {Number}
-var MAXBALLS = 50;
+var MAXBALLS = 30;
 
 // make sure everything is loaded
 window.onload = function() {

@@ -3,11 +3,12 @@
  * Javascript animation and game engine
  * @author Jeremy Heminger <j.heminger13@gmail.com>
  *
- * @updated June 2017
- * @version 2.0.0
+ * @updated July 2017
+ * @version 2.0.1
  * */
 
 var WesMantooth = function(){
+    // globalize all the sub-classes
     this.canvas = Canvas;
     this._3D = _3D;
     this.math = _Math;
@@ -18,12 +19,11 @@ var WesMantooth = function(){
     this.color = Color;
     this.loading = Loading;
     this.game = Game; 
-    
-    
-    
-    
+    // @param {Boolean} if true render log to the console (I suggest overiding this in your code)
     this.boolLog = false;
+    // @param {Object} each game object will be added to this main object so they can be looped through all at once
     this.objects = {};
+    // @param {Object} pre-load all the assets into this object
     this.assets = {
         img:[],
         audio:[],
@@ -90,14 +90,13 @@ var WesMantooth = function(){
         $t.innerHTML = countFPS()+' fps';
     }
     /**
+     * the main loop
+     * @returns {Void}
      * */
     this.loop = function() {
         for (var prop in this.objects) {
             if (this.objects.hasOwnProperty(prop)) {
-                //var l = this.objects[prop].length;
-                
                 for (var obj in this.objects[prop]) {
-                    //console.log(this.objects[prop][obj]);
                     this.objects[prop][obj].loop();
                 }
             }

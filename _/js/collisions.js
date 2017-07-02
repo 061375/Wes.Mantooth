@@ -8,7 +8,15 @@ window.onload = function() {
     // add the cursor object
     $w.add_object(
         1,
-        Cursor,{width:100,height:100,color:{fill:'#ffec00',stroke:'#000000'},opacity:0.7},
+        Cursor,{
+            width:100,
+            height:100,
+            color:{
+                fill:'#ffec00',
+                stroke:'#000000'
+            },
+            opacity:0.7
+        },
         $t
     );
     // add a circle
@@ -172,7 +180,6 @@ var Polygon = function(o) {
         $w.canvas.polygon(o.i,o.a,o.color.fill,'fill',o.color.stroke,o.opacity);
     };
     var checkCollision = function() {
-        console.log(o);
         var b = $w.objects.Cursor[0].get_pos();
         var isc = false;
         var l = o.a.length;

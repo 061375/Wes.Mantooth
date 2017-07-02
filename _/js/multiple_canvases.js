@@ -1,5 +1,5 @@
 // @param {Number}
-var MAXBALLS = 20;
+var MAXBALLS = 30;
 
 // make sure everything is loaded
 window.onload = function() {
