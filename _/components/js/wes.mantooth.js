@@ -4,7 +4,7 @@
  * @author Jeremy Heminger <j.heminger13@gmail.com>
  *
  * @updated July 2017
- * @version 2.0.9
+ * @version 2.1.0
  * */
 
 var WesMantooth = function(){
