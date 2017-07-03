@@ -217,9 +217,6 @@ if(true === $dev) {
                 <li>
                     <a href="examples/keyboard.php" target="_blank">Keyboard Mapping</a>
                 </li>
-                <!--li>
-                    <a href="examples/" target="_blank">Draw Shapes</a>
-                </li-->
                 <li>
                     <a href="examples/sprite_animation.php" target="_blank">Sprite Animation</a>
                 </li>
@@ -229,10 +226,24 @@ if(true === $dev) {
                 <li>
                     <a href="examples/fibonacci.php" target="_blank">Fibonacci's Golden Ratio</a>
                 </li>
-                <!--li>
-                    <a href="examples/paint.php" target="_blank">Paint Program</a>
-                </li-->
+                <li>
+                    <a href="examples/paint_program.php" target="_blank">Paint Program</a>
+                </li>
             </ul>
+            <!--h2>
+                <a href="#">Documentation</a>
+            </h2>
+            <h2>
+                Games
+            </h2>
+            <ul>
+                <li>
+                        <a href="examples/games/lunarlander.php" target="_blank">Lunar Lander</a>
+                </li>
+                <li>
+                        <a href="examples/games/asteroids.php" target="_blank">Asteroids</a>
+                </li>
+            </ul-->
         </div>
         <footer>
             <p>This is just another project to see if I could do it. I actually started this several years ago, but like many projects, it just kinda died. I was working with canvas recently and was looking through
