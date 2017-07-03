@@ -206,6 +206,9 @@ if(true === $dev) {
                     <a href="examples/draw_text.php" target="_blank">Draw Text</a>
                 </li>
                 <li>
+                    <a href="examples/buttons.php" target="_blank">Buttons</a>
+                </li>
+                <li>
                     <a href="examples/track_mousemove.php" target="_blank">Track Mouse Movement</a>
                 </li>
                 <li>

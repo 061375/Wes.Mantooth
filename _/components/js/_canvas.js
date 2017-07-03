@@ -209,7 +209,7 @@ var Canvas = (function() {
      * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */
-    var text = function(i,x,y,txt,m,font,fint) {
+    var text = function(i,x,y,txt,m,font,color,fint) {
         // see fint
         if (typeof fint === 'undefined') {
             x = Math.floor(x);
@@ -217,6 +217,10 @@ var Canvas = (function() {
         }
         if (typeof font === 'undefined') font = _font;
         if (typeof m === 'undefined') m = 'fill';
+        if (typeof font !== 'undefined') {
+            ctx[i].strokeStyle = color;
+            ctx[i].fillStyle = color;
+        }
         ctx[i].font = font;
         if (m == 'fill') {
             ctx[i].fillText(txt,x,y);
@@ -510,6 +514,7 @@ var Canvas = (function() {
         line:line,
         image:image,
         rectangle:rectangle,
+        roundRectangle:roundRectangle,
         polygon:polygon,
         clear:clear,
         get:get,

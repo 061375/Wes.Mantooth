@@ -484,28 +484,28 @@ footer {
     display: block; }
 
 /* Main Page */
-/* line 87, ../components/sass/style.scss */
+/* line 88, ../components/sass/style.scss */
 .wes_main pre {
   font: 10px/4px monospace; }
   @media screen and (max-width: 1440px) {
-    /* line 87, ../components/sass/style.scss */
+    /* line 88, ../components/sass/style.scss */
     .wes_main pre {
       font: 8px/3px monospace; } }
   @media screen and (max-width: 769px) {
-    /* line 87, ../components/sass/style.scss */
+    /* line 88, ../components/sass/style.scss */
     .wes_main pre {
       overflow: hidden; } }
   @media screen and (max-width: 420px) {
-    /* line 87, ../components/sass/style.scss */
+    /* line 88, ../components/sass/style.scss */
     .wes_main pre {
       font: 4px/1px monospace; } }
-/* line 99, ../components/sass/style.scss */
+/* line 100, ../components/sass/style.scss */
 .wes_main h1 {
   display: block;
   box-shadow: inset 100px 200px 120px rgba(153, 151, 197, 0.1);
   margin: 0;
   padding: 20px; }
-/* line 105, ../components/sass/style.scss */
+/* line 106, ../components/sass/style.scss */
 .wes_main .right {
   background: #fff;
   box-shadow: inset -90px -165px 120px rgba(153, 151, 197, 0.1); }

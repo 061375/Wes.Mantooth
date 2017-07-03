@@ -4,7 +4,7 @@
  * @author Jeremy Heminger <j.heminger13@gmail.com>
  *
  * @updated July 2017
- * @version 2.0.1
+ * @version 2.0.9
  * */
 
 var WesMantooth = function(){
@@ -17,6 +17,7 @@ var WesMantooth = function(){
     this.mouse = Mouse;
     this.draw = Draw;
     this.color = Color;
+    this.buttons = Buttons;
     this.loading = Loading;
     this.game = Game; 
     // @param {Boolean} if true render log to the console (I suggest overiding this in your code)

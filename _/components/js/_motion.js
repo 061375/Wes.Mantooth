@@ -79,7 +79,7 @@ var Mouse = {
         $target.addEventListener("mousemove", function(e) {
             this.mouseX = e.clientX;
             this.mouseY = e.clientY;
-            callback({x:e.clientX,y:e.clientY},o);
+            if(typeof callback === 'function')callback({x:e.clientX,y:e.clientY},o);
         });
     }
 }
