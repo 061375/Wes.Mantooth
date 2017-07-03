@@ -14,6 +14,7 @@ if(true === $dev) {
         <script src="../_/components/js/_color.js<?php echo $dev; ?>"></script>
         <script src="../_/components/js/_loading.js<?php echo $dev; ?>"></script>
         <script src="../_/components/js/_game.js<?php echo $dev; ?>"></script>
+        <script src="../_/components/js/_shortys.js<?php echo $dev; ?>"></script>
         <script src="../_/components/js/_syntaxhighlighter.js<?php echo $dev; ?>"></script>
         <script src="../_/components/js/wes.mantooth.js<?php echo $dev; ?>"></script>
     <?php

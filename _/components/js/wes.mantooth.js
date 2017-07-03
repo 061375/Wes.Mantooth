@@ -23,6 +23,7 @@ var WesMantooth = function(){
     this.boolLog = false;
     // @param {Object} each game object will be added to this main object so they can be looped through all at once
     this.objects = {};
+    this.refs = [];
     // @param {Object} pre-load all the assets into this object
     this.assets = {
         img:[],

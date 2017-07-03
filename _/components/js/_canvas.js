@@ -299,6 +299,54 @@ var Canvas = (function() {
     }
     /**
      * @param {Number}
+     * @param {Number} x1
+     * @param {Number} y1
+     * @param {Number} width
+     * @param {Number} height
+     * @param {String} hex color
+     * @param {String} method ( fill , stroke, both )
+     * @param {String} hex color (alternate color)
+     * @param {Number} opacity (Float 0 - 1)
+     * @todo @param {Boolean} optional if true the operation allows float point numbers
+     * @returns {Void}
+     * */
+    var roundRectangle = function(i, x, y, width, height, radius,color,m,acolor,o) {
+        ctx[i].beginPath();
+        ctx[i].moveTo(x, y + radius);
+        ctx[i].lineTo(x, y + height - radius);
+        ctx[i].arcTo(x, y + height, x + radius, y + height, radius);
+        ctx[i].lineTo(x + width - radius, y + height);
+        ctx[i].arcTo(x + width, y + height, x + width, y + height-radius, radius);
+        ctx[i].lineTo(x + width, y + radius);
+        ctx[i].arcTo(x + width, y, x + width - radius, y, radius);
+        ctx[i].lineTo(x + radius, y);
+        ctx[i].arcTo(x, y, x, y + radius, radius);
+        if (typeof m === 'undefined') m = 'stroke';
+        switch (m) {
+            case 'fill':
+                ctx[i].fillStyle=color;
+                if (typeof o !== 'undefined') {
+                    ctx[i].globalAlpha = o;
+                }
+                ctx[i].fill();
+                break;
+            case 'stroke':
+                ctx[i].strokeStyle=color;
+                ctx[i].stroke();
+                break;
+            default:
+                ctx[i].fillStyle=acolor;
+                if (typeof o !== 'undefined') {
+                    ctx[i].globalAlpha = o;
+                }
+                ctx[i].fill();
+                ctx[i].strokeStyle=color;
+                ctx[i].stroke();
+        }
+        ctx[i].stroke();
+    }
+    /**
+     * @param {Number}
      * @param {Array}
      * @param {String} hex color
      * @param {String} method ( fill , stroke, both )
