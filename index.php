@@ -15,6 +15,61 @@ if(true === $dev) {
         <meta name="description" content="Simple HTML5 Canvas game engine project">
         <meta name="keywords" content="html5,canvas,javascript,wes,mantooth,anchorman,ron,burgundy,game,development,programming,hobby,project,engine">
         <link rel="stylesheet" href="_/css/style.css<?php echo $dev ?>" />
+        <script>
+                /**
+                 * Allows the viewer to set pass dev=true in the query string
+                 * dev mode renders to example unminified with log files in the console
+                 * */
+                window.onload = function(){
+                        /**
+                         * @param {String}
+                         * */
+                        var dev = "?dev=true";
+                        /**
+                         * @param {Boolean}
+                         * */
+                        var devon = document.getElementById('devmode').checked;
+                        // set the dev mode onload
+                        // this is persistent if the user simply hits back
+                        setMode();
+                        // add the event listener for the checkbox
+                        document.getElementById('devmode').addEventListener("change",function(){
+                                // toggle devon
+                                if (devon) {
+                                        devon = false;
+                                }else{
+                                        devon = true;
+                                }
+                                // set the dev mode
+                                setMode();
+                        });
+                        /**
+                         * @returns {Void}
+                         * */
+                        function setMode() {
+                                // get all the a tags in the examples node
+                                var a = document.getElementById('examples').getElementsByTagName("a");
+                                // loop the resulting object
+                                for (var prop in a) {
+                                        if (a.hasOwnProperty(prop)) {
+                                                // get the current link
+                                            var href = a[prop].getAttribute('href');
+                                            
+                                            if (devon) {
+                                                // append the query string
+                                                href = href + dev;
+                                            }else{
+                                                // remove the query string
+                                                href = href.replace(dev,'');
+                                            }
+                                            // set the new value
+                                            a[prop].setAttribute('href',href);
+                                        }
+                                }
+                           }
+                }
+                
+        </script>
 </head>
 <body class="wes_main">
     <div class="container">
@@ -198,36 +253,40 @@ if(true === $dev) {
             <h2>
                 Examples
             </h2>
-            <ul>
+            <p>
+                <input type="checkbox" id="devmode" /> View demonstration in development mode (uncompressed with logs rendered in console)
+                
+            </p>
+            <ul id="examples">
                 <li>
-                    <a href="examples/draw_simplegrid.php" target="_blank">Draw a simple grid</a>
+                    <a href="examples/draw_simplegrid.php" >Draw a simple grid</a>
                 </li>
                 <li>
-                    <a href="examples/draw_text.php" target="_blank">Draw Text</a>
+                    <a href="examples/draw_text.php" >Draw Text</a>
                 </li>
                 <li>
-                    <a href="examples/buttons.php" target="_blank">Buttons</a>
+                    <a href="examples/buttons.php" >Buttons</a>
                 </li>
                 <li>
-                    <a href="examples/track_mousemove.php" target="_blank">Track Mouse Movement</a>
+                    <a href="examples/track_mousemove.php" >Track Mouse Movement</a>
                 </li>
                 <li>
-                    <a href="examples/collisions.php" target="_blank">Collisions</a>
+                    <a href="examples/collisions.php" >Collisions</a>
                 </li>
                 <li>
-                    <a href="examples/keyboard.php" target="_blank">Keyboard Mapping</a>
+                    <a href="examples/keyboard.php" >Keyboard Mapping</a>
                 </li>
                 <li>
-                    <a href="examples/sprite_animation.php" target="_blank">Sprite Animation</a>
+                    <a href="examples/sprite_animation.php" >Sprite Animation</a>
                 </li>
                 <li>
-                    <a href="examples/multiple_canvases.php" target="_blank">Multiple Canvases</a>
+                    <a href="examples/multiple_canvases.php" >Multiple Canvases</a>
                 </li>
                 <li>
-                    <a href="examples/fibonacci.php" target="_blank">Fibonacci's Golden Ratio</a>
+                    <a href="examples/fibonacci.php" >Fibonacci's Golden Ratio</a>
                 </li>
                 <li>
-                    <a href="examples/paint_program.php" target="_blank">Paint Program</a>
+                    <a href="examples/paint_program.php" >Paint Program</a>
                 </li>
             </ul>
             <!--h2>
@@ -238,10 +297,10 @@ if(true === $dev) {
             </h2>
             <ul>
                 <li>
-                        <a href="examples/games/lunarlander.php" target="_blank">Lunar Lander</a>
+                        <a href="examples/games/lunarlander.php" >Lunar Lander</a>
                 </li>
                 <li>
-                        <a href="examples/games/asteroids.php" target="_blank">Asteroids</a>
+                        <a href="examples/games/asteroids.php" >Asteroids</a>
                 </li>
             </ul-->
         </div>
@@ -249,8 +308,8 @@ if(true === $dev) {
             <p>This is just another project to see if I could do it. I actually started this several years ago, but like many projects, it just kinda died. I was working with canvas recently and was looking through
             some of my old projects and found this. Version 2.0 represents a complete reworking of the code, pretty much from the ground up. It does incorporate the old code in some areas,
             but 1. It no longer uses paper.js (It's actually all my own code) 2. I have learned quite a lot since I wrote 1.0. As usual, this was never intended for production use of any kind. It was just a hobby.
-            But anyone who finds this and would like to use it or participate, feel free to <a href="https://github.com/061375/Wes.Mantooth" target="_blank">fork it</a>.</p>
-            <p>My name is <a href="http://www.jeremyheminger.com" target="_blank">Jeremy Heminger</a> and I am a full LAMP stack developer located in Redlands California</p>
+            But anyone who finds this and would like to use it or participate, feel free to <a href="https://github.com/061375/Wes.Mantooth" >fork it</a>.</p>
+            <p>My name is <a href="http://www.jeremyheminger.com" >Jeremy Heminger</a> and I am a full LAMP stack developer located in Redlands California</p>
         </footer>
     </div>
     <?php echo $grunt; ?> 
