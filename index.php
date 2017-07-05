@@ -289,10 +289,10 @@ if(true === $dev) {
                     <a href="examples/paint_program.php" >Paint Program</a>
                 </li>
             </ul>
-            <!--h2>
-                <a href="#">Documentation</a>
-            </h2>
             <h2>
+                <a href="documentation/">Documentation</a>
+            </h2>
+            <!--h2>
                 Games
             </h2>
             <ul>

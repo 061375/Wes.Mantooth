@@ -2,6 +2,19 @@ var Buttons = (function() {
     
     "use strict";
     var hovering = false;
+    /**
+     * pill
+     * draws a simple pill shaped button
+     * @param {Number} reference the canvas ID
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} width
+     * @param {Number} height
+     * @param {Number} radius
+     * @param {Object} style
+     * @param {String} text to display on the button
+     * @param {Object} ( hover, click )
+     * */
     function pill(i,x,y,w,h,radius,style,text,events) {
         var r_x = x;
         var r_y = y;

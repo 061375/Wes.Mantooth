@@ -88,7 +88,6 @@ var WesMantooth = function(){
     this.upFPS = function($t) {
         if (typeof $t === 'undefined')
             $t = document.getElementById('wm_show_fps');
-            
         $t.innerHTML = countFPS()+' fps';
     }
     /**
