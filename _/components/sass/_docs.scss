@@ -1,8 +1,14 @@
+$lightgrey: #8d8d8d;
 .docs {
     .container {
         padding: 10px;
     }
     .left {max-width: 60%;}
+    .right {
+        position: fixed;
+        right: 0;
+        top: 20%;
+    }
     section {
         border-bottom: solid 1px #a6a6a6;
         margin: 5px 0;
@@ -16,7 +22,7 @@
     }
     h3 {
         span {
-            color: #8d8d8d;
+            color: $lightgrey;
         }
     }
     table {
@@ -33,7 +39,12 @@
         }
     }
     th {background: #c4c4c4;}
-    td {padding: 3px;}
+    td {
+        padding: 3px;
+        span {
+            color: $lightgrey;
+        }
+    }
     nav {
         border: solid 1px;
         ul {

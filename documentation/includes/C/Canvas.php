@@ -1,10 +1,19 @@
+<?php
+/*
+     * @param {Object} a DOM object to append the canvas to
+     * @param {Number} canvas container width
+     * @param {Number} canvas container height
+     * @param {Function} callback
+     * @returns {Function(Number), Number}*/
+    include('includes/shortcuts.php');
+?>
 <h2>Canvas</h2>
 <p>
     This class handles and simplifies much of the drawing 
 </p>
 <div class="left">
     <section id="init">
-        <h3>init <span> -> {Integer}</span></h3>
+        <h3>init <span> -> {Integer || Function}</span></h3>
         <h4>creates the canvas tag, initializes the context and returns an ID that referenes the current canvas</h4>
         <table>
             <tr>
@@ -19,163 +28,217 @@
                 </th>
             </tr>
             <tr>
-                <td>i</td>
-                <td>Number</td>
-                <td>reference to the canvas id</td>
-            </tr>
-            <tr>
-                <td>x</td>
-                <td>Number</td>
-                <td>x coord where the button will be drawn</td>
-            </tr>
-            <tr>
-                <td>y</td>
-                <td>Number</td>
-                <td>y coord where the button will be drawn</td>
-            </tr>
-            <tr>
-                <td>width</td>
-                <td>Number</td>
-                <td>width of the button</td>
-            </tr>
-            <tr>
-                <td>height</td>
-                <td>Number</td>
-                <td>height of the button</td>
-            </tr>
-            <tr>
-                <td>radius</td>
-                <td>Number</td>
-                <td>the size of the rounded corners of the button</td>
-            </tr>
-            <tr>
-                <td>style</td>
+                <td>$t</td>
                 <td>Object</td>
-                <td>the style settings for the button
-                <br />
-                Available settings:
-                <br />
-                &nbsp;button:
-                    <table>
-                        <tr>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Type
-                            </th>
-                            <th>
-                                Description
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                color
-                            </td>
-                            <td>
-                                String
-                            </td>
-                            <td>
-                                hexadecimal color
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                fill
-                            </td>
-                            <td>
-                                Enum
-                            </td>
-                            <td>
-                                color the border, the background or both
-                                fill , stroke, both
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                acolor
-                            </td>
-                            <td>
-                                Sring
-                            </td>
-                            <td>
-                                the color use in the hover event
-                                hexadecimal color
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                opacity
-                            </td>
-                            <td>
-                                Float
-                            </td>
-                            <td>
-                                alpha value between 0 - 1
-                            </td>
-                        </tr>
-                    </table>
-                &nbsp;text:
-                    <table>
-                        <tr>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Type
-                            </th>
-                            <th>
-                                Description
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                color
-                            </td>
-                            <td>
-                                String
-                            </td>
-                            <td>
-                                color or the button text
-                                hexadecimal color
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                font
-                            </td>
-                            <td>
-                                String
-                            </td>
-                            <td>
-                                font size, style and family
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                padding
-                            </td>
-                            <td>
-                                Number
-                            </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                    </table>
+                <td>a DOM object to append the canvas to
+                    <br />
+                    example: document.getElemetById("target")
+                    <br />
+                    <span>(optional)</span> defaults to the &lt;body> tag
                 </td>
             </tr>
             <tr>
-                <td>text</td>
-                <td>String</td>
-                <td>the text to display on the button</td>
+                <td>w</td>
+                <td>Number</td>
+                <td>
+                    The width of the canvas
+                    <br />
+                    <span>(optional)</span> defaults to browser window innerWidth
+                </td>
             </tr>
             <tr>
-                <td>events</td>
-                <td>Object</td>
-                <td>event callback<br />
-                possible keys: ( hover, click )</td>
+                <td>h</td>
+                <td>Number</td>
+                <td>
+                    The height of the canvas
+                    <br />
+                    <span>(optional)</span> defaults to browser window innerHeight
+                </td>
             </tr>
+            <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><span>(optional)</span> a callback function that returns the canvas ID</td>
+            </tr>
+        </table>
+    </section>
+    <section id="circle">
+        <h3>circle <span> -> {Void}</span></h3>
+        <h4>creates a circle ( filled, stroke or both )</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <?php x(); ?>
+            <?php y(); ?>
+            <tr>
+                <td>radius</td>
+                <td>Number</td>
+                <td>
+                    the radius of the circle
+                </td>
+            </tr>
+            <?php echo $color; ?>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="arc">
+        <h3>arc <span> -> {Void}</span></h3>
+        <h4>creates a basic arc</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <?php x(); ?>
+            <?php y(); ?>
+            <tr>
+                <td>radius</td>
+                <td>Number</td>
+                <td>
+                    the radius of the circle
+                </td>
+            </tr>
+            <tr>
+                <td>s</td>
+                <td>Number</td>
+                <td>
+                    start angle
+                </td>
+            </tr>
+            <tr>
+                <td>e</td>
+                <td>Number</td>
+                <td>
+                    end angle
+                </td>
+            </tr>
+            <tr>
+                <td>cc</td>
+                <td>Boolean</td>
+                <td>
+                    if <span>true</span> the arc is drawn counter-clockwize
+                </td>
+            </tr>
+            <?php echo $color; ?>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="qarc">
+        <h3>qArc <span> -> {Void}</span></h3>
+        <h4>creates a quadratic curve</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <?php x(1); ?>
+            <?php y(1); ?>
+            <?php x(2); ?>
+            <?php y(2); ?>
+            <?php x(3); ?>
+            <?php y(3); ?>
+            <?php echo $color; ?>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="barc">
+        <h3>bArc <span> -> {Void}</span></h3>
+        <h4>creates a bezier curve</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <?php x(1); ?>
+            <?php y(1); ?>
+            <?php x(2); ?>
+            <?php y(2); ?>
+            <?php x(3); ?>
+            <?php y(3); ?>
+            <?php x(4); ?>
+            <?php y(4); ?>
+            <?php echo $color; ?>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="text">
+        <h3>text <span> -> {Void}</span></h3>
+        <h4>draws text to the canvas</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <?php x(); ?>
+            <?php y(); ?>
+            <tr>
+                <td>txt</td>
+                <td>String</td>
+                <td>
+                    the text to display
+                </td>
+            </tr>
+            <tr>
+                <td>m</td>
+                <td>Enum</td>
+                <td>
+                    stroke, fill
+                </td>
+            </tr>
+            <tr>
+                <td>font</td>
+                <td>String</td>
+                <td>
+                    [font-size] [font-family] [font-style]
+                    <br />
+                    <span>
+                        24px Arial italic
+                    </span>
+                </td>
+            </tr>
+            <?php echo $fint; ?>
         </table>
     </section>
 </div>
@@ -183,6 +246,21 @@
     <ul>
         <li>
             <a href="#init">init</a>
+        </li>
+        <li>
+            <a href="#circle">circle</a>
+        </li>
+        <li>
+            <a href="#arc">arc</a>
+        </li>
+        <li>
+            <a href="#qarc">qarc</a>
+        </li>
+        <li>
+            <a href="#barc">barc</a>
+        </li>
+        <li>
+            <a href="#text">text</a>
         </li>
     </ul>
 </div>

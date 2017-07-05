@@ -206,6 +206,7 @@ var Canvas = (function() {
      * @param {String} txt
      * @param {String} stroke or fill
      * @param {String} font
+     * @param {String}
      * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */

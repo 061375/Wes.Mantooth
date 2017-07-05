@@ -1,50 +1,58 @@
 @import url("https://fonts.googleapis.com/css?family=Francois+One");
-/* line 2, ../components/sass/_docs.scss */
+/* line 3, ../components/sass/_docs.scss */
 .docs .container {
   padding: 10px; }
-/* line 5, ../components/sass/_docs.scss */
+/* line 6, ../components/sass/_docs.scss */
 .docs .left {
   max-width: 60%; }
-/* line 6, ../components/sass/_docs.scss */
+/* line 7, ../components/sass/_docs.scss */
+.docs .right {
+  position: fixed;
+  right: 0;
+  top: 20%; }
+/* line 12, ../components/sass/_docs.scss */
 .docs section {
   border-bottom: solid 1px #a6a6a6;
   margin: 5px 0;
   padding: 5px 0; }
-/* line 12, ../components/sass/_docs.scss */
+/* line 18, ../components/sass/_docs.scss */
 .docs h1 a {
   text-decoration: none;
   color: #000; }
-/* line 18, ../components/sass/_docs.scss */
+/* line 24, ../components/sass/_docs.scss */
 .docs h3 span {
   color: #8d8d8d; }
-/* line 22, ../components/sass/_docs.scss */
+/* line 28, ../components/sass/_docs.scss */
 .docs table {
   min-width: 400px;
   border-spacing: 0; }
-/* line 26, ../components/sass/_docs.scss */
+/* line 32, ../components/sass/_docs.scss */
 .docs td, .docs th {
   margin: 0;
   border-top: solid 1px #a2a2a2;
   border-left: solid 1px #a2a2a2;
   border-bottom: solid 1px #a2a2a2; }
-  /* line 31, ../components/sass/_docs.scss */
+  /* line 37, ../components/sass/_docs.scss */
   .docs td:last-child, .docs th:last-child {
     border-right: solid 1px #a2a2a2; }
-/* line 35, ../components/sass/_docs.scss */
+/* line 41, ../components/sass/_docs.scss */
 .docs th {
   background: #c4c4c4; }
-/* line 36, ../components/sass/_docs.scss */
+/* line 42, ../components/sass/_docs.scss */
 .docs td {
   padding: 3px; }
-/* line 37, ../components/sass/_docs.scss */
+  /* line 44, ../components/sass/_docs.scss */
+  .docs td span {
+    color: #8d8d8d; }
+/* line 48, ../components/sass/_docs.scss */
 .docs nav {
   border: solid 1px; }
-  /* line 39, ../components/sass/_docs.scss */
+  /* line 50, ../components/sass/_docs.scss */
   .docs nav ul {
     list-style: none;
     padding: 0;
     margin: 0; }
-    /* line 43, ../components/sass/_docs.scss */
+    /* line 54, ../components/sass/_docs.scss */
     .docs nav ul li {
       display: inline-block;
       position: relative;
@@ -52,14 +60,14 @@
       border-left: solid 2px;
       padding: 1px 3px 0;
       margin: -2px; }
-      /* line 48, ../components/sass/_docs.scss */
+      /* line 59, ../components/sass/_docs.scss */
       .docs nav ul li:last-child {
         border-right: solid 2px; }
-      /* line 54, ../components/sass/_docs.scss */
+      /* line 65, ../components/sass/_docs.scss */
       .docs nav ul li:hover > ul {
         opacity: 1;
         height: inherit; }
-      /* line 59, ../components/sass/_docs.scss */
+      /* line 70, ../components/sass/_docs.scss */
       .docs nav ul li ul {
         position: absolute;
         left: 0px;
@@ -67,7 +75,7 @@
         opacity: 0;
         height: 0px;
         overflow: hidden; }
-        /* line 66, ../components/sass/_docs.scss */
+        /* line 77, ../components/sass/_docs.scss */
         .docs nav ul li ul li {
           border: solid 1px;
           padding: 0;
