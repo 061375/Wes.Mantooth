@@ -18,9 +18,11 @@
             <tr>
                 <td>p</td>
                 <td>Array</td>
-                <td>a two dimensional array containing the coordinates of the polygon
+                <td>
+                    a two dimensional array containing the coordinates of the polygon
                     <br />
-                    <span>[ [ x,y ],[ x,y ],[ x,y ] ]</span></td>
+                    <span>[ [ x,y ],[ x,y ],[ x,y ] ]</span>
+                </td>
             </tr>
             <tr>
                 <td>c</td>
@@ -119,6 +121,49 @@
             <?php y(1); ?>
         </table>
     </section>
+    <section id="inside">
+        <h3>inside <span> -> {Boolean}</span></h3>
+        <h4>check if target coords are inside of a polygon</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    point
+                </td>
+                <td>
+                    Array
+                </td>
+                <td>
+                    an array containing the x,y coordinates to test against
+                    <br />
+                    <span>[ x,y ]</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    vs
+                </td>
+                <td>
+                    Array
+                </td>
+                <td>
+                    a two dimensional array containing the coordinates of the polygon
+                    <br />
+                    <span>[ [ x,y ],[ x,y ],[ x,y ] ]</span>
+                </td>
+            </tr>
+        </table>
+    </section>
 </div>
 <div class="right">
     <ul>
@@ -130,6 +175,9 @@
         </li>
         <li>
             <a href="#insideCanvas">insideCanvas</a>
+        </li>
+        <li>
+            <a href="#inside">inside</a>
         </li>
     </ul>
 </div>
