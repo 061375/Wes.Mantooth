@@ -1,6 +1,7 @@
 <?php
 $q = isset($_GET['q']) ? $_GET['q']: false;
 if('' == trim($q))$q = false;
+include('includes/shortcuts.php');
 ?>
 <!DOCTYPE html>
 

@@ -235,12 +235,12 @@ var Canvas = (function() {
      * @param {Number} y1
      * @param {Number} x2
      * @param {Number} y2
-     * @param {String} color
+     * @param {String} color 
      * @param {Number} linewidth
      * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */
-    var line = function(i,x1,y1,x2,y2,color,linewidth) {
+    var line = function(i,x1,y1,x2,y2,color,linewidth,fint) {
         // see fint
         if (typeof fint === 'undefined') {
             x1 = Math.floor(x1);
@@ -437,6 +437,7 @@ var Canvas = (function() {
 
     }
     /**
+     * @todo experiment with clear just the section where the current element is (for speed)
      * @param {Number}
      * @param {Boolean} save
      * @returns {Void}

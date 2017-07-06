@@ -1,4 +1,7 @@
 var Collision = {
+    /**
+     * @deprecated since 1.0 use inside
+     * */
     checkCollision: function(obj1,obj2)
     {
         
@@ -19,6 +22,9 @@ var Collision = {
         }
         return false;
     },
+    /**
+     * @deprecated since 1.0 use inside
+     * */
     checkCollisionCoords: function(x1,y1,x2,y2,bsize)
     {
         //10,10,11,30,10
@@ -69,9 +75,12 @@ var Collision = {
             return false;
         }
     },
-    insideCanvas: function(x1,y1) {
-         var w = $w.canvas.get(0,'canvas').width;
-         var h = $w.canvas.get(0,'canvas').height;
+    insideCanvas: function(i,x1,y1) {
+        
+        if (typeof i === 'undefined') i = 0;
+        
+         var w = $w.canvas.get(i,'canvas').width;
+         var h = $w.canvas.get(i,'canvas').height;
 
          if (x1 < 0) return 1;
          if (x1 > w) return 3;

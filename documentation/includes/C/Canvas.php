@@ -1,12 +1,3 @@
-<?php
-/*
-     * @param {Object} a DOM object to append the canvas to
-     * @param {Number} canvas container width
-     * @param {Number} canvas container height
-     * @param {Function} callback
-     * @returns {Function(Number), Number}*/
-    include('includes/shortcuts.php');
-?>
 <h2>Canvas</h2>
 <p>
     This class handles and simplifies much of the drawing 
@@ -87,7 +78,7 @@
                     the radius of the circle
                 </td>
             </tr>
-            <?php echo $color; ?>
+            <?php color(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -137,7 +128,7 @@
                     if <span>true</span> the arc is drawn counter-clockwize
                 </td>
             </tr>
-            <?php echo $color; ?>
+            <?php color(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -163,7 +154,7 @@
             <?php y(2); ?>
             <?php x(3); ?>
             <?php y(3); ?>
-            <?php echo $color; ?>
+            <?php color(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -191,7 +182,7 @@
             <?php y(3); ?>
             <?php x(4); ?>
             <?php y(4); ?>
-            <?php echo $color; ?>
+            <?php color(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -220,13 +211,7 @@
                     the text to display
                 </td>
             </tr>
-            <tr>
-                <td>m</td>
-                <td>Enum</td>
-                <td>
-                    stroke, fill
-                </td>
-            </tr>
+            <?php echo $method; ?>
             <tr>
                 <td>font</td>
                 <td>String</td>
@@ -240,6 +225,368 @@
             </tr>
             <?php echo $fint; ?>
         </table>
+    </section>
+    <section id="line">
+        <h3>line <span> -> {Void}</span></h3>
+        <h4>draws a line to the canvas</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <?php x(1); ?>
+            <?php y(1); ?>
+            <?php x(2); ?>
+            <?php y(2); ?>
+            <?php color(); ?>
+            <tr>
+                <td>lineWidth</td>
+                <td>Number</td>
+                <td>
+                    
+                </td>
+            </tr>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="rectangle">
+        <h3>rectangle <span> -> {Void}</span></h3>
+        <h4>draws a rectangle to the canvas</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <?php x(1); ?>
+            <?php y(1); ?>
+            <?php x(2); ?>
+            <?php y(2); ?>
+            <?php color(); ?>
+            <?php echo $method; ?>
+            <?php color(true); ?>
+            <tr>
+                <td>opacity</td>
+                <td>Float</td>
+                <td>
+                    ( 0 - 1 )   
+                </td>
+            </tr>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="roundRectangle">
+        <h3>roundRectangle <span> -> {Void}</span></h3>
+        <h4>draws a round rectangle to the canvas</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <?php x(); ?>
+            <?php y(); ?>
+            <tr>
+                <td>width</td>
+                <td>Number</td>
+                <td>
+                    width of the rectangle
+                </td>
+            </tr>
+            <tr>
+                <td>height</td>
+                <td>Number</td>
+                <td>
+                    height of rectangle
+                </td>
+            </tr>
+            <?php color(); ?>
+            <?php echo $method; ?>
+            <?php color(true); ?>
+            <tr>
+                <td>opacity</td>
+                <td>Float</td>
+                <td>
+                    ( 0 - 1 )   
+                </td>
+            </tr>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="polygon">
+        <h3>polygon <span> -> {Void}</span></h3>
+        <h4>draws a polygon to the canvas</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <tr>
+                <td>a</td>
+                <td>Array</td>
+                <td>
+                    a two dimensional array containing the coordinates of the polygon
+                    <br />
+                    <span>[ [ x,y ],[ x,y ],[ x,y ] ]</span>
+                </td>
+            </tr>
+            <?php color(); ?>
+            <?php echo $method; ?>
+            <?php color(true); ?>
+            <tr>
+                <td>opacity</td>
+                <td>Float</td>
+                <td>
+                    ( 0 - 1 )   
+                </td>
+            </tr>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="image">
+        <h3>image <span> -> {Void}</span></h3>
+        <h4>draws a bitmap image to the canvas</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <tr>
+                <td>obj</td>
+                <td>Object</td>
+                <td>
+                    <table>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                img    
+                            </td>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                path to an image file: ( *.jpg, *.gif, *.png )
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                sx
+                            </td>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                start x coord of section to be drawn
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                sy
+                            </td>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                start y coord of section to be drawn
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                sWidth
+                            </td>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                sHeight
+                            </td>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                dx
+                            </td>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                dy
+                            </td>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                dWidth
+                            </td>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                dHeight
+                            </td>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <?php echo $fint; ?>
+        </table>
+    </section>
+    <section id="clear">
+        <h3>clear <span> -> {Void}</span></h3>
+        <h4>clears the referenced canvas</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <tr>
+                <td>save</td>
+                <td>Boolean</td>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section id="get">
+        <h3>get <span> -> {Object}</span></h3>
+        <h4>gets the referenced canvas or context</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <tr>
+                <td>o</td>
+                <td>Enum</td>
+                <td>
+                    canvas, ctx   
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section id="set_error">
+        <h3>set_error <span> -> {Void}</span></h3>
+        <h4>appends an error message to an array</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <tr>
+                <td>e</td>
+                <td>String</td>
+                <td>
+                    The error message   
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section id="has_error">
+        <h3>has_error <span> -> {Void}</span></h3>
+        <h4>if errors exist they are dumped to the console</h4>
     </section>
 </div>
 <div class="right">
@@ -261,6 +608,33 @@
         </li>
         <li>
             <a href="#text">text</a>
+        </li>
+        <li>
+            <a href="#line">line</a>
+        </li>
+        <li>
+            <a href="#rectangle">rectangle</a>
+        </li>
+        <li>
+            <a href="#roundRectangle">roundRectangle</a>
+        </li>
+        <li>
+            <a href="#polygon">polygon</a>
+        </li>
+        <li>
+            <a href="#image">image</a>
+        </li>
+        <li>
+            <a href="#clear">clear</a>
+        </li>
+        <li>
+            <a href="#get">get</a>
+        </li>
+        <li>
+            <a href="#set_error">set_error</a>
+        </li>
+        <li>
+            <a href="#has_error">has_error</a>
         </li>
     </ul>
 </div>
