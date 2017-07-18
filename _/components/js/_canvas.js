@@ -459,7 +459,8 @@ var Canvas = (function() {
      * @param {Function} callback
      * */
     var draw = function(o,callback) {
-        requestAnimationFrame(callback);/*function() {
+        requestAnimationFrame(callback);
+        /*function() {
             if (typeof callback === 'function') callback(o);
         });*/
     }

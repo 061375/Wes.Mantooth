@@ -3,6 +3,7 @@ var Draw = (function() {
     "use strict";
     
     /**
+     * @param {Number} i
      * @param {Number} w width
      * @param {Number} h height
      * @param {Number} u unit

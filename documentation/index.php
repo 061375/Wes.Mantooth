@@ -114,7 +114,6 @@ include('includes/shortcuts.php');
                 <section id="upFPS">
                     <h3>upFPS <span> -> {Void}</span></h3>
                     <h4>updates the visual FPS value</h4>
-                    
                     <table>
                         <tr>
                             <th>
@@ -140,7 +139,96 @@ include('includes/shortcuts.php');
                         </tr>
                     </table>
                 </section>
-                
+                <section id="loop">
+                    <h3>loop <span> -> {Void}</span></h3>
+                    <h4>loops through the game objects and preforms the loop function for each object added using add_object</h4>
+                    <h5>
+                        This will be modified in the future to be required. it will also have multiple functions to run as per how it is done in Game Maker.
+                        <br />
+                        <ul>
+                            <li>
+                                create
+                            </li>
+                            <li>
+                                start loop
+                            </li>
+                            <li>
+                                loop
+                            </li>
+                            <li>
+                                end loop
+                            </li>
+                            <li>
+                                destruction
+                            </li>
+                            <li>
+                                function
+                            </li>
+                        </ul>
+                    </h5>
+                    
+                </section>
+                <section id="add_object">
+                    <h3>add_object <span> -> {Void}</span></h3>
+                    <h4>creates and instance of an object and canvas, initializes it and returns an ID</h4>
+                    <table>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                r
+                            </td>
+                            <td>
+                                Integer
+                            </td>
+                            <td>
+                                the number of new objects of this type to add
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                o
+                            </td>
+                            <td>
+                                Function
+                            </td>
+                            <td>
+                                the object to duplicate
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                p
+                            </td>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                parameters to pass to the function
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                $t
+                            </td>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                target object to attach the canvas DOM node
+                            </td>
+                        </tr>
+                    </table>
+                </section>
                 </div>
                 <div class="right">
                     <ul>
@@ -155,6 +243,12 @@ include('includes/shortcuts.php');
                         </li>
                         <li>
                             <a href="#upFPS">upFPS</a>
+                        </li>
+                        <li>
+                            <a href="#loop">loop</a>
+                        </li>
+                        <li>
+                            <a href="#add_object">add_object</a>
                         </li>
                     </ul>
                 </div>
