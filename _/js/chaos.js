@@ -51,6 +51,9 @@ var Chaos = (function() {
 
         LOOPID = setInterval(function(){loop()},10);
     }
+    /**
+     * @returns {Void}
+     * */
     var loop = function() {
         
         var t;
@@ -73,6 +76,11 @@ var Chaos = (function() {
             clearInterval(LOOPID);
         }
     }
+    /**
+     * rolldice
+     * returns a random integer between 1 - 6
+     * @returns {Number}
+     * */
     var rolldice = function() {
         return 1 + Math.floor(Math.random() * 6);
     }
