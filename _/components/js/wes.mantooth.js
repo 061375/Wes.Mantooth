@@ -33,6 +33,10 @@ var WesMantooth = function(){
         scripts:[],
         link:[]
     }
+    this.main = {
+        width:0,
+        height:0
+    }
     /**
      * log
      * if this.boolLog console.log exists this renders a string
@@ -107,8 +111,8 @@ var WesMantooth = function(){
     
     /* Game Hooks */
     
-    this.add_object = function(r,o,p,$t) {
-        return $w.game.add_object(r,o,p,$t);    
+    this.add_object = function(r,o,p,$t,w,h) {
+        return $w.game.add_object(r,o,p,$t,w,h);    
     }
     this.all = function(ids,o,f,p) {
         var l = ids.length;

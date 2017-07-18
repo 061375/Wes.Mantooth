@@ -1,17 +1,17 @@
 var Game = {
     map:{},
-    add_object: function(r,o,p,$t){
+    add_object: function(r,o,p,$t,w,h){
         var ids = [];
-        // run a loop to create all the balls
+        // run a loop to create all the objects
         for(var i=0; i<r; i++){
             // create a canvas context and assign the result to j
             // its true that this loop will result in the same as i
             // but it demonstrates that the funcxtion returns the ID of the canavas object
-            var j = $w.canvas.init($t);
+            var j = $w.canvas.init($t,w,h);
             
             p.i = j;
     
-            // instaniate a new ball
+            // instaniate a new object
             if (typeof $w.objects[o.name] === 'object') {
                  $w.objects[o.name][j] = new o(p);
             }else{

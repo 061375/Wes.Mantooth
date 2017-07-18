@@ -59,7 +59,7 @@ var Ball = function(o) {
         x += this.x_speed;
         y += this.y_speed;
         
-        var chk = Collision.insideCanvas(x,y);
+        var chk = Collision.insideCanvas(0,x,y);
     
         if (chk > 0) {
             switch(chk) {

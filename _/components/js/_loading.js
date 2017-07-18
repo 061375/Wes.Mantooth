@@ -173,7 +173,8 @@ var Loading = (function() {
      * @param {String} object key to reference the audio in the $w.assets object
      * @returns {Void}
      * */
-    var load_audio = function(au) {
+    var load_audio = function(au,key) {
+        $w.log('Loading.load_audio '+au);
         var a = new Audio(au);
         a.oncanplaythrough = function() {
             $w.assets.audio[key] = a;

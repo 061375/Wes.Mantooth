@@ -283,6 +283,9 @@ if(true === $dev) {
                     <a href="examples/multiple_canvases.php" >Multiple Canvases</a>
                 </li>
                 <li>
+                    <a href="examples/chaos.php" >The Chaos Game (Sierpinski Triangle)</a>
+                </li>
+                <li>
                     <a href="examples/fibonacci.php" >Fibonacci's Golden Ratio</a>
                 </li>
                 <li>
