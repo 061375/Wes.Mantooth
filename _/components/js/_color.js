@@ -1,4 +1,4 @@
-var Color = {
+$w.color = {
   componentToHex: function(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
@@ -13,8 +13,8 @@ var Color = {
   random: function() {
     var c = [];
       for(var i=0; i<3;i++) {
-        c.push(Math.floor(Math.random() * 255));
+        c.push(~~(Math.random() * 255));
       }
-      return Color.rgbToHex(c[0],c[1],c[2]);
+      return $w.color.rgbToHex(c[0],c[1],c[2]);
   }
 }

@@ -25,15 +25,22 @@ window.onload = function() {
  * @param {String} a hexadecimal value representing a color 
  * */
 var Ball = function(o) {
+    // @param {Number}
+    this.i = o.i;
+    // @param {Number}
+    this.x = $w.math.frandom(o.x);
+    // @param {Number}
+    this.y = $w.math.frandom(o.y);
+    // @param {Number}
+    this.radius = o.radius;
+    // @param {Number}
+    this.color = $w.color.random();
     
-    var i = o.i;
-    var x = $w.math.frandom(o.x);
-    var y = $w.math.frandom(o.y)
-    var radius = o.radius;
-    var color = Color.random();
     // set the x and y speed of the ball
-    this.x_speed = Math.floor((Math.random() * 10) - 5);
-    this.y_speed = Math.floor((Math.random() * 10) - 5);
+    // @param {Number}
+    this.x_speed = ~~((Math.random() * 10) - 5);
+    // @param {Number}
+    this.y_speed = ~~((Math.random() * 10) - 5);
     
     // make sure that the balls are moving
     if (this.x_speed > -1 && this.x_speed < 1) {
@@ -50,29 +57,28 @@ var Ball = function(o) {
             this.y_speed = 1;
         }
     }
-    
-    /**
-     * 
-     * */
-    this.loop = function() {
-        
-        x += this.x_speed;
-        y += this.y_speed;
-        
-        var chk = Collision.insideCanvas(0,x,y);
-    
-        if (chk > 0) {
-            switch(chk) {
-                case 1:this.x_speed+=(this.x_speed * -2);break;
-                case 2:this.y_speed+=(this.y_speed * -2);break;
-                case 3:this.x_speed-=(this.x_speed * 2);break;
-                case 4:this.y_speed-=(this.y_speed * 2);break;
-            }
+}  
+/**
+ * better to use a prototype
+ * https://developers.google.com/speed/articles/optimizing-javascript
+ * */
+Ball.prototype.loop = function() {
+    // increment the x,y positions
+    this.x += this.x_speed;
+    this.y += this.y_speed;
+    // check for collisions
+    var chk = $w.collision.insideCanvas(0,this.x,this.y);
+    if (chk > 0) {
+        switch(chk) {
+            case 1:this.x_speed+=(this.x_speed * -2);break;
+            case 2:this.y_speed+=(this.y_speed * -2);break;
+            case 3:this.x_speed-=(this.x_speed * 2);break;
+            case 4:this.y_speed-=(this.y_speed * 2);break;
         }
-        $w.canvas.clear(i);
-        $w.canvas.circle(i,x,y,radius,color);
-        
-        if(i == (MAXBALLS-1))$w.upFPS();
-        window.requestAnimationFrame(this.loop.bind(this));
     }
+    $w.canvas.clear(this.i);
+    $w.canvas.circle(this.i,this.x,this.y,this.radius,this.color);
+    
+    if(this.i == (MAXBALLS-1))$w.upFPS();
+    window.requestAnimationFrame(this.loop.bind(this));
 }

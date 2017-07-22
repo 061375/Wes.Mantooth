@@ -2,7 +2,7 @@
  * Motion
  * some game motion operations
  * */
-var Motion = {
+$w.motion = {
   distance_to_point: function(x1,y1,x2,y2)
   {
     return Math.hypot(x2-x1, y2-y1);
@@ -72,7 +72,7 @@ var Motion = {
   }
 }
 
-var Mouse = {
+$w.mouse = {
     mouseX:0,
     mouseY:0,
     trackMouse: function($target,callback,o) {

@@ -1,4 +1,4 @@
-var Game = {
+$w.game = {
     map:{},
     add_object: function(r,o,p,$t,w,h){
         var ids = [];
@@ -39,13 +39,13 @@ var Game = {
 
         switch(e) {
             case "keydown":
-                $t.addEventListener("keydown",function(evt){Game.key(evt,e)});
+                $t.addEventListener("keydown",function(evt){$w.game.key(evt,e)});
                 break;
             case "keypress":
-                $t.addEventListener("keypress",function(evt){Game.key(evt,e)});
+                $t.addEventListener("keypress",function(evt){$w.game.key(evt,e)});
                 break;
             default:
-                $t.addEventListener("keyup",function(evt){Game.key(evt,e)});
+                $t.addEventListener("keyup",function(evt){$w.game.key(evt,e)});
         }
     },
     /**

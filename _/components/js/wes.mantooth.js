@@ -7,54 +7,42 @@
  * @version 2.1.0
  * */
 
-var WesMantooth = function(){
-    // globalize all the sub-classes
-    this.canvas = Canvas;
-    this._3D = _3D;
-    this.math = _Math;
-    this.motion = Motion;
-    this.collision = Collision;
-    this.mouse = Mouse;
-    this.draw = Draw;
-    this.color = Color;
-    this.buttons = Buttons;
-    this.loading = Loading;
-    this.game = Game; 
+var $w = {
     // @param {Boolean} if true render log to the console (I suggest overiding this in your code)
-    this.boolLog = false;
+    boolLog:false,
     // @param {Object} each game object will be added to this main object so they can be looped through all at once
-    this.objects = {};
-    this.refs = [];
+    objects:{},
+    refs:[],
     // @param {Object} pre-load all the assets into this object
-    this.assets = {
+    assets: {
         img:[],
         audio:[],
         midi:[],
         scripts:[],
         link:[]
-    }
-    this.main = {
+    },
+    main: {
         width:0,
         height:0
-    }
+    },
     /**
      * log
      * if this.boolLog console.log exists this renders a string
      * @param {String}
      * @returns {Void}
      * */
-    this.log = function( text ){
+    log: function( text ){
         if (this.boolLog) {
             if( (window['console'] !== undefined) ){
                     console.log( text );
             }
         }
-    }
+    },
     /**
      * get currentlocation of the wes.mantooth.js script
      * @returns {String}
      * */
-    this.slocation = function() { 
+    slocation: function() { 
         var s = document.getElementsByTagName('script');
         var l = s.length;
         var r = '';
@@ -66,12 +54,12 @@ var WesMantooth = function(){
             }
         }
         return r; 
-    }
+    },
     /**
      * @param {Boolean}
      * @returns {Void}
      * */
-    this.makeFPS = function(s) {
+    makeFPS: function(s) {
         if (typeof s === 'undefined')
             s = true;
         
@@ -84,21 +72,21 @@ var WesMantooth = function(){
             b.setAttribute('id','wm_show_fps');
             b.setAttribute('class',s);
         document.getElementsByTagName('body')[0].appendChild(b);    
-    }
+    },
     /**
      * @param {Object}
      * @returns {Void}
      * */
-    this.upFPS = function($t) {
+    upFPS: function($t) {
         if (typeof $t === 'undefined')
             $t = document.getElementById('wm_show_fps');
         $t.innerHTML = countFPS()+' fps';
-    }
+    },
     /**
      * the main loop
      * @returns {Void}
      * */
-    this.loop = function() {
+    loop: function() {
         for (var prop in this.objects) {
             if (this.objects.hasOwnProperty(prop)) {
                 for (var obj in this.objects[prop]) {
@@ -106,15 +94,15 @@ var WesMantooth = function(){
                 }
             }
         }
-    }
+    },
     
     
     /* Game Hooks */
     
-    this.add_object = function(r,o,p,$t,w,h) {
+    add_object: function(r,o,p,$t,w,h) {
         return $w.game.add_object(r,o,p,$t,w,h);    
-    }
-    this.all = function(ids,o,f,p) {
+    },
+    all: function(ids,o,f,p) {
         var l = ids.length;
         for (var i=0; i<l; i++) {
             p.i = i;
@@ -122,5 +110,3 @@ var WesMantooth = function(){
         }
     }
 };
-// instantiate class an set an alias
-var $w = new WesMantooth;

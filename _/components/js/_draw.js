@@ -1,4 +1,4 @@
-var Draw = (function() {
+$w.draw = (function() {
     
     "use strict";
     

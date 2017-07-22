@@ -1,4 +1,4 @@
-var Collision = {
+$w.collision = {
     /**
      * @deprecated since 1.0 use inside
      * */

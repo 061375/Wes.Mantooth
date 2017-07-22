@@ -1,6 +1,7 @@
-var Buttons = (function() {
+$w.buttons = (function() {
     
     "use strict";
+    
     var hovering = false;
     /**
      * pill

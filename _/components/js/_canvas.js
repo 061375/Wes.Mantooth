@@ -34,11 +34,10 @@
  *
  * 
  * */
-var Canvas = (function() {
+$w.canvas = (function() {
     
     "use strict";
-    
-    
+
     var isinit = false;
     
     var C; // canvas
@@ -97,8 +96,8 @@ var Canvas = (function() {
     var circle = function(i,x,y,r,c,o,fint) {
         // see fint
         if (typeof fint === 'undefined') {
-            x = Math.floor(x);
-            y = Math.floor(y);
+            x = ~~x;
+            y = ~~y;
         }
         if (typeof c === 'undefined')
             c = _color;
@@ -126,8 +125,8 @@ var Canvas = (function() {
     var arc = function(i,x,y,r,s,e,cc,color,fint) {
         // see fint
         if (typeof fint === 'undefined') {
-            x = Math.floor(x);
-            y = Math.floor(y);
+            x = ~~x;
+            y = ~~y;
         }
         if (typeof color === 'undefined') color = _color;
         ctx[i].beginPath();
@@ -151,12 +150,12 @@ var Canvas = (function() {
     var qArc = function(i,x1,y1,x2,y2,x3,y3,color,fint) {
         // see fint
         if (typeof fint === 'undefined') {
-            x1 = Math.floor(x1);
-            y1 = Math.floor(y1);
-            x2 = Math.floor(x2);
-            y2 = Math.floor(y2);
-            x3 = Math.floor(x3);
-            y3 = Math.floor(y3);
+            x1 = ~~x1;
+            y1 = ~~y1;
+            x2 = ~~x2;
+            y2 = ~~y2;
+            x3 = ~~x3;
+            y3 = ~~y3;
         }
         if (typeof color === 'undefined') color = _color;
         ctx[i].beginPath();
@@ -183,14 +182,14 @@ var Canvas = (function() {
     var bArc = function(i,x1,y1,x2,y2,x3,y3,x4,y4,color,fint) {
         // see fint
         if (typeof fint === 'undefined') {
-            x1 = Math.floor(x1);
-            y1 = Math.floor(y1);
-            x2 = Math.floor(x2);
-            y2 = Math.floor(y2);
-            x3 = Math.floor(x3);
-            y3 = Math.floor(y3);
-            x4 = Math.floor(x4);
-            y4 = Math.floor(y4);
+            x1 = ~~x1;
+            y1 = ~~y1;
+            x2 = ~~x2;
+            y2 = ~~y2;
+            x3 = ~~x3;
+            y3 = ~~y3;
+            x4 = ~~x4;
+            y4 = ~~y4;
         }
         if (typeof color === 'undefined') color = _color;
         ctx[i].beginPath();
@@ -213,8 +212,8 @@ var Canvas = (function() {
     var text = function(i,x,y,txt,m,font,color,fint) {
         // see fint
         if (typeof fint === 'undefined') {
-            x = Math.floor(x);
-            y = Math.floor(y);
+            x = ~~x;
+            y = ~~y;
         }
         if (typeof font === 'undefined') font = _font;
         if (typeof m === 'undefined') m = 'fill';
@@ -243,10 +242,10 @@ var Canvas = (function() {
     var line = function(i,x1,y1,x2,y2,color,linewidth,fint) {
         // see fint
         if (typeof fint === 'undefined') {
-            x1 = Math.floor(x1);
-            y1 = Math.floor(y1);
-            x2 = Math.floor(x2);
-            y2 = Math.floor(y2);
+            x1 = ~~x1;
+            y1 = ~~y1;
+            x2 = ~~x2;
+            y2 = ~~y2;
         }
         if (typeof color === 'undefined') color = _color;
         if (typeof linewidth === 'undefined') linewidth = _linewidth;
@@ -274,10 +273,10 @@ var Canvas = (function() {
     var rectangle = function(i,x1,y1,x2,y2,color,m,acolor,o,fint) {
         // see fint
         if (typeof fint === 'undefined') {
-            x1 = Math.floor(x1);
-            y1 = Math.floor(y1);
-            x2 = Math.floor(x2);
-            y2 = Math.floor(y2);
+            x1 = ~~x1;
+            y1 = ~~y1;
+            x2 = ~~x2;
+            y2 = ~~y2;
         }
         if (typeof m === 'undefined') m = 'stroke';
         switch (m) {

@@ -1,0 +1,48 @@
+body {
+    background: #000;
+    font-family: Arial, sans-serif;
+}
+#target {
+    position: relative;
+}
+#target canvas {
+    position: absolute;
+}
+.container {
+    width: 80vw;
+    height: 45vw;
+    background: url(../assets/sprites/bg.png) no-repeat;
+    background-size: cover;
+    border-left: solid 5px blue;
+    border-top: solid 5px blue;
+    border-right: solid 5px blue;
+    margin: auto;
+}
+header
+{
+    background: url(../assets/sprites/header_nodate.jpg) no-repeat;
+    width: 80vw;
+    height: 10vw;
+    background-size: cover;
+}
+#wm_show_fps {
+    background: #000;
+    z-index: 9999;
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    color: #ffff00;
+    right: 0;
+    top: 0;
+    padding: 5px;
+}
+#ship_stats {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+}
+#ship_stats div,
+#ship_stats span {
+    color: #ffff00;
+}

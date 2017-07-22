@@ -17,7 +17,7 @@
  *
  * The result will be a highly ordered system from a nearly random input
  *
- * This program automates the staeps to allow the result to be displayed
+ * This program automates the steps to allow the result to be displayed
  * */
 window.onload = function() {
     Chaos.init();
@@ -140,7 +140,9 @@ var Chaos = (function() {
      * @returns {Number}
      * */
     var rolldice = function() {
-        return 1 + Math.floor(Math.random() * 6);
+        // well use the $ws function framdom
+        // to get a flat integer between 1-6
+        return 1 + $w.math.frandom(6);
     }
     return {
         init: init

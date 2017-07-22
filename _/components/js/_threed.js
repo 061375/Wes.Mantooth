@@ -1,7 +1,7 @@
 /**
  * 3D Object
  * */
-var _3D = {
+$w.threed = {
     makeA3DPoint: function(x,y,z){
         var point = new Object();
         point.x = x;

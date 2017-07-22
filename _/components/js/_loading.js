@@ -4,7 +4,7 @@
  * @author Jeremy Heminger <j.heminger@gmail.com>
  *
  * */
-var Loading = (function() {
+$w.loading = (function() {
 
     "use strict";
     

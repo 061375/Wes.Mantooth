@@ -6,7 +6,7 @@
 /**
  * Extend Math prototype
  * */
-var _Math = {
+$w.math = {
   radians: function(degrees) {
     return degrees * Math.PI / 180;
   },
@@ -21,8 +21,8 @@ var _Math = {
   dist: function(x1,y1,x2,y2) {
     return Math.hypot(x2-x1, y2-y1);
   },
-  frandom: function(n) {
-    return Math.floor(Math.random() * n);
+  frandom: function(n) { 
+    return ~~(Math.random() * n);
   }
 }
 window.countFPS = (function () {
