@@ -18,7 +18,7 @@
  * "The Chaos Game" to build the Sierpinski Triangle
  *
  * @author Jeremy Heminger &lt;j.heminger13@gmail.com>
- * @dependency Wes.Mantooh.js
+ * @dependency wes.mantooth.js
  *
  * This was discovered in the 1970's. It's called a game, but really it's a demonstartion of stange attractors.
  * 1. On a piece of paper draw 3 points creating a triangle. Let these points be named [ [ 1,2 ],[ 3,4 ],[ 5,6 ] ]

@@ -14,8 +14,13 @@
     <div class="right">
         <pre class="brush: js">
 /**
+ * The Fibonacci sequence is somethies used as a bechmark because its a recursive operation aginst itself
+ * In this case I just wanted to draw the golden ratio
  *
+ * I plan to draw the golden spiral as well...however so far I have simply accomplished drawing a spiral that
+ * lacks the correct preportions... >:P
  *
+ * 
  * */
 window.onload = function(){
     //$w.boolLog = false;
