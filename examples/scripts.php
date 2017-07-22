@@ -4,22 +4,21 @@ $path = isset($path) ? $path : '../';
 $dev = isset($_GET['dev']) ? true : false;
 if(true === $dev) {
     $dev = '?a='.strtotime('now');
-    $grunt = '<script src="http://192.168.1.154:35729/livereload.js"></script><script>$w.boolLog = true;console.log(window);</script>';
+    $grunt = '<script src="http://192.168.1.154:35729/livereload.js"></script><script>$w.boolLog = true;console.log("Dumping window to show that no objects associated with Wesmantooth (aliased as $w) are stuck in root [this would be a memory leak]");console.log(window);</script>';
     ?>
-        <script src="<?php echo $path; ?>../_/components/js/wes.mantooth.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_canvas.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_collision.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_draw.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_math.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_motion.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_threed.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_color.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_loading.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_game.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_shortys.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_buttons.js<?php echo $dev; ?>"></script>
-        <script src="<?php echo $path; ?>../_/components/js/_syntaxhighlighter.js<?php echo $dev; ?>"></script>
-        
+        <script src="<?php echo $path; ?>../_/components/js/_wes.mantooth.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/canvas.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/collision.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/draw.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/math.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/motion.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/threed.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/color.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/loading.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/game.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/shortys.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/buttons.js<?php echo $dev; ?>"></script>
+
         <script src="<?php echo $path; ?>../_/js/external/js_memleak/memory_leak_checker.js"></script>
         <script>
             MemoryLeakChecker.checkLeaks($w);
@@ -34,3 +33,4 @@ if(true === $dev) {
     <?php
 }
 ?>
+    <script src="<?php echo $path; ?>../_/js/external/_syntaxhighlighter.js<?php echo $dev; ?>"></script>

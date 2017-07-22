@@ -76,6 +76,13 @@ if(true === $dev) {
         <h1>
             Wes Mantooth <span>- HTML5 Canvas Game Engine - Version 2.x - by Jeremy Heminger</span>
         </h1>
+        <header>
+            <p>This is just another project to see if I could do it. I actually started this several years ago, but like many projects, it just kinda died. I was working with canvas recently and was looking through
+            some of my old projects and found this. Version 2.0 represents a complete reworking of the code, pretty much from the ground up. It does incorporate the old code in some areas,
+            but 1. It no longer uses paper.js (It's actually all my own code) 2. I have learned quite a lot since I wrote 1.0. As usual, this was never intended for production use of any kind. It was just a hobby.
+            But anyone who finds this and would like to use it or participate, feel free to <a href="https://github.com/061375/Wes.Mantooth" >fork it</a>.</p>
+            <p>My name is <a href="http://www.jeremyheminger.com" >Jeremy Heminger</a> and I am a full LAMP stack developer located in Redlands California</p>
+        </header>
         <div class="left">
         <p>
             <pre>
@@ -295,25 +302,25 @@ if(true === $dev) {
             <h2>
                 <a href="documentation/">Documentation</a>
             </h2>
-            <!--h2>
+            <h2>
                 Games
             </h2>
+            <p>
+                I have a few simple games in production...but mostly this is about optimizing the code to make it<br />
+                easily useable and optimized for the highest framerate possible.
+            <br />
+                Two games I "actually" made in the past, that I am currently rebuilding using Wes Mantooth are:
+            </p>
             <ul>
                 <li>
-                        <a href="examples/games/lunarlander.php" >Lunar Lander</a>
+                        <!--a href="examples/games/lunarlander.php" -->Lunar Lander<!--/a-->
                 </li>
                 <li>
-                        <a href="examples/games/asteroids.php" >Asteroids</a>
+                        <!--a href="examples/games/asteroids.php" -->Asteroids<!--/a-->
                 </li>
-            </ul-->
+            </ul>
         </div>
-        <footer>
-            <p>This is just another project to see if I could do it. I actually started this several years ago, but like many projects, it just kinda died. I was working with canvas recently and was looking through
-            some of my old projects and found this. Version 2.0 represents a complete reworking of the code, pretty much from the ground up. It does incorporate the old code in some areas,
-            but 1. It no longer uses paper.js (It's actually all my own code) 2. I have learned quite a lot since I wrote 1.0. As usual, this was never intended for production use of any kind. It was just a hobby.
-            But anyone who finds this and would like to use it or participate, feel free to <a href="https://github.com/061375/Wes.Mantooth" >fork it</a>.</p>
-            <p>My name is <a href="http://www.jeremyheminger.com" >Jeremy Heminger</a> and I am a full LAMP stack developer located in Redlands California</p>
-        </footer>
+        
     </div>
     <?php echo $grunt; ?> 
 </body>

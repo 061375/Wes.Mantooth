@@ -24,10 +24,13 @@
     <div class="right">
         <pre class="brush: js">
 // @param {Number}
-var MAXBALLS = 30;
+var MAXBALLS = 80;
 
 // make sure everything is loaded
 window.onload = function() {
+    
+    'use strict';
+    
     $w.makeFPS();
     // 
     $w.add_object(
@@ -59,7 +62,7 @@ var Ball = function(o) {
     // @param {Number}
     this.radius = o.radius;
     // @param {Number}
-    this.color = Color.random();
+    this.color = $w.color.random();
     
     // set the x and y speed of the ball
     // @param {Number}
@@ -92,7 +95,7 @@ Ball.prototype.loop = function() {
     this.x += this.x_speed;
     this.y += this.y_speed;
     // check for collisions
-    var chk = Collision.insideCanvas(0,this.x,this.y);
+    var chk = $w.collision.insideCanvas(0,this.x,this.y);
     if (chk > 0) {
         switch(chk) {
             case 1:this.x_speed+=(this.x_speed * -2);break;

@@ -530,11 +530,12 @@ h1 span {
   font-size: 15px; }
 
 /* line 53, ../components/sass/style.scss */
+header,
 footer {
   clear: both;
   padding: 10px; }
 
-/* line 57, ../components/sass/style.scss */
+/* line 58, ../components/sass/style.scss */
 .loader_fader {
   background: rgba(255, 255, 255, 0.2);
   z-index: 9998;
@@ -542,7 +543,7 @@ footer {
   left: 0px;
   top: 0px; }
 
-/* line 64, ../components/sass/style.scss */
+/* line 65, ../components/sass/style.scss */
 .loader_container {
   margin: 10%;
   position: absolute;
@@ -550,7 +551,7 @@ footer {
   left: 0px;
   top: 0px; }
 
-/* line 71, ../components/sass/style.scss */
+/* line 72, ../components/sass/style.scss */
 #wm_show_fps {
   background: #000;
   z-index: 9999;
@@ -562,33 +563,33 @@ footer {
   top: 0;
   padding: 5px;
   display: none; }
-  /* line 82, ../components/sass/style.scss */
+  /* line 83, ../components/sass/style.scss */
   #wm_show_fps.show {
     display: block; }
 
 /* Main Page */
-/* line 89, ../components/sass/style.scss */
+/* line 90, ../components/sass/style.scss */
 .wes_main pre {
   font: 10px/4px monospace; }
   @media screen and (max-width: 1440px) {
-    /* line 89, ../components/sass/style.scss */
+    /* line 90, ../components/sass/style.scss */
     .wes_main pre {
       font: 8px/3px monospace; } }
   @media screen and (max-width: 769px) {
-    /* line 89, ../components/sass/style.scss */
+    /* line 90, ../components/sass/style.scss */
     .wes_main pre {
       overflow: hidden; } }
   @media screen and (max-width: 420px) {
-    /* line 89, ../components/sass/style.scss */
+    /* line 90, ../components/sass/style.scss */
     .wes_main pre {
       font: 4px/1px monospace; } }
-/* line 101, ../components/sass/style.scss */
+/* line 102, ../components/sass/style.scss */
 .wes_main h1 {
   display: block;
   box-shadow: inset 100px 200px 120px rgba(153, 151, 197, 0.1);
   margin: 0;
   padding: 20px; }
-/* line 107, ../components/sass/style.scss */
+/* line 108, ../components/sass/style.scss */
 .wes_main .right {
   background: #fff;
   box-shadow: inset -90px -165px 120px rgba(153, 151, 197, 0.1); }

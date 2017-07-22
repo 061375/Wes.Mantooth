@@ -210,6 +210,7 @@ $w.canvas = (function() {
      * @returns {Void}
      * */
     var text = function(i,x,y,txt,m,font,color,fint) {
+        $w.log('$w.text('+[i,x,y,txt,m,font,color,fint]+')');
         // see fint
         if (typeof fint === 'undefined') {
             x = ~~x;

@@ -5,7 +5,7 @@ MemoryLeakChecker = {
     is_seen: [],
 
     checkLeaks: function(obj) {
-        console.log('check');
+        console.log('JS memleak Running');
         var self = MemoryLeakChecker
 
         if(!obj || (typeof obj == 'function') || self.checked > 20000)

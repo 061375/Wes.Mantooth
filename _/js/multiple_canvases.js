@@ -1,8 +1,11 @@
 // @param {Number}
-var MAXBALLS = 30;
+var MAXBALLS = 80;
 
 // make sure everything is loaded
 window.onload = function() {
+    
+    'use strict';
+    
     $w.makeFPS();
     // 
     $w.add_object(
@@ -50,6 +53,7 @@ var Ball = function(o) {
             this.x_speed = 1;
         }
     }
+    //
     if (this.y_speed > -1 && this.y_speed < 1) {
         if (this.y_speed < 0 ) {
             this.y_speed = -1;

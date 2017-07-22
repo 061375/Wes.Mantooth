@@ -11,7 +11,7 @@ $w.draw = (function() {
      * @returns {Void}
      * */
     var grid = function(i,w,h,u,callback) {
-
+        $w.log('$w.grid('+[i,w,h,u]+')');
         var s = w / (u * 10);
         for(var x = 1; x < w; x+=s) {
             $w.canvas.line(i,x,0,x,h,'#dedede');    
