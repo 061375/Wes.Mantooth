@@ -1,5 +1,5 @@
 // @param {Number}
-var MAXBALLS = 80;
+var MAXBALLS = 20;
 
 // make sure everything is loaded
 window.onload = function() {
@@ -8,7 +8,7 @@ window.onload = function() {
     
     $w.makeFPS();
     // 
-    $w.add_object(
+    $w.add_object( 
         MAXBALLS,
         Ball,
         {
