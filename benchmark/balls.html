@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="../_/js/external/js_memleak/memory_leak_checker.js"></script>
+    <script>
+
+            
+            
+            // make sure everything is loaded
+            window.onload = function() {
+                
+                'use strict';
+                
+                var $t = document.getElementsByTagName("body")[0],
+                    w = window.innerWidth,
+                    h = window.innerHeight,
+                    C = document.createElement('canvas');
+                    C.setAttribute("width",w);
+                    C.setAttribute("height",h);
+                $t.appendChild(C);
+
+                var MAXBALLS = 20, i = 0, balls = [], ctx = C.getContext("2d");
+                for(i;i < MAXBALLS; i++) {
+                    balls[i] = new Ball(ctx,w,h); 
+                }
+                loop(ctx,balls,MAXBALLS,w,h);
+            }
+            function loop(ctx,balls,max,w,h) {
+                //ctx.clearRect(0, 0, w, h);
+                for(var i=0;i < max; i++) {
+                    
+                    balls[i].loop();
+                }
+                window.requestAnimationFrame(loop);
+            }
+            /**
+             * @param {Number} the reference ID to the canvas (also z-index)
+             * @param {Number} x ( max x position )
+             * @param {Number} y ( max y position )
+             * @param {Number} radius size of the circle
+             * @param {String} a hexadecimal value representing a color 
+             * */
+            var Ball = function(ctx,w,h) {
+                this.w = w;
+                this.h = h;
+                this.ctx = ctx;
+                
+                // @param {Number}
+                this.x = Math.floor(Math.random() * w);
+                // @param {Number}
+                this.y = Math.floor(Math.random() * h);
+                // @param {Number}
+                this.radius = 5;
+                // @param {Number}
+                this.color = color.random();
+                
+                // set the x and y speed of the ball
+                // @param {Number}
+                this.x_speed = ~~((Math.random() * 10) - 5);
+                // @param {Number}
+                this.y_speed = ~~((Math.random() * 10) - 5);
+                
+                // make sure that the balls are moving
+                if (this.x_speed > -1 && this.x_speed < 1) {
+                    if (this.x_speed < 0 ) {
+                        this.x_speed = -1;
+                    }else{
+                        this.x_speed = 1;
+                    }
+                }
+                //
+                if (this.y_speed > -1 && this.y_speed < 1) {
+                    if (this.y_speed < 0 ) {
+                        this.y_speed = -1;
+                    }else{
+                        this.y_speed = 1;
+                    }
+                }
+                this.loop();
+            }
+            var color = {
+                componentToHex: function(c) {
+                  var hex = c.toString(16);
+                  return hex.length == 1 ? "0" + hex : hex;
+                },
+                rgbToHex: function(r, g, b) {
+                  return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
+                },
+                /**
+                 * returns a random color
+                 * @returns {String}
+                 * */
+                random: function() {
+                  var c = [];
+                    for(var i=0; i<3;i++) {
+                      c.push(~~(Math.random() * 255));
+                    }
+                    return this.rgbToHex(c[0],c[1],c[2]);
+                }
+            }
+            /**
+             * better to use a prototype
+             * https://developers.google.com/speed/articles/optimizing-javascript
+             * */
+            Ball.prototype.loop = function() {
+                // increment the x,y positions
+                this.x += this.x_speed;
+                this.y += this.y_speed;
+                // check for collisions
+                var chk = this.insideCanvas(this.x,this.y,this.w,this.h);
+                if (chk > 0) {
+                    switch(chk) {
+                        case 1:this.x_speed+=(this.x_speed * -2);break;
+                        case 2:this.y_speed+=(this.y_speed * -2);break;
+                        case 3:this.x_speed-=(this.x_speed * 2);break;
+                        case 4:this.y_speed-=(this.y_speed * 2);break;
+                    }
+                }
+                
+                this.circle(this.x,this.y,this.radius,this.color);
+                
+                
+            }
+            Ball.prototype.circle = function(x,y,r,c) {
+                x = ~~x;
+                y = ~~y;
+                
+                if (typeof c === 'undefined')
+                    c = _color;
+     
+                this.ctx.fillStyle=c;       
+                this.ctx.beginPath();
+                this.ctx.arc(x,y,r,0,Math.PI*2,true);
+                this.ctx.closePath();
+                this.ctx.fill();
+            }
+            Ball.prototype.insideCanvas = function(x,y,w,h) {
+
+                 if (x < 0) return 1;
+                 if (x > w) return 3;
+                 if (y > h) return 4;
+                 if (y < 0) return 2;
+                 
+                 return 0;
+            }
+        
+        
+    </script>
+</head>
+
+<body>
+
+
+</body>
+</html>
