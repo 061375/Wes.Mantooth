@@ -2,11 +2,19 @@
 
 <html>
 <head>
-    <script src="../_/js/external/js_memleak/memory_leak_checker.js"></script>
+    <style>
+        #wm_show_fps {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 99999;
+            background: #000;
+            color: #fff000;
+            padding: 20px;
+            font-family: Arial;
+        }
+    </style>
     <script>
-
-            
-            
             // make sure everything is loaded
             window.onload = function() {
                 
@@ -20,20 +28,83 @@
                     C.setAttribute("height",h);
                 $t.appendChild(C);
 
-                var MAXBALLS = 20, i = 0, balls = [], ctx = C.getContext("2d");
+                var MAXBALLS = 500, i = 0, balls = [], ctx = C.getContext("2d");
                 for(i;i < MAXBALLS; i++) {
                     balls[i] = new Ball(ctx,w,h); 
                 }
-                loop(ctx,balls,MAXBALLS,w,h);
+                $t = makeFPS(true);
+                loop(ctx,balls,MAXBALLS,w,h,0,$t);
             }
-            function loop(ctx,balls,max,w,h) {
-                //ctx.clearRect(0, 0, w, h);
-                for(var i=0;i < max; i++) {
-                    
+            /**
+             * loop
+             * @param {Object}
+             * @param {Array}
+             * @param {Number}
+             * @param {Number}
+             * @param {Number}
+             * @param {Number}
+             * @param {Object}
+             * @returns {Null}
+             * */
+            function loop(ctx,balls,max,w,h,i,$t) {
+                ctx.clearRect(0, 0, w, h);
+                for(i;i < max; i++) {
                     balls[i].loop();
                 }
-                window.requestAnimationFrame(loop);
+                upFPS($t);
+                window.requestAnimationFrame(function(){loop(ctx,balls,max,w,h,0,$t)});
             }
+            /**
+             * makeFPS
+             * @param {Boolean}
+             * @returns {Object}
+             * */
+            function makeFPS(s) {
+                if (typeof s === 'undefined')
+                    s = true;
+                
+                if (s) {
+                    s = 'show';
+                }else{
+                    s = '';
+                }
+                var b = document.createElement('div');
+                    b.setAttribute('id','wm_show_fps');
+                    b.setAttribute('class',s);
+                document.getElementsByTagName('body')[0].appendChild(b);
+                return b;
+            }
+            /**
+             * upFPS
+             * @param {Object}
+             * @returns {Void}
+             * */
+            function upFPS($t) {
+                if (typeof $t === 'undefined')
+                    $t = document.getElementById('wm_show_fps');
+                $t.innerHTML = countFPS()+' fps';
+            }
+            /**
+             * countFPS
+             * @returns {Number}
+             * */
+            window.countFPS = (function () {
+                var lastLoop = (new Date()).getMilliseconds();
+                var count = 1;
+                var fps = 0;
+              
+                return function () {
+                  var currentLoop = (new Date()).getMilliseconds();
+                  if (lastLoop > currentLoop) {
+                    fps = count;
+                    count = 1;
+                  } else {
+                    count += 1;
+                  }
+                  lastLoop = currentLoop;
+                  return fps;
+                };
+            }());
             /**
              * @param {Number} the reference ID to the canvas (also z-index)
              * @param {Number} x ( max x position )
@@ -79,6 +150,10 @@
                 }
                 this.loop();
             }
+            /**
+             * color
+             * 
+             * */
             var color = {
                 componentToHex: function(c) {
                   var hex = c.toString(16);
@@ -144,7 +219,7 @@
                  
                  return 0;
             }
-        
+            
         
     </script>
 </head>

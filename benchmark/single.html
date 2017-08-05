@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="../_/js/external/js_memleak/memory_leak_checker.js"></script>
+    <script>
+        window.onload = function() {
+            var x = 1;
+            var y = 1;
+            var p = new Point(100,100);
+            MemoryLeakChecker.checkLeaks(Foo);
+        }
+        
+    </script>
+</head>
+
+<body>
+
+
+
+</body>
+</html>

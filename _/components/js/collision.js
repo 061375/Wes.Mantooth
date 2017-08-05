@@ -78,13 +78,10 @@ $w.collision = {
     insideCanvas: function(i,x1,y1) {
         
         if (typeof i === 'undefined') i = 0;
-        
-         var w = $w.canvas.get(i,'canvas').width;
-         var h = $w.canvas.get(i,'canvas').height;
 
          if (x1 < 0) return 1;
-         if (x1 > w) return 3;
-         if (y1 > h) return 4;
+         if (x1 > $w.canvas.get(i,'canvas').width) return 3;
+         if (y1 > $w.canvas.get(i,'canvas').height) return 4;
          if (y1 < 0) return 2;
          
          return 0;

@@ -68,6 +68,7 @@ $w.canvas = (function() {
         if (typeof h === 'undefined') h = window.innerHeight;
         
         C = document.createElement('canvas');
+        C.setAttribute('hidpi','no');
         C.setAttribute("width",w);
         C.setAttribute("height",h);
         C.setAttribute("style","z-index:"+(ctx.length+1));
