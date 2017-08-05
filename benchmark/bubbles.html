@@ -24,6 +24,7 @@
                 var $t = document.getElementsByTagName("body")[0],
                     w = window.innerWidth,
                     h = window.innerHeight,
+                    zmax = 30,
                     C = document.createElement('canvas');
                     C.setAttribute("width",w);
                     C.setAttribute("height",h);
@@ -31,7 +32,7 @@
 
                 var MAXBALLS = 500, i = 0, balls = [], ctx = C.getContext("2d");
                 for(i;i < MAXBALLS; i++) {
-                    balls[i] = new Ball(ctx,w,h); 
+                    balls[i] = new Ball(ctx,w,h,zmax); 
                 }
                 $t = makeFPS(true);
                 loop(ctx,balls,MAXBALLS,w,h,0,$t);
@@ -115,9 +116,10 @@
              * @param {Number} radius size of the circle
              * @param {String} a hexadecimal value representing a color 
              * */
-            var Ball = function(ctx,w,h) {
+            var Ball = function(ctx,w,h,zmax) {
                 this.w = w;
                 this.h = h;
+                this.zmax = zmax;
                 this.ctx = ctx;
                 
                 // @param {Number}
@@ -125,7 +127,9 @@
                 // @param {Number}
                 this.y = Math.floor(Math.random() * h);
                 // @param {Number}
-                this.radius = 5;
+                this.z = Math.floor(Math.random() * zmax);
+                // @param {Number}
+                this.radius = this.z;
                 // @param {Number}
                 this.color = color.random();
                 
@@ -134,6 +138,8 @@
                 this.x_speed = ~~((Math.random() * 10) - 5);
                 // @param {Number}
                 this.y_speed = ~~((Math.random() * 10) - 5);
+                // @param {Number}
+                this.z_speed = ~~((Math.random() * 10) - 5);
                 
                 // make sure that the balls are moving
                 if (this.x_speed > -1 && this.x_speed < 1) {
@@ -149,6 +155,14 @@
                         this.y_speed = -1;
                     }else{
                         this.y_speed = 1;
+                    }
+                }
+                //
+                if (this.z_speed > -1 && this.z_speed < 1) {
+                    if (this.z_speed < 0 ) {
+                        this.z_speed = -1;
+                    }else{
+                        this.z_speed = 1;
                     }
                 }
                 this.loop();
@@ -196,7 +210,16 @@
                     }
                 }
                 
-                this.circle(this.x,this.y,this.radius,this.color);
+                // calculate z
+                this.z += this.z_speed;
+                if (this.z < 0) this.z = 0;
+                if (this.z >= this.zmax) {
+                    this.z_speed+=(this.z_speed * -2);
+                }
+                if (this.z <= 0) {
+                    this.z_speed-=(this.z_speed * 2);
+                }
+                this.circle(this.x,this.y,this.z,this.color);
                 
                 
             }
