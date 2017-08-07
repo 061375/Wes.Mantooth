@@ -91,6 +91,7 @@ $w.canvas = (function() {
      * @param {Number} y
      * @param {Number} radius
      * @param {String} color (hex #000000)
+     * @param {Number}
      * @param {Boolean} optional if true the operation allows float point numbers
      * @returns {Void}
      * */
