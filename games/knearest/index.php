@@ -8,8 +8,8 @@
     <?php
     $path = '../../';
     require_once('../../examples/scripts.php'); ?>
-    <script src="js/knearest.js"></script>
-    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/knearest.2.js"></script>
+
 </head>
 
 <body>

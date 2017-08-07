@@ -61,7 +61,7 @@ $w.canvas = (function() {
      * @param {Function} callback
      * @returns {Function(Number), Number}
      * */
-    var init = function($t,w,h,callback) {
+    var init = function($t,w,h,callback) { 
     
         if (typeof $t === 'undefined') $t = document.getElementsByTagName("body")[0];
         if (typeof w === 'undefined') w = window.innerWidth;
@@ -74,7 +74,10 @@ $w.canvas = (function() {
         C.setAttribute("style","z-index:"+(ctx.length+1));
         
         $t.appendChild(C);
-        
+        C.width = C.offsetWidth;
+        C.height = C.offsetHeight;
+        C.style.width = C.width+"px";
+        C.style.height = C.height+"px";
         var i = ctx.length;
         ctx.push(C.getContext("2d"));
         
