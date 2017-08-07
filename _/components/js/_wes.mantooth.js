@@ -94,6 +94,7 @@ var $w = {
                 }
             }
         }
+         window.requestAnimationFrame(this.loop.bind(this));
     },
     
     
