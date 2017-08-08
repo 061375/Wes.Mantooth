@@ -21,7 +21,7 @@ window.onload = function() {
     
     var i = $w.canvas.init(document.getElementById('target'),1000,1000),
         r,
-        NUMBEROFTESTS = 1,
+        NUMBEROFTESTS = 30,
         NUMBEROFSAMPLES = 5, // the number of samples to test against ( <= (red || green) length)
         QUARTERSIZE = 500, // the size of the grid quarter (for drawing)
         GREEN = '#008040',
