@@ -296,6 +296,9 @@ if(true === $dev) {
                     <a href="examples/fibonacci.php" >Fibonacci's Golden Ratio</a>
                 </li>
                 <li>
+                    <a href="examples/knearest.php" >K-Nearest Algorithm </a>
+                </li>
+                <li>
                     <a href="examples/paint_program.php" >Paint Program</a>
                 </li>
             </ul>
