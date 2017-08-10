@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+<script>
+    var _c = '#000000';
+    window.onload = function() {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var $t = document.getElementsByTagName('body')[0];
+        var C = document.createElement('canvas');
+        C.setAttribute('hidpi','no');
+        C.setAttribute("width",w);
+        C.setAttribute("height",h);
+        
+        $t.appendChild(C);
+        C.width = C.offsetWidth;
+        C.height = C.offsetHeight;
+        C.style.width = C.width+"px";
+        C.style.height = C.height+"px";
+        var ctx = C.getContext("2d");
+        
+        if(typeof _c === 'undefined') {       
+            ctx.beginPath();
+            for(var i=0; i<100;i++) {
+                ctx.fillStyle=color.random();
+                ctx.arc(Math.floor(Math.random() * w),Math.floor(Math.random() * h),10,0,Math.PI*2,true);
+                ctx.fill();
+            }
+            ctx.closePath();
+        }else{
+            ctx.beginPath();
+            ctx.fillStyle=_c;
+            for(var i=0; i<100;i++) {
+                ctx.arc(Math.floor(Math.random() * w),Math.floor(Math.random() * h),Math.floor(Math.random() * 50),0,Math.PI*2,true);
+            }
+            ctx.fill();
+            ctx.closePath();
+        }
+        
+    
+}
+var color = {
+    componentToHex: function(c) {
+      var hex = c.toString(16);
+      return hex.length == 1 ? "0" + hex : hex;
+    },
+    rgbToHex: function(r, g, b) {
+      return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
+    },
+    /**
+     * returns a random color
+     * @returns {String}
+     * */
+    random: function() {
+      var c = [];
+        for(var i=0; i<3;i++) {
+          c.push(~~(Math.random() * 255));
+        }
+        return color.rgbToHex(c[0],c[1],c[2]);
+    }
+}    
+</script>
+
+
+</body>
+</html>

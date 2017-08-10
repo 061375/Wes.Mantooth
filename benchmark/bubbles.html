@@ -21,21 +21,23 @@
                 
                 'use strict';
                 
+                const w = window.innerWidth,
+                      h = window.innerHeight,
+                      zmax = 30,
+                      MAXBALLS = 500; // on my machine this drops to 52-58 fps at 1000 
+                      
                 var $t = document.getElementsByTagName("body")[0],
-                    w = window.innerWidth,
-                    h = window.innerHeight,
-                    zmax = 30,
                     C = document.createElement('canvas');
                     C.setAttribute("width",w);
                     C.setAttribute("height",h);
                 $t.appendChild(C);
-
-                var MAXBALLS = 500, i = 0, balls = [], ctx = C.getContext("2d");
+     
+                var i = 0, balls = [], ctx = C.getContext("2d");
                 for(i;i < MAXBALLS; i++) {
                     balls[i] = new Ball(ctx,w,h,zmax); 
                 }
                 $t = makeFPS(true);
-                loop(ctx,balls,MAXBALLS,w,h,0,$t);
+                loop(ctx,balls,MAXBALLS,w,h,0,$t,0);
                 
             }
             /**
@@ -49,14 +51,15 @@
              * @param {Object}
              * @returns {Null}
              * */
-            function loop(ctx,balls,max,w,h,i,$t) {
+            function loop(ctx,balls,max,w,h,i,$t,j) {
                 ctx.clearRect(0, 0, w, h);
                 for(i;i < max; i++) {
                     balls[i].loop();
                 }
                 upFPS($t);
-                window.requestAnimationFrame(function(){loop(ctx,balls,max,w,h,0,$t)});
-                MemoryLeakChecker.checkLeaks(Ball);
+                if(++j > 100){MemoryLeakChecker.checkLeaks(Ball);j=0;}
+                window.requestAnimationFrame(function(){loop(ctx,balls,max,w,h,0,$t,j)});
+                
             }
             /**
              * makeFPS
@@ -93,9 +96,9 @@
              * @returns {Number}
              * */
             window.countFPS = (function () {
-                var lastLoop = (new Date()).getMilliseconds();
-                var count = 1;
-                var fps = 0;
+                var lastLoop = (new Date()).getMilliseconds(),
+                    count = 1,
+                    fps = 0;
               
                 return function () {
                   var currentLoop = (new Date()).getMilliseconds();
@@ -219,6 +222,7 @@
                 if (this.z <= 0) {
                     this.z_speed-=(this.z_speed * 2);
                 }
+                //this.x_speed += (-this.z) / 2;
                 this.circle(this.x,this.y,this.z,this.color);
                 
                 
