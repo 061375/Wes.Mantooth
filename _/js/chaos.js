@@ -58,11 +58,13 @@ var Chaos = (function() {
     var init = function() {
         
         // set the grid to 1/2 the visible width x the visible height
-        // @param {Number}
-        var w = (window.innerWidth / 2);
+
         // @param {Number}
         var h = window.innerHeight;
         
+        // @param {Number}
+        var w = h;
+
         // set a grid unit
         // @param {Number}
         var s = w / 110;
@@ -75,17 +77,17 @@ var Chaos = (function() {
         
         // draw {5,6}
         tri_p[0] = [(w/2),(s * 3)];
-        $w.canvas.text(I,tri_p[0][0],tri_p[0][1]-s,'{ 5,6 }');
+        $w.canvas.text(I,tri_p[0][0]+20,tri_p[0][1]-(s-40),'{ 5, 6 }','fill','20px serif');
         $w.canvas.circle(I,tri_p[0][0],tri_p[0][1],5);
         
         // draw {3,4}
         tri_p[1] = [(w/8),(h - (s * 4))];
-        $w.canvas.text(I,tri_p[1][0]-(s * 3),tri_p[1][1],'{ 3,4 }');
+        $w.canvas.text(I,tri_p[1][0]-(s * 6),tri_p[1][1]-(s+10),'{ 3, 4 }','fill','20px serif');
         $w.canvas.circle(I,tri_p[1][0],tri_p[1][1],5);
         
         // draw {1,2}
         tri_p[2] = [(w/2)+(w/3),(h - (s * 4))];
-        $w.canvas.text(I,tri_p[2][0]+(s * 2),tri_p[2][1],'{ 1,2 }');
+        $w.canvas.text(I,tri_p[2][0]+(s * 2),tri_p[2][1]-(s+10),'{ 1, 2 }','fill','20px serif');
         $w.canvas.circle(I,tri_p[2][0],tri_p[2][1],5);
         
         // create a seed
