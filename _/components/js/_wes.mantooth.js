@@ -86,15 +86,15 @@ var $w = {
      * the main loop
      * @returns {Void}
      * */
-    loop: function() {
-        for (var prop in this.objects) {
+    loop: function(ra) {
+        for (prop in this.objects) {
             if (this.objects.hasOwnProperty(prop)) {
-                for (var obj in this.objects[prop]) {
+                for (obj in this.objects[prop]) {
                     this.objects[prop][obj].loop();
                 }
-            }
+            } 
         }
-         window.requestAnimationFrame(this.loop.bind(this));
+        if(ra)window.requestAnimationFrame(this.loop.bind(this));
     },
     
     

@@ -18,7 +18,7 @@ window.onload = function() {
         },
         document.getElementById('target')
     );
-    $w.loop();
+    $w.loop(true);
 }
 /**
  * @param {Number} the reference ID to the canvas (also z-index)
@@ -84,5 +84,5 @@ Ball.prototype.loop = function() {
     $w.canvas.circle(this.i,this.x,this.y,this.radius,this.color);
     
     if(this.i == (MAXBALLS-1))$w.upFPS();
-    window.requestAnimationFrame(this.loop.bind(this));
+    return true;
 }
