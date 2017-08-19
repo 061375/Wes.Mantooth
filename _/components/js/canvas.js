@@ -493,6 +493,13 @@ $w.canvas = (function() {
         return o;
     }
     /**
+     * remove last context
+     * @returns {Void}
+     * */
+    var pop = function() {
+        ctx.pop();   
+    }
+    /**
      * @param {String}
      * @returns {Void}
      * * */
@@ -526,6 +533,7 @@ $w.canvas = (function() {
         polygon:polygon,
         clear:clear,
         get:get,
+        pop:pop,
         has_error:has_error
     };   
 }());

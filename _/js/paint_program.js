@@ -1,8 +1,20 @@
+/**
+ * Paint version 1.0.2
+ * @author Jeremy Heminger <j.heminger@gmail.com>
+ * a simple paint program that runs in a web page
+ * - 1.0.2
+ *   Added support for drag events
+ *   Added support for a simple line drawing tool
+ *
+ *   */
 window.onload = function() {
+    var $t = document.getElementById('target'),
+        w = 900,
+        h = 600;
     // initialize Wes Mantooth
-    $w.canvas.init(document.getElementById('target'),
-                900,600);
-    Paint.init();
+    $w.canvas.init($t,
+                w,h);
+    Paint.init($t,w,h);
 };
 
 var Paint = (function(){
@@ -10,10 +22,16 @@ var Paint = (function(){
     "use strict";
     
     // Start Initalization
+    var $t,width,height;
+    
     /**
      * @param {Boolean} is the program drawing
      * */
     var isDrawing = false;
+    /**
+     * @param {Boolean} is mouse in drag mode for lines and marquees
+     * */
+    var startDrag = false;
     /**
      * @param {Object} the available tools
      * */
@@ -48,7 +66,10 @@ var Paint = (function(){
     var ccolor = 0;
     // End initialization
     // -------------------------------------------------
-    var init = function() {
+    var init = function(t,w,h) {
+        $t = t;
+        width = w;
+        height = h;
         tools = {
             0:drawSpray,
             1:drawPencil,
@@ -203,6 +224,7 @@ var Paint = (function(){
     // -------------------------------------------------
     // Start Tools
     /**
+     * drawSpray
      * @param {Object} mouse event object
      * @returns {Void}
      * */
@@ -216,6 +238,7 @@ var Paint = (function(){
         
     }
     /**
+     * drawPencil
      * @param {Object} mouse event object
      * @returns {Void}
      * */
@@ -224,10 +247,16 @@ var Paint = (function(){
         $w.canvas.circle(0,m.x,m.y,s,colors[ccolor]); 
     }
     /**
+     * drawLine
      * @param {Object} mouse event object
      * @returns {Void}
      * */
-    var drawLine = function(m){}
+    var drawLine = function(m){
+        // if not dragging then set drag x,y as current mouse
+        if(!startDrag) {
+            startDrag = new Drag($t,m,'line',width,height);
+        }
+    }
     /**
      * @param {Object} mouse event object
      * @returns {Void}
@@ -237,7 +266,112 @@ var Paint = (function(){
         $w.canvas.circle(0,m.x,m.y,s,'#ffffff'); 
     }
     
+    // ---------------------------------------------------
+    // Drag Events
+    
+    /**
+     * confirmLine
+     * actually draws a line once the drag event is complete
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * @returns {Void}
+     * */
+    var confirmLine = function(x,y,x2,y2) {
+        $w.canvas.line(0,x,y,x2,y2,colors[ccolor],psize);    
+    }
+    /**
+     * stopDrag
+     * resets the drag 
+     * @param {Number}
+     * @returns {Void}
+     * */
+    var stopDrag = function(i) {
+        var $t = document.getElementsByTagName("canvas")[i];
+        $t.parentNode.removeChild($t.parentNode.childNodes[i]);
+        endDraw();
+        startDrag = false;
+        $w.canvas.pop();
+    }
     return {
-        init:init
+        init:init,
+        stopDrag:stopDrag,
+        confirmLine:confirmLine
     }
 })();
+/**
+ * Drag
+ * creates a new layer to allow a drag event and runs the drag event
+ * @param {Object} the target 
+ * @param {Object} mouse x, y
+ * @param {String} the operation to run line, marquee, etc...
+ * @param {Number} width of the canvas layer
+ * @param {Number} height of the canvas layer
+ * @returns {Void}
+ * */
+var Drag = function($t,m,f,w,h) {
+    
+    $w.log('start drag: '+f);
+    
+    // @param {Number}
+    this.i = $w.canvas.init($t,w,h);
+    // @param {Object}
+    this.ctx = $w.canvas.get(this.i,'canvas');
+    // @param {Number}
+    this.x = m.x;
+    // @param {Number}
+    this.y = m.y;
+    // get the target canvas and cache it
+    // @param {Object}
+    this.$t = document.getElementsByTagName("canvas")[this.i];
+    
+    // get the mouse position 'on mouse move'
+    $w.mouse.trackMouse(this.ctx,function(m,o){
+        // set the useful varibales to the canvas DOM data attribute
+        o.$t.dataset.x = m.x;
+        o.$t.dataset.y = m.y;
+        o.$t.dataset.x2 = o.x;
+        o.$t.dataset.y2 = o.y;
+        o.$t.dataset.i = o.i;
+        o.$t.dataset.f = f;
+        o.loop(m,f);
+    },this);
+    /**
+     * stopDrag
+     * fires when the mouse is released
+     * @returns {Void}
+     * */
+    this.stopDrag = function() {
+        switch(this.dataset.f) {
+            case 'line':
+                Paint.confirmLine(
+                    this.dataset.x,
+                    this.dataset.y,
+                    this.dataset.x2,
+                    this.dataset.y2
+                );
+                break;
+        }
+        $w.mouse.remove(this);
+        Paint.stopDrag(this.dataset.i);
+        
+    }
+    
+    // add an event listener for the stop drag event after everything
+    this.$t.addEventListener("mouseup",this.stopDrag);
+}
+/**
+ * loop
+ * @param {Object} mouse x, y
+ * @param {String}
+ * @returns {Void}
+ * */
+Drag.prototype.loop = function(m,f) {
+    $w.canvas.clear(this.i);
+    switch(f) {
+        case 'line':
+            $w.canvas.line(this.i,this.x,this.y,m.x,m.y);
+        break;
+    }
+}

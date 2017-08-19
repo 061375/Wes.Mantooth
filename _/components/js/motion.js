@@ -81,5 +81,8 @@ $w.mouse = {
             this.mouseY = e.clientY;
             if(typeof callback === 'function')callback({x:e.clientX,y:e.clientY},o);
         });
+    },
+    remove: function($target) {
+      $target.removeEventListener("mouseup",this,false);
     }
 }
