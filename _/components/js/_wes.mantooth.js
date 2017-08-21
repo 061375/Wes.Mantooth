@@ -3,8 +3,8 @@
  * Javascript animation and game engine
  * @author Jeremy Heminger <j.heminger13@gmail.com>
  *
- * @updated July 2017
- * @version 2.1.0
+ * @updated August 21, 2017
+ * @version 2.1.1
  * */
 
 var $w = {

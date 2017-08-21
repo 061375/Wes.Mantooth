@@ -27,7 +27,7 @@ $w.game = {
      * @param {Object} target DOM node (default is document)
      * @param {String} [ keyup, keypress, keyup ] the default is keyup
      * */
-    bindkeys: function(m,e,$t) {
+    bindkeys: function(m,e,$t,s) {
         $w.log('Game.key.'+e);
         if (typeof $w.game.map[e] === 'undefined')
             $w.game.map[e] = [];
@@ -39,20 +39,20 @@ $w.game = {
 
         switch(e) {
             case "keydown":
-                $t.addEventListener("keydown",function(evt){$w.game.key(evt,e)});
+                $t.addEventListener("keydown",function(evt){$w.game.key(evt,e,s)});
                 break;
             case "keypress":
-                $t.addEventListener("keypress",function(evt){$w.game.key(evt,e)});
+                $t.addEventListener("keypress",function(evt){$w.game.key(evt,e,s)});
                 break;
             default:
-                $t.addEventListener("keyup",function(evt){$w.game.key(evt,e)});
+                $t.addEventListener("keyup",function(evt){$w.game.key(evt,e,s)});
         }
     },
     /**
      * @param {Object} the event
      * @param {String} the event name
      * */
-    key: function(e,f){
+    key: function(e,f,s){
         $w.log('Game.key.'+f);
         $w.log(e);
         var l = $w.game.map[f].length;
@@ -61,7 +61,7 @@ $w.game = {
             for (var key in o) {
                 if (o.hasOwnProperty(key)) {
                     if(e.code == key) {
-                        o[key](e);    
+                        o[key](e,s);    
                     }
                 }
             }

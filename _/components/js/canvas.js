@@ -403,9 +403,11 @@ $w.canvas = (function() {
      * @param {Object} obj
      * @return {Boolean}
      * */
-    var image = function(i,obj,fint){
+    var image = function(i,obj,fint,c){
         
-            clear(i);
+            if(typeof c === 'undefined' || c){
+                clear(i);
+            }
         
             ctx[i].save();
         
@@ -426,12 +428,12 @@ $w.canvas = (function() {
                 set_error('image not set');
                 return false;
             }
-        
-            if (typeof obj.sWidth !== 'undefined') {
+            if (typeof obj.sWidth !== 'undefined' && obj.sWidth != false) {
                 ctx[i].drawImage(obj.img,obj.sx,obj.sy,obj.sWidth,obj.sHeight,obj.dx,obj.dy,obj.dWidth,obj.dHeight);
-            } else if (typeof obj.dWidth !== 'undefined') {
+            } else if (typeof obj.dWidth !== 'undefined' && obj.dWidth != false) {
                 ctx[i].drawImage(obj.img,obj.dx,obj.dy,obj.dWidth,obj.dHeight);
             } else {
+                
                 ctx[i].drawImage(obj.img,obj.dx,obj.dy);
             }
             
