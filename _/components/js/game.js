@@ -39,13 +39,26 @@ $w.game = {
 
         switch(e) {
             case "keydown":
-                $t.addEventListener("keydown",function(evt){$w.game.key(evt,e,s)});
+                $t.addEventListener("keydown",function(evt){
+                    if (detectIE) {
+                        evt.code = $w.keycode[evt.keyCode];
+                    }
+                    $w.game.key(evt,e,s);
+                });
                 break;
             case "keypress":
-                $t.addEventListener("keypress",function(evt){$w.game.key(evt,e,s)});
+                $t.addEventListener("keypress",function(evt){
+                    if (detectIE) {
+                        evt.code = $w.keycode[evt.keyCode];
+                    }
+                    $w.game.key(evt,e,s)});
                 break;
             default:
-                $t.addEventListener("keyup",function(evt){$w.game.key(evt,e,s)});
+                $t.addEventListener("keyup",function(evt){
+                    if (detectIE) {
+                        evt.code = $w.keycode[evt.keyCode];
+                    }
+                    $w.game.key(evt,e,s)});
         }
     },
     /**
@@ -66,5 +79,229 @@ $w.game = {
                 }
             }
         }
-    }
+    },        
 }
+$w.keycode = [];
+$w.keycode[0]='';
+$w.keycode[1]='';
+$w.keycode[2]='';
+$w.keycode[3]='';
+$w.keycode[4]='';
+$w.keycode[5]='';
+$w.keycode[6]='';
+$w.keycode[7]='';
+$w.keycode[8]='Backspace';
+$w.keycode[9]='Tab';
+$w.keycode[10]='';
+$w.keycode[11]='';
+$w.keycode[12]='';
+$w.keycode[13]='Enter';
+$w.keycode[14]='';
+$w.keycode[15]='';
+$w.keycode[16]='';
+$w.keycode[17]='';
+$w.keycode[18]='';
+$w.keycode[19]='';
+$w.keycode[20]='';
+$w.keycode[21]='';
+$w.keycode[22]='';
+$w.keycode[23]='';
+$w.keycode[24]='';
+$w.keycode[25]='';
+$w.keycode[26]='';
+$w.keycode[27]='Escape';
+$w.keycode[28]='';
+$w.keycode[29]='';
+$w.keycode[30]='';
+$w.keycode[31]='';
+$w.keycode[32]='';
+$w.keycode[33]='';
+$w.keycode[34]='';
+$w.keycode[35]='';
+$w.keycode[36]='';
+$w.keycode[37]='ArrowLeft';
+$w.keycode[38]='ArrowUp';
+$w.keycode[39]='ArrowRight';
+$w.keycode[40]='ArrowDown';
+$w.keycode[41]='';
+$w.keycode[42]='';
+$w.keycode[43]='';
+$w.keycode[44]='';
+$w.keycode[45]='';
+$w.keycode[46]='';
+$w.keycode[47]='';
+$w.keycode[48]='';
+$w.keycode[49]='';
+$w.keycode[50]='';
+$w.keycode[51]='';
+$w.keycode[52]='';
+$w.keycode[53]='';
+$w.keycode[54]='';
+$w.keycode[55]='';
+$w.keycode[56]='';
+$w.keycode[57]='';
+$w.keycode[58]='';
+$w.keycode[59]='';
+$w.keycode[60]='';
+$w.keycode[61]='';
+$w.keycode[62]='';
+$w.keycode[63]='';
+$w.keycode[64]='';
+$w.keycode[65]='KeyA';
+$w.keycode[66]='';
+$w.keycode[67]='';
+$w.keycode[68]='KeyD';
+$w.keycode[69]='';
+$w.keycode[70]='';
+$w.keycode[71]='';
+$w.keycode[72]='';
+$w.keycode[73]='';
+$w.keycode[74]='';
+$w.keycode[75]='';
+$w.keycode[76]='';
+$w.keycode[77]='';
+$w.keycode[78]='';
+$w.keycode[79]='';
+$w.keycode[80]='';
+$w.keycode[81]='';
+$w.keycode[82]='';
+$w.keycode[83]='KeyS';
+$w.keycode[84]='';
+$w.keycode[85]='';
+$w.keycode[86]='';
+$w.keycode[87]='KeyW';
+$w.keycode[88]='';
+$w.keycode[89]='';
+$w.keycode[90]='';
+$w.keycode[91]='';
+$w.keycode[92]='';
+$w.keycode[93]='';
+$w.keycode[94]='';
+$w.keycode[95]='';
+$w.keycode[96]='';
+$w.keycode[97]='';
+$w.keycode[98]='';
+$w.keycode[99]='';
+$w.keycode[100]='';
+$w.keycode[101]='';
+$w.keycode[102]='';
+$w.keycode[103]='';
+$w.keycode[104]='';
+$w.keycode[105]='';
+$w.keycode[106]='';
+$w.keycode[107]='';
+$w.keycode[108]='';
+$w.keycode[109]='';
+$w.keycode[110]='';
+$w.keycode[111]='';
+$w.keycode[112]='';
+$w.keycode[113]='';
+$w.keycode[114]='';
+$w.keycode[115]='';
+$w.keycode[116]='';
+$w.keycode[117]='';
+$w.keycode[118]='';
+$w.keycode[119]='';
+$w.keycode[120]='';
+$w.keycode[121]='';
+$w.keycode[122]='';
+$w.keycode[123]='';
+$w.keycode[124]='';
+$w.keycode[125]='';
+$w.keycode[126]='';
+$w.keycode[127]='';
+$w.keycode[128]='';
+$w.keycode[129]='';
+$w.keycode[130]='';
+$w.keycode[131]='';
+$w.keycode[132]='';
+$w.keycode[133]='';
+$w.keycode[134]='';
+$w.keycode[135]='';
+$w.keycode[136]='';
+$w.keycode[137]='';
+$w.keycode[138]='';
+$w.keycode[139]='';
+$w.keycode[140]='';
+$w.keycode[141]='';
+$w.keycode[142]='';
+$w.keycode[143]='';
+$w.keycode[144]='';
+$w.keycode[145]='';
+$w.keycode[146]='';
+$w.keycode[147]='';
+$w.keycode[148]='';
+$w.keycode[149]='';
+$w.keycode[150]='';
+$w.keycode[151]='';
+$w.keycode[152]='';
+$w.keycode[153]='';
+$w.keycode[154]='';
+$w.keycode[155]='';
+$w.keycode[156]='';
+$w.keycode[157]='';
+$w.keycode[158]='';
+$w.keycode[159]='';
+$w.keycode[160]='';
+$w.keycode[161]='';
+$w.keycode[162]='';
+$w.keycode[163]='';
+$w.keycode[164]='';
+$w.keycode[165]='';
+$w.keycode[166]='';
+$w.keycode[167]='';
+$w.keycode[168]='';
+$w.keycode[169]='';
+$w.keycode[170]='';
+$w.keycode[171]='';
+$w.keycode[172]='';
+$w.keycode[173]='';
+$w.keycode[174]='';
+$w.keycode[175]='';
+$w.keycode[176]='';
+$w.keycode[177]='';
+$w.keycode[178]='';
+$w.keycode[179]='';
+$w.keycode[180]='';
+$w.keycode[181]='';
+$w.keycode[182]='';
+$w.keycode[183]='';
+$w.keycode[184]='';
+$w.keycode[185]='';
+$w.keycode[186]='';
+$w.keycode[187]='';
+$w.keycode[188]='';
+$w.keycode[189]='';
+$w.keycode[190]='';
+$w.keycode[191]='';
+$w.keycode[192]='';
+$w.keycode[193]='';
+$w.keycode[194]='';
+$w.keycode[195]='';
+$w.keycode[196]='';
+$w.keycode[197]='';
+$w.keycode[198]='';
+$w.keycode[199]='';
+$w.keycode[200]='';
+$w.keycode[201]='';
+$w.keycode[202]='';
+$w.keycode[203]='';
+$w.keycode[204]='';
+$w.keycode[205]='';
+$w.keycode[206]='';
+$w.keycode[207]='';
+$w.keycode[208]='';
+$w.keycode[209]='';
+$w.keycode[210]='';
+$w.keycode[211]='';
+$w.keycode[212]='';
+$w.keycode[213]='';
+$w.keycode[214]='';
+$w.keycode[215]='';
+$w.keycode[216]='';
+$w.keycode[217]='';
+$w.keycode[218]='';
+$w.keycode[219]='';
+$w.keycode[220]='';
+$w.keycode[221]='';
+
