@@ -72,15 +72,17 @@ var Wine = function(t) {
     // this table will never move
     // so this will be simpler for collisions
     map = t.t.map;
-    var g = [Math.ceil(this.y/50),Math.ceil(this.x/50)];
-    map[g[0]][g[1]][0].cevent = {item:item,message:message};
-    map[g[0]][g[1]+1][0].cevent = {item:{'wine':{message:message}}};
+    this.g = [Math.ceil(this.y/50),Math.ceil(this.x/50)];
+    map[this.g[0]][this.g[1]][0].cevent = {item:{'Wine':{message:message,target:this}}};
     this.sprite = {
         x:0,
         y:0,
         w:10,
         h:20,
         img:$w.assets.img.wine
+    }
+    this.remove = function() {
+        map[this.g[0]][this.g[1]][0].cevent = null;   
     }
 }
 Wine.prototype.loop = function() {

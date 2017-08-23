@@ -11,6 +11,8 @@ var Player = function(t) {
     this.x = 300;
     this.y = 300;
     
+    this.items = [];
+    
     $w.bdraw = true;
     
     this.sprite = {
@@ -125,6 +127,10 @@ Player.prototype.loop = function() {
     if (this.sprite.cf > this.sprite.fps) {
         // @param {Array}
         var g = [Math.ceil((this.y+20)/50),Math.ceil(this.x/50)];
+ 
+        if (typeof this.map[(g[0])][g[1]][0].cevent !== 'undefined') {
+            this.t.event(this.map[(g[0])][g[1]][0].cevent,this);
+        }
         switch(this.sprite.wdir) {
             // down
             case 0:
@@ -137,7 +143,7 @@ Player.prototype.loop = function() {
                     //this.y-=this.sprite.wspeed;
                 }else{
                     if (typeof this.map[(g[0])][g[1]][0].cevent !== 'undefined') {
-                        this.t.event(this.map[(g[0])][g[1]][0].cevent,this);
+                        //this.t.event(this.map[(g[0])][g[1]][0].cevent,this);
                     }else{
                         this.y+=this.sprite.wspeed;
                     }
@@ -156,7 +162,7 @@ Player.prototype.loop = function() {
                 }else{
                     //this.x-=this.sprite.wspeed;
                     if (typeof this.map[(g[0])][g[1]-1][0].cevent !== 'undefined') {
-                        this.t.event(this.map[(g[0])][g[1]-1][0].cevent,this);
+                        //this.t.event(this.map[(g[0])][g[1]-1][0].cevent,this);
                     }else{
                         this.x-=this.sprite.wspeed;
                     }
@@ -175,7 +181,7 @@ Player.prototype.loop = function() {
                 }else{
                     //this.y-=this.sprite.wspeed;
                     if (typeof this.map[(g[0]-1)][g[1]][0].cevent !== 'undefined') {
-                        this.t.event(this.map[(g[0]-1)][g[1]][0].cevent,this);
+                        //this.t.event(this.map[(g[0]-1)][g[1]][0].cevent,this);
                     }else{
                         this.y-=this.sprite.wspeed;
                     }
@@ -194,7 +200,7 @@ Player.prototype.loop = function() {
                 }else{
                     //this.x+=this.sprite.wspeed;
                     if (typeof this.map[(g[0])][g[1]][0].cevent !== 'undefined') {
-                        this.t.event(this.map[(g[0])][g[1]][0].cevent,this);
+                        //this.t.event(this.map[(g[0])][g[1]][0].cevent,this);
                     }else{
                         this.x+=this.sprite.wspeed;
                     }

@@ -74,11 +74,12 @@ var Simple = {
             // @todo needs a $w method for audio for browser compatability
             $w.assets.audio.dungeon.loop = true;
             $w.assets.audio.dungeon.play();
-            
+            //console.log($w);
             $w.loop(true);
         });
     },
     event: function(e,p) {
+        
         for(k in e) {
             if(e.hasOwnProperty(k)) {
                 this[k](e[k],p);
@@ -112,6 +113,13 @@ var Simple = {
         },1000);
     },
     item: function(i,callback) {
+        for (k in i) {
+            
+            // display message // i[k].message
+            $w.objects.Player[0].items.push(k).toString();
+            i[k].target.bdraw = false;
+            i[k].target.remove();
+        }
         if (typeof callback === 'undefined') callback();
     },
     // @param {Number}
