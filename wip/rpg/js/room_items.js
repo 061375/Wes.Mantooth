@@ -74,7 +74,7 @@ var Wine = function(t) {
     map = t.t.map;
     var g = [Math.ceil(this.y/50),Math.ceil(this.x/50)];
     map[g[0]][g[1]][0].cevent = {item:item,message:message};
-    map[g[0]][g[1]+1][0].cevent = {item:item,message:message};
+    map[g[0]][g[1]+1][0].cevent = {item:{'wine':{message:message}}};
     this.sprite = {
         x:0,
         y:0,
