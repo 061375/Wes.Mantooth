@@ -8,6 +8,7 @@
     require_once('../../examples/scripts.php'); ?>
     <script src="js/simple.js"></script>
     <script src="js/map.js"></script>
+    <script src="js/room_items.js"></script>
     <script src="js/player.js"></script>
     <script>
         Simple.init();

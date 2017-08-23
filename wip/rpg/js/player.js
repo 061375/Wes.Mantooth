@@ -11,7 +11,7 @@ var Player = function(t) {
     this.x = 300;
     this.y = 300;
     
-    this.bdraw = true;
+    $w.bdraw = true;
     
     this.sprite = {
         speed:30,
@@ -123,9 +123,8 @@ Player.prototype.frame = function(callback) {
 Player.prototype.loop = function() {
     this.sprite.cf++;
     if (this.sprite.cf > this.sprite.fps) {
-        //console.log(Math.ceil(this.x/50));
-        //console.log(Math.floor(this.y/50));
-        var g = [Math.ceil(this.y/50),Math.ceil(this.x/50)];
+        // @param {Array}
+        var g = [Math.ceil((this.y+20)/50),Math.ceil(this.x/50)];
         switch(this.sprite.wdir) {
             // down
             case 0:
@@ -205,7 +204,7 @@ Player.prototype.loop = function() {
         this.sprite.cf = 0;
         this.frame();    
     }
-    if(this.bdraw){
+    if($w.bdraw){
         this.draw();
     }else{
         $w.canvas.clear(this.i);
@@ -213,7 +212,6 @@ Player.prototype.loop = function() {
 }
 Player.prototype.draw = function(callback) {
     // draw shadow
- 
     if(!$w.canvas.image(this.i,{
         img:this.shadow.img,
         sWidth:false,

@@ -10,7 +10,10 @@ var Simple = {
             player:'assets/girl.png',
             foreground:'assets/easy.foreground.png',
             shadow:'assets/shadow.png',
-            grid:'assets/grid.png'
+            grid:'assets/grid.png',
+            table:'assets/table.png',
+            dungeon:'assets/dungeon.mp3',
+            wine:'assets/wine.png'
         },function(){
             $w.add_object( 
                 1,
@@ -31,6 +34,32 @@ var Simple = {
                 612,
                 612
             );
+            // testing adding a table
+            $w.add_object( 
+                1,
+                Table,
+                {
+                    t:Simple,
+                    x:250,
+                    y:250
+                },
+                document.getElementById('target'),
+                612,
+                612
+            );
+            // testing adding a table
+            $w.add_object( 
+                1,
+                Wine,
+                {
+                    t:Simple,
+                    x:300,
+                    y:240
+                },
+                document.getElementById('target'),
+                612,
+                612
+            );
             // this overlays a grid for debugging
             /*
             $w.add_object( 
@@ -41,6 +70,11 @@ var Simple = {
                 612,
                 612
             );*/
+            
+            // @todo needs a $w method for audio for browser compatability
+            $w.assets.audio.dungeon.loop = true;
+            $w.assets.audio.dungeon.play();
+            
             $w.loop(true);
         });
     },
@@ -52,7 +86,7 @@ var Simple = {
         }
     },
     door: function(d,p) {
-        p.bdraw = false;
+        $w.bdraw = false;
         document.getElementsByTagName('canvas')[1].addClass('hidden');
         switch(d) {
             case 'bottom':
@@ -73,15 +107,20 @@ var Simple = {
                 break;
         }
         setTimeout(function(){
-            p.bdraw = true;
+            $w.bdraw = true;
             document.getElementsByTagName('canvas')[1].removeClass('hidden');
         },1000);
+    },
+    item: function(i,callback) {
+        if (typeof callback === 'undefined') callback();
     },
     // @param {Number}
     gridsize:50,
     
     // @param {Array} {Array} {Object}
-    // is this grid a wall ?
+    //          is this grid a wall ?
+    //          does it have an event associated with it?
+    
     /**
      * [f][f][f][t][t][f][f][t][t][f][f][f]
      * [f][f][f][t][t][f][f][t][t][f][f][f]
