@@ -28,6 +28,7 @@ if(true === $dev) {
         <script src="<?php echo $path; ?>../_/components/js/game.js<?php echo $dev; ?>"></script>
         <script src="<?php echo $path; ?>../_/components/js/shortys.js<?php echo $dev; ?>"></script>
         <script src="<?php echo $path; ?>../_/components/js/buttons.js<?php echo $dev; ?>"></script>
+        <script src="<?php echo $path; ?>../_/components/js/gui.js<?php echo $dev; ?>"></script>
         <script src="<?php echo $path; ?>../_/js/external/js_memleak/memory_leak_checker.js"></script>
         <script>
             MemoryLeakChecker.checkLeaks($w);

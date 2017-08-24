@@ -22,6 +22,13 @@ $w.game = {
         }
         return ids;
     },
+    remove_object: function(f,i) {
+        $w.objects.f.splice(i,1);
+            var $t = document.getElementsByTagName("canvas")[i];
+            if (typeof $t !== 'undefined') 
+                $t.parentNode.removeChild($t.parentNode.childNodes[i]);
+        
+    },
     /**
      * @param {Object} a map of functions to bind to keys
      * @param {Object} target DOM node (default is document)

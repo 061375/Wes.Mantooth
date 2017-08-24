@@ -1,3 +1,8 @@
+/**
+ * Player
+ * @param {Object}
+ * @returns {Void}
+ * */
 var Player = function(t) {
 
     this.t = t.t;
@@ -103,6 +108,11 @@ Player.prototype.Aright = function(e,s) {
     s.sprite.wdir = 3;
     s.sprite.wspeed = s.sprite.maxspeed;
 }
+/**
+ * frame
+ * @param {Function}
+ * @returns {Function}
+ * */
 Player.prototype.frame = function(callback) {
     switch (this.sprite.dir) {
         case 1:
@@ -122,88 +132,57 @@ Player.prototype.frame = function(callback) {
     }
     if(typeof callback === 'function')callback(this);
 }
+/**
+ * loop
+ * @returns {Void}
+ * */
 Player.prototype.loop = function() {
     this.sprite.cf++;
     if (this.sprite.cf > this.sprite.fps) {
         // @param {Array}
         var g = [Math.ceil((this.y+20)/50),Math.ceil(this.x/50)];
  
-        if (typeof this.map[(g[0])][g[1]][0].cevent !== 'undefined') {
+        if (typeof this.map[(g[0])][g[1]][0].cevent !== 'undefined')
             this.t.event(this.map[(g[0])][g[1]][0].cevent,this);
-        }
+        
+        // determine the walking direction 
         switch(this.sprite.wdir) {
             // down
             case 0:
                 if (this.map[(g[0])][g[1]][0].wall) {
-                    //this.y-=(this.sprite.wspeed*2);
-                    /*
-                    console.log(g[0]);
-                    console.log(g[1]);
-                    console.log(this.map[g[0]][g[1]]);*/
-                    //this.y-=this.sprite.wspeed;
+ 
                 }else{
-                    if (typeof this.map[(g[0])][g[1]][0].cevent !== 'undefined') {
-                        //this.t.event(this.map[(g[0])][g[1]][0].cevent,this);
-                    }else{
+                    if (typeof this.map[(g[0])][g[1]][0].cevent === 'undefined') 
                         this.y+=this.sprite.wspeed;
-                    }
                 }
                 break;
             // left
             case 1:
-                //this.x-=this.sprite.wspeed;
                 if (this.map[g[0]][(g[1])-1][0].wall) {
-                    /*
-                    console.log(g[0]);
-                    console.log(g[1]);
-                    console.log(this.map[g[0]][g[1]]);*/
-                    //this.x+=(this.sprite.wspeed*2);
-                    //this.x+=this.sprite.wspeed;
+
                 }else{
-                    //this.x-=this.sprite.wspeed;
-                    if (typeof this.map[(g[0])][g[1]-1][0].cevent !== 'undefined') {
-                        //this.t.event(this.map[(g[0])][g[1]-1][0].cevent,this);
-                    }else{
+                    if (typeof this.map[(g[0])][g[1]-1][0].cevent === 'undefined') 
                         this.x-=this.sprite.wspeed;
-                    }
+                    
                 }
                 break;
             //up
             case 2:
-                //this.y-=this.sprite.wspeed;
                 if (this.map[(g[0])-1][g[1]][0].wall) {
-                    /*
-                    console.log(g[0]);
-                    console.log(g[1]);
-                    console.log(this.map[g[0]][g[1]]);*/
-                    //this.y+=(this.sprite.wspeed*2);
-                    //this.y+=this.sprite.wspeed;
+
                 }else{
-                    //this.y-=this.sprite.wspeed;
-                    if (typeof this.map[(g[0]-1)][g[1]][0].cevent !== 'undefined') {
-                        //this.t.event(this.map[(g[0]-1)][g[1]][0].cevent,this);
-                    }else{
+                    if (typeof this.map[(g[0]-1)][g[1]][0].cevent === 'undefined') 
                         this.y-=this.sprite.wspeed;
-                    }
                 }
                 break;
             //right
             case 3:
-                //this.x+=this.sprite.wspeed;
                 if (this.map[g[0]][(g[1])][0].wall) {
-                    /*
-                    console.log(g[0]);
-                    console.log(g[1]);
-                    console.log(this.map[g[0]][g[1]]);*/
-                    //this.x-=(this.sprite.wspeed*2);
-                    //this.x-=this.sprite.wspeed;
+
                 }else{
-                    //this.x+=this.sprite.wspeed;
-                    if (typeof this.map[(g[0])][g[1]][0].cevent !== 'undefined') {
-                        //this.t.event(this.map[(g[0])][g[1]][0].cevent,this);
-                    }else{
+                    if (typeof this.map[(g[0])][g[1]][0].cevent === 'undefined') 
                         this.x+=this.sprite.wspeed;
-                    }
+                    
                 }
                 break;
         }
@@ -216,6 +195,11 @@ Player.prototype.loop = function() {
         $w.canvas.clear(this.i);
     }
 }
+/**
+ * draw
+ * @param {Function}
+ * @returns {Function}
+ * */
 Player.prototype.draw = function(callback) {
     // draw shadow
     if(!$w.canvas.image(this.i,{

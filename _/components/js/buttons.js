@@ -21,6 +21,11 @@ $w.buttons = (function() {
         var r_y = y;
         var t_x = x;
         var t_y = y;
+        var $t = document.getElementsByTagName("canvas")[i];
+        var $tx = $t.documentOffsetLeft;
+        var $ty = $t.documentOffsetTop;
+        var bx = $tx+x;
+        var by = $ty+y;
         if (typeof style.text.padding !== 'undefined') {
             t_x+=style.text.padding;
             t_y+=style.text.padding;
@@ -31,10 +36,19 @@ $w.buttons = (function() {
                                    style.button.acolor,
                                    style.button.opacity);
         $w.canvas.text(i,t_x,t_y,text,style.text.fill,style.text.font,style.text.color);
+        
         if (typeof events !== 'undefined') {
-            $w.mouse.trackMouse(document,function(e){
+            $w.mouse.trackMouse($t,function(e){
                 if (typeof events.hover === 'function') {
-                    if (e.x > x && e.x < (x+w) && e.y > y && e.y < (y+h)) {
+                    /*
+                    console.log(e);
+                    console.log(bx);
+                    console.log(bx+w);
+                    console.log(by);
+                    console.log(by+h);*/
+                    if (e.x > bx && e.x < (bx+w) && e.y > by && e.y < (by+h)) {
+                        //console.log('got here '+style.button.color);
+                        //console.log('got here '+style.button.hcolor);
                         $w.canvas.roundRectangle(i,x,y,w,h,radius,
                                    style.button.hcolor,
                                    style.button.fill,
@@ -61,7 +75,7 @@ $w.buttons = (function() {
                 // add click event
                 document.addEventListener("click",function(e){
                     // check if the click is inside the target
-                    if (e.clientX > x && e.clientX < (x+w) && e.clientY > y && e.clientY < (y+h)) {
+                    if (e.clientX > bx && e.clientX < (bx+w) && e.clientY > by && e.clientY < (by+h)) {
                         events.click();
                     }
                 });

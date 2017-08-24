@@ -114,13 +114,40 @@ var Simple = {
     },
     item: function(i,callback) {
         for (k in i) {
-            
+            this.dialog(i[k].message);
             // display message // i[k].message
             $w.objects.Player[0].items.push(k).toString();
             i[k].target.bdraw = false;
             i[k].target.remove();
         }
         if (typeof callback === 'undefined') callback();
+    },
+    dialog: function(m) {
+        $w.gui.dialog(
+            {
+                cw:612,
+                ch:612
+            },
+            m
+            ,{
+                box: {
+                    x:20,
+                    y:300,
+                    w:600,
+                    h:280,
+                    color:'#0000ff',
+                    acolor:'#0000ff',
+                    method:'fill'
+                },
+                text: {
+                    x:20,
+                    y:300,
+                    p:10,
+                    method:'fill',
+                    color:'#ffffff',
+                    font:'15px Arial'
+                }
+        });
     },
     // @param {Number}
     gridsize:50,

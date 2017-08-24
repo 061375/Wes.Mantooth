@@ -103,6 +103,9 @@ var $w = {
     add_object: function(r,o,p,$t,w,h) {
         return $w.game.add_object(r,o,p,$t,w,h);    
     },
+    remove_object: function(f,i) {
+        return $w.game.remove_object(f,i);
+    },
     all: function(ids,o,f,p) {
         var l = ids.length;
         for (var i=0; i<l; i++) {
