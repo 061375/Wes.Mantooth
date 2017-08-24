@@ -17,15 +17,16 @@ $w.buttons = (function() {
      * @param {Object} ( hover, click )
      * */
     function pill(i,x,y,w,h,radius,style,text,events) {
-        var r_x = x;
-        var r_y = y;
-        var t_x = x;
-        var t_y = y;
-        var $t = document.getElementsByTagName("canvas")[i];
-        var $tx = $t.documentOffsetLeft;
-        var $ty = $t.documentOffsetTop;
-        var bx = $tx+x;
-        var by = $ty+y;
+        var r_x = x,
+            r_y = y,
+            t_x = x,
+            t_y = y,
+            $t = document.getElementsByTagName("canvas")[i],
+            $tx = $t.documentOffsetLeft,
+            $ty = $t.documentOffsetTop,
+            bx = $tx+x,
+            by = $ty+y;
+            
         if (typeof style.text.padding !== 'undefined') {
             t_x+=style.text.padding;
             t_y+=style.text.padding;
