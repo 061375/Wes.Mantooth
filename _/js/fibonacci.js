@@ -4,13 +4,13 @@
  * */
 window.onload = function(){
     //$w.boolLog = false;
+    
     $w.canvas.init(document.getElementById("target"),
               (window.innerWidth - 25),
               (window.innerHeight - 25),
     function(i){
         Fibonacci.init(i,function() {
             Fibonacci.loop(Fibonacci.goldenOne,1,i,function(){
-                //console.log('got here '+i);
                 Fibonacci.reset(function(){
                     //Fibonacci.loop(Fibonacci.goldenTwo,1,i);
                     //Fibonacci.goldenTwo(i);
@@ -55,7 +55,7 @@ var Fibonacci = (function() {
         xO = O.l[0];
         yO = O.l[1];
         // lets draw a grid to help set things up
-        $w.draw.grid(i,W,H,L,function(){
+        $w.draw.grid(i,W,H,L,'',function(){
             // this allows another function to be called after this operation
             callback();
         });
@@ -132,7 +132,6 @@ var Fibonacci = (function() {
      * @returns {Void}
      * */
     var goldenOne = function(i,callback) {
-
         var c = '#F00';
         var x = O.l[0];
         var y = O.l[1];
