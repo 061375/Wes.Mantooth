@@ -301,6 +301,9 @@ if(true === $dev) {
                 <li>
                     <a href="examples/paint_program.php" >Paint Program</a>
                 </li>
+                <li>
+                    <a href="examples/rpg/simple.php" >Simple Top Down</a>
+                </li>
             </ul>
             <h2>
                 <a href="documentation/">Documentation</a>

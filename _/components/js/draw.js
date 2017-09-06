@@ -12,7 +12,7 @@ $w.draw = (function() {
      * */
     var grid = function(i,w,h,u,o,callback) {
         
-        $w.log('$w.grid('+[i,w,h,u]+')');
+        $w.log('$w.grid('+[i,w,h,u,o]+')');
         
         var s = w / (u * 10);
         

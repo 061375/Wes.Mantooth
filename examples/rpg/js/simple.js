@@ -134,14 +134,14 @@ var Simple = {
                     x:20,
                     y:300,
                     w:600,
-                    h:280,
+                    h:150,
                     color:'#0000ff',
                     acolor:'#0000ff',
                     method:'fill'
                 },
                 text: {
-                    x:20,
-                    y:300,
+                    x:50,
+                    y:350,
                     p:10,
                     method:'fill',
                     color:'#ffffff',

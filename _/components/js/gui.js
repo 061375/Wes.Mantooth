@@ -63,7 +63,7 @@ var wesDialog = function(o) {
             },
             click: function(){
                 console.log('clicked');
-                $w.remove_object(wesDialog,i);    
+                $w.remove_object('wesDialog',i);    
             }
         });
     }
