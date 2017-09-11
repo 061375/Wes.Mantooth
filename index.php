@@ -309,6 +309,9 @@ if(true === $dev) {
                 <a href="documentation/">Documentation</a>
             </h2>
             <h2>
+                <a href="benchmark">Benchmark Tests</a>
+            </h2>
+            <h2>
                 Games
             </h2>
             <p>
