@@ -159,24 +159,28 @@ var Lander = (function(){
         if(Moon.checkCollision(a)) {
             //
             running = false;
+             console.log('got here');
             alert('162');
-        }
-        // the only objects in the list should be landing pads
-        $w.loop();
-        if (landingpad) {
-            running = false;
-            if (vspeed < -0.9 || hspeed > 0.1) {
-                
-                if (vspeed < -0.05 || hspeed < 0.1) {
-                    alert('171');
+            if (landingpad) {
+                running = false;
+                if (vspeed < -0.9 || hspeed > 0.1) {
+                    
+                    if (vspeed < -0.05 || hspeed < 0.1) {
+                        alert('171');
+                    }else{
+                        alert('173');
+                    }
                 }else{
-                    alert('173');
+                    alert('176');
                 }
-            }else{
-                alert('176');
             }
+        }else{
+           
+            
+            
+            // the only objects in the list should be landing pads
+            $w.loop();
         }
-        
     }
     var checkSpeed = function() {
         
