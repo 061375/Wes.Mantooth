@@ -1,5 +1,8 @@
 $w.game = {
     map:{},
+    b_keydown:false,
+    b_keypress:false,
+    b_keyup:false,
     add_object: function(r,o,p,$t,w,h){
         var ids = [];
         // run a loop to create all the objects
@@ -46,26 +49,33 @@ $w.game = {
 
         switch(e) {
             case "keydown":
-                $t.addEventListener("keydown",function(evt){
-                    if (detectIE) {
-                        evt.code = $w.keycode[evt.keyCode];
-                    }
-                    $w.game.key(evt,e,s);
-                });
+                if (!this.b_keydown) {
+                    this.b_keydown = true;
+                    $t.addEventListener("keydown",function(evt){
+                        if (detectIE) {
+                            evt.code = $w.keycode[evt.keyCode];
+                        }
+                        $w.game.key(evt,e,s);
+                    });
+                }
                 break;
             case "keypress":
-                $t.addEventListener("keypress",function(evt){
-                    if (detectIE) {
-                        evt.code = $w.keycode[evt.keyCode];
-                    }
-                    $w.game.key(evt,e,s)});
+                if (!this.b_keypress) {
+                    $t.addEventListener("keypress",function(evt){
+                        if (detectIE) {
+                            evt.code = $w.keycode[evt.keyCode];
+                        }
+                        $w.game.key(evt,e,s)});
+                }
                 break;
             default:
-                $t.addEventListener("keyup",function(evt){
-                    if (detectIE) {
-                        evt.code = $w.keycode[evt.keyCode];
-                    }
-                    $w.game.key(evt,e,s)});
+                if (!this.b_keyup) {
+                    $t.addEventListener("keyup",function(evt){
+                        if (detectIE) {
+                            evt.code = $w.keycode[evt.keyCode];
+                        }
+                        $w.game.key(evt,e,s)});
+                }
         }
     },
     /**

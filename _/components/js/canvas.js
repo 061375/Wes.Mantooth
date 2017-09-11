@@ -104,6 +104,7 @@ $w.canvas = (function() {
             x = ~~x;
             y = ~~y;
         }
+        if (r < 0) r = 0.00001;
         if (typeof c === 'undefined')
             c = _color;
         if (typeof o !== 'undefined')
@@ -461,6 +462,9 @@ $w.canvas = (function() {
             }
   
     }
+    var zIndex = function(i,z) {
+        document.getElementsByTagName('canvas')[i].style.zIndex = ~~z;
+    }
     /**
      * @param {Object} list of parameters to be sent to callback
      * @param {Function} callback
@@ -536,6 +540,7 @@ $w.canvas = (function() {
         clear:clear,
         get:get,
         pop:pop,
+        zIndex:zIndex,
         has_error:has_error
     };   
 }());
