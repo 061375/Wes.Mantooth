@@ -13,6 +13,13 @@
         canvas {
             position: absolute;
         }
+        #target {
+            background-image: url('sky.jpg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -999999;
+        }
     </style>
     <?php
     $path = '../../';
@@ -59,10 +66,10 @@
                 this.d = 0;
                 this.x = hW;
                 this.y = hH;
-                this.fov = 500;
+                this.fov = 850;
                 this.count = 0;
                 this.fps = 5;
-                this.view = {x:null,y:null,r:200};
+                this.view = {x:null,y:null,r:400};
                 $w.canvas.zIndex(this.i,9999);
                 $w.game.bindkeys({
                     ArrowLeft:Camera.prototype.Aleft
@@ -183,29 +190,20 @@
          * @returns {Void}
          * */   
         var NPC = function(o) {
-            o.x = o.i*80;
-            o.y = 800;//o.i*30;
-            /*
-            if (o.i == 2) {
-                this.x = (W/2);
-                this.y = H;//hH + (hH/3);
-            }else{
-                this.x = (W/2);
-                this.y = hH + (hH/2);
-            }*/
-            //this.x = (W/2);
-            //this.y = hH + (hH/2);
-            
-            if (typeof o.x === 'undefined'){
-                this.x = $w.math.frandom(W);
-            }else{
-                this.x = o.x;
-            }
-            if (typeof o.y === 'undefined'){
-                this.y = $w.math.frandom(H);
-            }else{
-                this.y = o.y;
-            }
+            // comment this out to set random positions
+                //o.x = o.i*80;
+                //o.y = 800;;
+                
+                if (typeof o.x === 'undefined'){
+                    this.x = $w.math.frandom(W);
+                }else{
+                    this.x = o.x;
+                }
+                if (typeof o.y === 'undefined'){
+                    this.y = $w.math.frandom(H);
+                }else{
+                    this.y = o.y;
+                }
                 
                 this.camera = $w.objects.Camera[0],
                 this.i = o.i,
@@ -218,7 +216,7 @@
                 this.color = $w.color.random(),
                 this.radius,
                 this.scaleRatio,
-                this.size = 30;
+                this.size = 100;
                 // draw a point to represent the 2D location of this NPC
                 $w.canvas.circle(1,this.x,this.y,5);
             }
@@ -230,15 +228,14 @@
                     this.dz = this.y-this.camera.y;
                     this.dy = hH;
                     this.angle = Math.atan2(this.dz,this.dx);
-                    this.radius = Math.sqrt(this.dx*this.dx + this.dz*this.dz);
+                    this.radius = Math.sqrt(this.dx*this.dx + this.dz*this.dz) * 4;
                     this.dx = Math.cos(this.angle+this.cr) * this.radius;
                     var dis = $w.motion.distance_to_point(this.x,this.y,this.camera.x,this.camera.y);
                     $w.canvas.zIndex(this.i,-dis);
-                    this.scaleRatio = this.fov/(this.fov+(dis*4));
+                    this.scaleRatio = this.fov/(this.fov+(dis*5));
                     this.dx = this.dx * this.scaleRatio;
                     this.scale = this.scaleRatio * this.size;
                     $w.canvas.circle(this.i,this.dx+hW,this.dy,this.scale,this.color);
-                    //$w.canvas.text(this.i,this.dx+hW,this.dy-100,~~(-dis),'fill','Arial','#000');
                 }
             }
     </script>
