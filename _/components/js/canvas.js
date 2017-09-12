@@ -72,7 +72,7 @@ $w.canvas = (function() {
         C.setAttribute("width",w);
         C.setAttribute("height",h);
         C.setAttribute("style","z-index:"+(ctx.length+1));
-        
+        C.setAttribute("id","c"+ctx.length);
         $t.appendChild(C);
         C.width = C.offsetWidth;
         C.height = C.offsetHeight;
@@ -463,7 +463,7 @@ $w.canvas = (function() {
   
     }
     var zIndex = function(i,z) {
-        document.getElementsByTagName('canvas')[i].style.zIndex = ~~z;
+        document.getElementById('c'+i).style.zIndex = ~~z;
     }
     /**
      * @param {Object} list of parameters to be sent to callback
@@ -486,7 +486,7 @@ $w.canvas = (function() {
         }
     } 
     /**
-     * get a local reference
+     * get a local reference 
      * @param {String} o
      * @returns {Object}
      * */
