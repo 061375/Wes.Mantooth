@@ -4,10 +4,11 @@
   "description": "",
   "main": "gruntfile.js",
   "devDependencies": {
+    "eslint": "^4.6.1",
     "grunt": "^1.0.1",
-    "grunt-contrib-watch": "^1.0.0",
     "grunt-contrib-compass": "^1.1.1",
     "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
     "matchdep": "~0.1.2"
   }
 }
