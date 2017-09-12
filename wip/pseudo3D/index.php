@@ -18,15 +18,16 @@
     $path = '../../';
     require_once('../../examples/scripts.php'); ?>
     <script>
-        var W = (window.innerHeight-20),
-            H = (window.innerHeight-20),
-            hW = W/2,
-            hH = H/2,
-            TSPEED = 3,
-            WSPEED = 5;
+        const   W = (window.innerHeight-20),
+                H = (window.innerHeight-20),
+                hW = W/2,
+                hH = H/2,
+                TSPEED = 3,
+                WSPEED = 5;
         window.onload = function() {
-            
+
             'use strict';
+            
             $w.add_object(
                 1,
                 Camera,{},
@@ -58,9 +59,10 @@
                 this.d = 0;
                 this.x = hW;
                 this.y = hH;
-                this.fov = 400;
+                this.fov = 500;
                 this.count = 0;
                 this.fps = 5;
+                this.view = {x:null,y:null,r:200};
                 $w.canvas.zIndex(this.i,9999);
                 $w.game.bindkeys({
                     ArrowLeft:Camera.prototype.Aleft
@@ -94,7 +96,7 @@
              * @returns {Void}
              * */
             Camera.prototype.drawCamera = function(i,x,y,d) {
-                var dd = -d;
+                const dd = -d;
                 $w.canvas.polygon(i,[
                     this.calcPoint(x,y,(dd+45),5),
                     this.calcPoint(x,y,(dd+135),5),
@@ -106,6 +108,10 @@
                     this.calcPoint(x,y,(dd+100),10),
                     this.calcPoint(x,y,(dd+80),10)
                 ],'#000000','fill');
+                const c = this.calcPoint(x,y,(dd+90),this.view.r);
+                $w.canvas.circle(i,c[0],c[1],this.view.r,'#FF0000',0.5);
+                this.view.x = c[0];
+                this.view.y = c[1];
             }
             /**
              * calcPoint
@@ -116,7 +122,7 @@
              * */
             Camera.prototype.calcPoint = function(x,y,d,r){
                 
-                var a = $w.math.radians(d);
+                const a = $w.math.radians(d);
                 x = x + Math.cos(a)*r;
                 y = y + Math.sin(a)*r;
                 return [x,y];
@@ -177,8 +183,8 @@
          * @returns {Void}
          * */   
         var NPC = function(o) {
-            o.x = o.i*10;
-            o.y = o.i*30;
+            o.x = o.i*80;
+            o.y = 800;//o.i*30;
             /*
             if (o.i == 2) {
                 this.x = (W/2);
@@ -211,30 +217,28 @@
                 this.angle,
                 this.color = $w.color.random(),
                 this.radius,
-                this.scaleRatio;
+                this.scaleRatio,
+                this.size = 30;
                 // draw a point to represent the 2D location of this NPC
                 $w.canvas.circle(1,this.x,this.y,5);
             }
             NPC.prototype.loop = function() {
-                this.cr = $w.math.radians(this.camera.d);
-                this.dx = this.x-this.camera.x;
-                this.dz = this.y-this.camera.y;
-                this.dy = hH;
-                this.angle = Math.atan2(this.dz,this.dx);
-                this.radius = Math.sqrt(this.dx*this.dx + this.dz*this.dz);
-                this.dx = Math.cos(this.angle+this.cr) * this.radius;
-                this.dz = Math.sin(this.angle+this.cr) * this.radius;
                 $w.canvas.clear(this.i);
-                if (this.dz > 0) {
+                if (!$w.collision.checkCircle(this.camera.view.x,this.camera.view.y,this.camera.view.r,this.x,this.y,5)) {
+                    this.cr = $w.math.radians(this.camera.d);
+                    this.dx = this.x-this.camera.x;
+                    this.dz = this.y-this.camera.y;
+                    this.dy = hH;
+                    this.angle = Math.atan2(this.dz,this.dx);
+                    this.radius = Math.sqrt(this.dx*this.dx + this.dz*this.dz);
+                    this.dx = Math.cos(this.angle+this.cr) * this.radius;
                     var dis = $w.motion.distance_to_point(this.x,this.y,this.camera.x,this.camera.y);
                     $w.canvas.zIndex(this.i,-dis);
-                    this.scaleRatio = this.fov/(this.fov+dis);
+                    this.scaleRatio = this.fov/(this.fov+(dis*4));
                     this.dx = this.dx * this.scaleRatio;
-                    //this.dz = this.dz * (scaleRatio/5);
-                    //this.dy = this.dy * (scaleRatio*5);
-                    this.scale = this.scaleRatio * 100;
-                    
+                    this.scale = this.scaleRatio * this.size;
                     $w.canvas.circle(this.i,this.dx+hW,this.dy,this.scale,this.color);
+                    //$w.canvas.text(this.i,this.dx+hW,this.dy-100,~~(-dis),'fill','Arial','#000');
                 }
             }
     </script>
