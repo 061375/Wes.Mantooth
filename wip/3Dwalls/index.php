@@ -68,7 +68,7 @@
                 this.d = 0;
                 this.x = hW;
                 this.y = hH;
-                this.fov = 850;
+                this.fov = 300;
                 this.count = 0;
                 this.fps = 5;
                 this.view = {x:null,y:null,r:400};
@@ -233,6 +233,7 @@
                 this.camera = $w.objects.Camera[0],
                 this.o = o,
                 this.i = o.i,
+                this.count = o.count;
                 this.dx,
                 this.dy,
                 this.dz,
@@ -243,6 +244,7 @@
                 this.radius,
                 this.scaleRatio,
                 this.size = 100;
+                this.once = false;
                 
                 // draw a point to represent the 2D location of this NPC
                 //$w.canvas.circle(1,this.x,this.y,5);
@@ -266,7 +268,8 @@
                     this.dx = this.dx * this.scaleRatio;
                     this.scale = this.scaleRatio * this.size;
                     $w.canvas.circle(this.i,this.dx+hW,this.dy,this.scale,this.color);*/
-                    this.cr = $w.math.radians(this.camera.d);
+                    //this.cr = $w.math.radians(this.camera.d);
+                    /*
                     var i,b=false;
                     const l = this.o.w[this.count].length;
                     for(i=0;i<l;i++) {
@@ -285,31 +288,35 @@
                             b=false;
                         }
                            
-                    }
-                    /*
+                    }*/
+                    
                     var a = [];
                     a[0] = $w.threed.cP3dto2d({
-                        x:this.o.w[this.o.count][0]-this.camera.x,
+                        x:this.o.w[this.count][0],
                         y:hH,
-                        z:this.o.w[this.o.count][1]-this.camera.y
-                     },this.fov,this.camera);
+                        z:this.o.w[this.count][1]
+                     },this.camera,{x:hW,y:hH});
                     a[1] = $w.threed.cP3dto2d({
-                        x:this.o.w[this.o.count][0]-this.camera.x,
+                        x:this.o.w[this.count][0],
                         y:hH-50,
-                        z:this.o.w[this.o.count][1]-this.camera.y
-                     },this.fov);
+                        z:this.o.w[this.count][1]
+                     },this.camera,{x:hW,y:hH});
                     a[2] = $w.threed.cP3dto2d({
-                        x:this.o.w[this.o.count][2]-this.camera.x,
+                        x:this.o.w[this.count][2],
                         y:hH-50,
-                        z:this.o.w[this.o.count][3]-this.camera.y
-                     },this.fov);
+                        z:this.o.w[this.count][3]
+                     },this.camera,{x:hW,y:hH});
                     a[3] = $w.threed.cP3dto2d({
-                        x:this.o.w[this.o.count][2]-this.camera.x,
+                        x:this.o.w[this.count][2],
                         y:hH,
-                        z:this.o.w[this.o.count][3]-this.camera.y
-                     },this.fov);
-                    */
-                    $w.canvas.polygon(this.i,a);
+                        z:this.o.w[this.count][3]
+                     },this.camera,{x:hW,y:hH});
+                    if (!this.once) {
+                        this.once = true;
+                        console.log(this.count);
+                        console.log(a);
+                    }
+                    $w.canvas.polygon(this.i,a,'#eaeaea');
                 //}
             }
     </script>

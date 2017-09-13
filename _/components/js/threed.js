@@ -16,18 +16,20 @@ $w.threed = {
         pointIn2D.y = pointIn3D.y * scaleRatio;
       return pointIn2D;
     },
-    cP3dto2d: function(pointIn3D,camera){
-        var re = {
-            angle:null,
-            radius:null,
-            pointIn2D:[]
-        }
-        re.angle = Math.atan2(pointIn3D.z,pointIn3D.x);
-        re.radius = Math.sqrt(pointIn3D.x*pointIn3D.x + pointIn3D.z*pointIn3D.z) * 4;
-        var scaleRatio = camera.fov/(camera.fov + (pointIn3D.z/5));
-        re.pointIn2D[0] = pointIn3D.x * scaleRatio;
-        re.pointIn2D[1] = pointIn3D.y * scaleRatio;
+    cP3dto2d: function(pointIn3D,camera,origin){
+        var pointIn2D = [];
         
-      return pointIn2D;
+        var angle,radius,cr = $w.math.radians(camera.d);
+        pointIn3D.x -= camera.x;
+        pointIn3D.z -= camera.y;
+        angle = Math.atan2(pointIn3D.z,pointIn3D.x);
+        radius = Math.sqrt(pointIn3D.x*pointIn3D.x + pointIn3D.z*pointIn3D.z) * 4;
+        pointIn3D.x = Math.cos(angle+cr) * radius + 500;
+        var scaleRatio = camera.fov/(camera.fov + (pointIn3D.z*2));
+        //console.log(scaleRatio);
+        pointIn2D[0] = (pointIn3D.x * scaleRatio) ;
+        pointIn2D[1] = (pointIn3D.y * scaleRatio);
+        
+      return pointIn2D; 
     }
 };
