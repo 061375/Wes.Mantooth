@@ -83,6 +83,12 @@
                 $w.game.bindkeys({
                     ArrowDown:Camera.prototype.Adown
                 },"keydown",document,this);
+                $w.game.bindkeys({
+                    KeyA:Camera.prototype.Aa
+                },"keydown",document,this);
+                $w.game.bindkeys({
+                    KeyD:Camera.prototype.Ad
+                },"keydown",document,this);
             }
             /**
              * loop
@@ -173,6 +179,26 @@
             Camera.prototype.Adown = function(e,s) {
                 s.x-=Math.sin($w.math.radians(s.d))*5;
                 s.y-=Math.cos($w.math.radians(s.d))*5;
+            }
+            /**
+             * Aa
+             * @param {Object} event
+             * @param {Object} this
+             * @returns {Void}
+             * */
+            Camera.prototype.Aa = function(e,s) {
+                s.x-=Math.sin($w.math.radians((s.d+90)))*5;
+                s.y-=Math.cos($w.math.radians((s.d+90)))*5;
+            }
+            /**
+             * Ad
+             * @param {Object} event
+             * @param {Object} this
+             * @returns {Void}
+             * */
+            Camera.prototype.Ad = function(e,s) {
+                s.x-=Math.sin($w.math.radians((s.d-90)))*5;
+                s.y-=Math.cos($w.math.radians((s.d-90)))*5;
             }
         /**
          * NPCflatView
