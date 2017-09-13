@@ -13,7 +13,9 @@ $w.game = {
             var j = $w.canvas.init($t,w,h);
             
             p.i = j;
-    
+            
+            p.count = i;
+            
             // instaniate a new object
             if (typeof $w.objects[o.name] === 'object') {
                  $w.objects[o.name][j] = new o(p);

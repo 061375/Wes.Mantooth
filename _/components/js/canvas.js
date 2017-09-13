@@ -48,6 +48,8 @@ $w.canvas = (function() {
     
     var _color = '#000000';
     
+    var _acolor = '#e6e6e6';
+    
     var _linewidth = 1;
     
     var errors = [];
@@ -372,6 +374,9 @@ $w.canvas = (function() {
             fint = false;
         }
         if (typeof m === 'undefined') m = 'stroke';
+        if (typeof color === 'undefined') color = _color;
+        if (typeof acolor === 'undefined') acolor = _acolor;
+        
         switch (m) {
             case 'fill':
                 ctx[i].fillStyle=color;
@@ -388,7 +393,6 @@ $w.canvas = (function() {
                 if (typeof o !== 'undefined') {
                     ctx[i].globalAlpha = o;
                 }
-                ctx[i].fillRect(x1,y1,x2,y2);
                 ctx[i].strokeStyle=color;
         }
         ctx[i].beginPath();

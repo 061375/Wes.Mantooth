@@ -47,8 +47,11 @@
                 W,H
             );
             $w.add_object(
-                10,
-                NPC,{},
+                2,
+                Wall,{
+                    w:[[400,600,430,600],[500,600,530,600]],
+                    
+                },
                 document.getElementById('target'),
                 W,H
             );
@@ -211,11 +214,11 @@
          * @param {Object}
          * @returns {Void}
          * */   
-        var NPC = function(o) {
-            // comment this out to set random positions
+        var Wall = function(o) {
+                // comment this out to set random positions
                 //o.x = o.i*80;
                 //o.y = 800;;
-                
+                /*
                 if (typeof o.x === 'undefined'){
                     this.x = $w.math.frandom(W);
                 }else{
@@ -226,8 +229,9 @@
                 }else{
                     this.y = o.y;
                 }
-                
+                */
                 this.camera = $w.objects.Camera[0],
+                this.o = o,
                 this.i = o.i,
                 this.dx,
                 this.dy,
@@ -239,12 +243,16 @@
                 this.radius,
                 this.scaleRatio,
                 this.size = 100;
+                
                 // draw a point to represent the 2D location of this NPC
-                $w.canvas.circle(1,this.x,this.y,5);
+                //$w.canvas.circle(1,this.x,this.y,5);
+                $w.canvas.line(1,o.w[o.count][0],o.w[o.count][1],o.w[o.count][2],o.w[o.count][3],'#000000',3);
             }
-            NPC.prototype.loop = function() {
+            Wall.prototype.loop = function() {
+                
                 $w.canvas.clear(this.i);
-                if (!$w.collision.checkCircle(this.camera.view.x,this.camera.view.y,this.camera.view.r,this.x,this.y,5)) {
+                //if (!$w.collision.checkCircle(this.camera.view.x,this.camera.view.y,this.camera.view.r,this.x,this.y,5)) {
+                    /*
                     this.cr = $w.math.radians(this.camera.d);
                     this.dx = this.x-this.camera.x;
                     this.dz = this.y-this.camera.y;
@@ -257,8 +265,52 @@
                     this.scaleRatio = this.fov/(this.fov+(dis*5));
                     this.dx = this.dx * this.scaleRatio;
                     this.scale = this.scaleRatio * this.size;
-                    $w.canvas.circle(this.i,this.dx+hW,this.dy,this.scale,this.color);
-                }
+                    $w.canvas.circle(this.i,this.dx+hW,this.dy,this.scale,this.color);*/
+                    this.cr = $w.math.radians(this.camera.d);
+                    var i,b=false;
+                    const l = this.o.w[this.count].length;
+                    for(i=0;i<l;i++) {
+                        if (!b) {
+                            this.o.w[this.o.count][i] = this.o.w[this.o.count][i]-this.camera.x;
+                            b=true;
+                        }else{
+                            this.o.w[this.o.count][i] = this.o.w[this.o.count][i]-this.camera.y;
+                            this.angle[i] = Math.atan2(this.o.w[this.o.count][i],this.o.w[this.o.count][i-1]);
+                            this.radius[i] = Math.sqrt(this.o.w[this.o.count][i-1]*this.o.w[this.o.count][i-1] + this.o.w[this.o.count][i]*this.o.w[this.o.count][i]) * 4;
+                            a[i] = $w.threed.cP3dto2d({
+                                x:this.o.w[this.o.count][0]-this.camera.x,
+                                y:hH,
+                                z:this.o.w[this.o.count][1]-this.camera.y
+                             },this.fov); 
+                            b=false;
+                        }
+                           
+                    }
+                    /*
+                    var a = [];
+                    a[0] = $w.threed.cP3dto2d({
+                        x:this.o.w[this.o.count][0]-this.camera.x,
+                        y:hH,
+                        z:this.o.w[this.o.count][1]-this.camera.y
+                     },this.fov,this.camera);
+                    a[1] = $w.threed.cP3dto2d({
+                        x:this.o.w[this.o.count][0]-this.camera.x,
+                        y:hH-50,
+                        z:this.o.w[this.o.count][1]-this.camera.y
+                     },this.fov);
+                    a[2] = $w.threed.cP3dto2d({
+                        x:this.o.w[this.o.count][2]-this.camera.x,
+                        y:hH-50,
+                        z:this.o.w[this.o.count][3]-this.camera.y
+                     },this.fov);
+                    a[3] = $w.threed.cP3dto2d({
+                        x:this.o.w[this.o.count][2]-this.camera.x,
+                        y:hH,
+                        z:this.o.w[this.o.count][3]-this.camera.y
+                     },this.fov);
+                    */
+                    $w.canvas.polygon(this.i,a);
+                //}
             }
     </script>
     
