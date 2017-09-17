@@ -59,3 +59,4 @@ if('' == $local) {
 }
 ?>
     <script src="<?php echo $path; ?>../_/js/external/_syntaxhighlighter.js<?php echo $dev; ?>"></script>
+    <div style="position: fixed;right: 2px;bottom:2px;z-index:999999;background: #fff;box-shadow:-2px -2px 1px;padding:2px 5px;"><a href="/"><<<<----- Return to Wes Mantooth</a></div>
