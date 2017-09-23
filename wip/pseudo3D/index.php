@@ -4,7 +4,7 @@
 <head>
     <title>Wes Mantooth - Pseudo 3D</title>
     <style>
-        div {
+        .target {
             width: 49vw;
             height: 98vh;
             float: left;
@@ -264,8 +264,8 @@
     
 </head>
 <body>
-    <div id="target">  
+    <div class="target" id="target">  
     </div>
-    <div id="target2">  
+    <div class="target" id="target2">  
     </div>
 </body>
