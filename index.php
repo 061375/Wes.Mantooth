@@ -3,7 +3,7 @@ $grunt = '';
 $dev = isset($_GET['dev']) ? true : false;
 if(true === $dev) {
     $dev = '?a='.strtotime('now');
-    $grunt = '<script src="http://192.168.1.154:35729/livereload.js"></script>';
+    $grunt = '<script src="http://192.168.1.159:35729/livereload.js"></script>';
 }
 ?>
 <!doctype html>
@@ -334,6 +334,21 @@ if(true === $dev) {
         </div>
         
     </div>
+    <?php
+    if(strpos($_SERVER['HTTP_HOST'],'192.168') === false) {
+        ?>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103050548-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-103050548-1');
+        </script>
+        <?php
+    }
+    ?>
     <?php echo $grunt; ?> 
 </body>
 </html>
