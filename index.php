@@ -287,6 +287,9 @@ if(true === $dev) {
                     <a href="examples/sprite_animation.php" >Sprite Animation</a>
                 </li>
                 <li>
+                    <a href="examples/multiple_balls.php" >Multiple Balls</a>
+                </li>
+                <li>
                     <a href="examples/multiple_canvases.php" >Multiple Canvases</a>
                 </li>
                 <li>

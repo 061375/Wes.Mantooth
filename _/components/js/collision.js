@@ -103,5 +103,38 @@ $w.collision = {
       }
   
       return inside;
+    },
+    /***
+     * find the nearest object to x,y
+     * @param {Number}
+     * @param {Number}
+     * @return {Object}
+     * */
+    objectNearest: function(x,y) {
+        var n = {
+            o:null,
+            d:false
+        }; // the nearest
+        for (var prop in $w.objects) {
+            if ($w.objects.hasOwnProperty(prop)) {
+                for (var obj in $w.objects[prop]) {
+                    var o = $w.objects[prop];
+                    var d = $w.motion.distance_to_point(x,y,o.x,o.y);
+                    if (!n.d) {
+                        n.d = d;
+                        n.o = o;
+                        n.id = obj;
+                    }else{
+                        if (d < n.d) {
+                            n.d = d;
+                            n.o = o;
+                            n.id = obj;
+                        }
+                    }
+                }
+            } 
+        }
+        // return the nearest
+        return n;
     }
 }

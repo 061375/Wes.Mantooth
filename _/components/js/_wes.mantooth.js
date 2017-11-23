@@ -12,6 +12,7 @@ var $w = {
     boolLog:false,
     // @param {Object} each game object will be added to this main object so they can be looped through all at once
     objects:{},
+    noloop:{},
     refs:[],
     // @param {Object} pre-load all the assets into this object
     assets: {
@@ -84,24 +85,41 @@ var $w = {
     },
     /**
      * the main loop
+     * @param {Boolean} if true loop
+     * @param {Number} a reference to a canvas by ID
+     * @param {Boolean}
      * @returns {Void}
      * */
-    loop: function(ra) {
-        for (prop in this.objects) {
+    loop: function(ra,clear,fps) {
+        if (typeof clear !== 'undefined' && !isNaN(clear)) {
+            $w.canvas.clear(clear);
+        }
+        if (typeof fps !== 'undefined' || fps) {
+            $w.upFPS();
+        }
+        for (var prop in this.objects) {
             if (this.objects.hasOwnProperty(prop)) {
-                for (obj in this.objects[prop]) {
+                for (var obj in this.objects[prop]) {
                     this.objects[prop][obj].loop();
                 }
             } 
         }
-        if(ra)window.requestAnimationFrame(this.loop.bind(this));
+        if(ra){
+            window.requestAnimationFrame(function(){
+                $w.loop(ra,clear,fps);
+                //this.loop.bind(this);
+            });
+        }
     },
     
     
     /* Game Hooks */
     
-    add_object: function(r,o,p,$t,w,h) {
-        return $w.game.add_object(r,o,p,$t,w,h);    
+    add_object: function(r,o,p,$t,w,h,noloop) {
+        return $w.game.add_object(r,o,p,$t,w,h,noloop);    
+    },
+    add_object_single: function(r,o,p,$t,w,h,noloop) {
+        return $w.game.add_object_single(r,o,p,$t,w,h,noloop);    
     },
     remove_object: function(f,i) {
         return $w.game.remove_object(f,i);

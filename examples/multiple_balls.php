@@ -4,7 +4,7 @@
 <head>
     <title>Wes Mantooth - Multiple Canvases</title>
     <?php require_once('scripts.php'); ?>
-    <script src="../_/js/multiple_canvases.js<?php echo $dev ?>"></script>
+    <script src="../_/js/multiple_balls.js<?php echo $dev ?>"></script>
     <link rel="stylesheet" href="../_/css/style.css<?php echo $dev ?>" />
     <style>
         #target {
@@ -23,31 +23,17 @@
     </div>
     <div class="right">
         <pre class="brush: js">
-/*
-Multiple canvases can be useful for layering.
-It's of course possible to do this simply by the order items are drawn.
-But I wanted to include it as a useful option all the same.
-
-The add_object call automatically assignes a Z-index to the anvas that can be set at runtime
-
-Online I have seen using multiple canvases as a method to peak performance...
-This appears to be incorrect...The Balls example can run 120 items at 60fps
-This example will bog down to 3 or 4 fps if I add that many to the stage.
-
-There has to be a reason why that reasoning is out there...I just don;t know what it is yet.
-*/
-
 // @param {Number}
-var MAXBALLS = 20;
+var MAXBALLS = 120;
 
 // make sure everything is loaded
 window.onload = function() {
     
     'use strict';
-    
+
     $w.makeFPS();
     // 
-    $w.add_object(
+    var c = $w.add_object_single( 
         MAXBALLS,
         Ball,
         {
@@ -57,7 +43,7 @@ window.onload = function() {
         },
         document.getElementById('target')
     );
-    $w.loop();
+    $w.loop(true,c.i,true);
 }
 /**
  * @param {Number} the reference ID to the canvas (also z-index)
@@ -85,15 +71,16 @@ var Ball = function(o) {
     this.y_speed = ~~((Math.random() * 10) - 5);
     
     // make sure that the balls are moving
-    if (this.x_speed > -1 && this.x_speed < 1) {
-        if (this.x_speed < 0 ) {
+    if (this.x_speed > -1 && this.x_speed &lt; 1) {
+        if (this.x_speed &lt; 0 ) {
             this.x_speed = -1;
         }else{
             this.x_speed = 1;
         }
     }
-    if (this.y_speed > -1 && this.y_speed < 1) {
-        if (this.y_speed < 0 ) {
+    //
+    if (this.y_speed > -1 && this.y_speed &lt; 1) {
+        if (this.y_speed &lt; 0 ) {
             this.y_speed = -1;
         }else{
             this.y_speed = 1;
@@ -118,11 +105,11 @@ Ball.prototype.loop = function() {
             case 4:this.y_speed-=(this.y_speed * 2);break;
         }
     }
-    $w.canvas.clear(this.i);
+    
     $w.canvas.circle(this.i,this.x,this.y,this.radius,this.color);
     
-    if(this.i == (MAXBALLS-1))$w.upFPS();
-    window.requestAnimationFrame(this.loop.bind(this));
+    //if(this.i == (MAXBALLS-1))$w.upFPS();
+    return true;
 }
         </pre>
     </div>

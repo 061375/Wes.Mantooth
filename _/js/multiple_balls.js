@@ -1,5 +1,5 @@
 // @param {Number}
-var MAXBALLS = 20;
+var MAXBALLS = 120;
 
 // make sure everything is loaded
 window.onload = function() {
@@ -8,7 +8,7 @@ window.onload = function() {
 
     $w.makeFPS();
     // 
-    $w.add_object( 
+    var c = $w.add_object_single( 
         MAXBALLS,
         Ball,
         {
@@ -18,7 +18,7 @@ window.onload = function() {
         },
         document.getElementById('target')
     );
-    $w.loop(true);
+    $w.loop(true,c.i,true);
 }
 /**
  * @param {Number} the reference ID to the canvas (also z-index)
@@ -80,9 +80,9 @@ Ball.prototype.loop = function() {
             case 4:this.y_speed-=(this.y_speed * 2);break;
         }
     }
-    $w.canvas.clear(this.i);
+    
     $w.canvas.circle(this.i,this.x,this.y,this.radius,this.color);
     
-    if(this.i == (MAXBALLS-1))$w.upFPS();
+    //if(this.i == (MAXBALLS-1))$w.upFPS();
     return true;
 }

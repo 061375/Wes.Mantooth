@@ -3,7 +3,17 @@ $w.game = {
     b_keydown:false,
     b_keypress:false,
     b_keyup:false,
-    add_object: function(r,o,p,$t,w,h){
+    /**
+     * @param {Number}
+     * @param {Object}
+     * @param {Object}
+     * @param {Object}
+     * @param {Number}
+     * @param {Number}
+     * @param {Boolean}
+     * @returns {Void}
+     * */
+    add_object: function(r,o,p,$t,w,h,noloop){ 
         var ids = [];
         // run a loop to create all the objects
         for(var i=0; i<r; i++){
@@ -16,23 +26,88 @@ $w.game = {
             
             p.count = i;
             
-            // instaniate a new object
-            if (typeof $w.objects[o.name] === 'object') {
-                 $w.objects[o.name][j] = new o(p);
+            if (typeof noloop === 'undefined' || noloop) {
+                // instaniate a new object
+                if (typeof $w.objects[o.name] === 'object') {
+                     $w.objects[o.name][j] = new o(p);
+                }else{
+                    $w.objects[o.name] = [];
+                    $w.objects[o.name][j] = new o(p);
+                }
             }else{
-                $w.objects[o.name] = [];
-                $w.objects[o.name][j] = new o(p);
+                // instaniate a new object
+                if (typeof $w.noloop[o.name] === 'object') {
+                     $w.noloop[o.name][j] = new o(p);
+                }else{
+                    $w.noloop[o.name] = [];
+                    $w.noloop[o.name][j] = new o(p);
+                }
             }
             ids.push(j);
         }
         return ids;
     },
+    /**
+     * @param {Number}
+     * @param {Object}
+     * @param {Object}
+     * @param {Variant} DOM Node Object or Number (reference to existing canvas)
+     * @param {Number}
+     * @param {Number}
+     * @param {Boolean}
+     * @returns {Void}
+     * */
+    add_object_single: function(r,o,p,$t,w,h,noloop) {
+        // if the program is referencing a DOM node then add the canvas to it
+        var j;
+        if(typeof $t === 'object') {
+            j = $w.canvas.init($t,w,h);
+        }else{
+            // otherwise reference the existing canvas by $t : an ID that should be an integer
+            j = $t;
+        }
+        var ids = [];
+        // run a loop to create all the objects
+        for(var i=0; i<r; i++){
+
+            p.i = j;
+            
+            p.count = i;
+            
+            if (typeof noloop === 'undefined' || noloop) {
+                // instaniate a new object
+                if (typeof $w.objects[o.name] === 'object') {
+                     $w.objects[o.name][i] = new o(p);
+                }else{
+                    $w.objects[o.name] = [];
+                    $w.objects[o.name][i] = new o(p);
+                }
+            }else{
+                // instaniate a new object
+                if (typeof $w.noloop[o.name] === 'object') {
+                     $w.noloop[o.name][j] = new o(p);
+                }else{
+                    $w.noloop[o.name] = [];
+                    $w.noloop[o.name][j] = new o(p);
+                }
+            }
+            ids.push(i);
+        }
+        return {
+            ids:ids,
+            i:j
+        };
+    },
+    /**
+     * @param {Number}
+     * @param {Number}
+     * @returns {Void}
+     * */
     remove_object: function(f,i) {
         $w.objects[f].splice(i,1);
             var $t = document.getElementsByTagName("canvas")[i];
             if (typeof $t !== 'undefined') 
                 $t.parentNode.removeChild($t.parentNode.childNodes[i]);
-        
     },
     /**
      * @param {Object} a map of functions to bind to keys
