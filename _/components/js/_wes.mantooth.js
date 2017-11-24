@@ -69,6 +69,9 @@ var $w = {
         }else{
             s = '';
         }
+        var style = document.createElement('style');
+            style.innerHTML = '#wm_show_fps{background: #000;z-index: 999999;width: 100px;height: 80px;position: absolute;color: #ffff00;right: 0;top: 0;padding: 5px;display:none;}#wm_show_fps.show{display:block}'
+        document.getElementsByTagName('head')[0].appendChild(style);
         var b = document.createElement('div');
             b.setAttribute('id','wm_show_fps');
             b.setAttribute('class',s);
@@ -90,9 +93,9 @@ var $w = {
      * @param {Boolean}
      * @returns {Void}
      * */
-    loop: function(ra,clear,fps) {
-        if (typeof clear !== 'undefined' && !isNaN(clear)) {
-            $w.canvas.clear(clear);
+    loop: function(ra,i,fps) {
+        if (typeof i !== 'undefined' && !isNaN(i)) {
+            $w.canvas.clear(i);
         }
         if (typeof fps !== 'undefined' || fps) {
             $w.upFPS();
@@ -106,8 +109,7 @@ var $w = {
         }
         if(ra){
             window.requestAnimationFrame(function(){
-                $w.loop(ra,clear,fps);
-                //this.loop.bind(this);
+                $w.loop(ra,i,fps);
             });
         }
     },

@@ -13,6 +13,5 @@ var Egg = function(o) {
 }
 
 Egg.prototype.loop = function() {
-    $w.canvas.clear(this.i);
     $w.canvas.circle(this.i,this.x,this.y,this.radius,this.color);   
 }

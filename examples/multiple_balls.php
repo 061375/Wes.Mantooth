@@ -24,7 +24,7 @@
     <div class="right">
         <pre class="brush: js">
 // @param {Number}
-var MAXBALLS = 120;
+var MAXBALLS = 1000;
 
 // make sure everything is loaded
 window.onload = function() {
@@ -32,8 +32,9 @@ window.onload = function() {
     'use strict';
 
     $w.makeFPS();
-    // 
-    var c = $w.add_object_single( 
+    // add_object_single returns an ID the convention I have used throughout to reference a canvas
+    // and wish to continue using is 'i'
+    var i = $w.add_object_single( 
         MAXBALLS,
         Ball,
         {
@@ -43,7 +44,7 @@ window.onload = function() {
         },
         document.getElementById('target')
     );
-    $w.loop(true,c.i,true);
+    $w.loop(true,i,true);
 }
 /**
  * @param {Number} the reference ID to the canvas (also z-index)

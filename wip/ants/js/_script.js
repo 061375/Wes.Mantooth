@@ -13,6 +13,7 @@ var AntSim = {
     map:[],
     init:function(map) {
         AntSim.map = map;
+        $w.makeFPS();
         //$w.loading.load({
             //ant:'assets/ant.png',
         //},function(){
@@ -26,7 +27,7 @@ var AntSim = {
             
             // initialize Ants
             
-            $w.add_object(
+            var i = $w.add_object_single(
                 QUEENMAX,
                 Ant,{
                     type:'Queen'
@@ -35,31 +36,29 @@ var AntSim = {
                 W,H
             );
             
-            $w.add_object(
+            $w.add_object_single(
                 MALEMAX,
                 Ant,{
                     type:'Male'
                 },
-                document.getElementById('target'),
-                W,H
+                i
             );
-            $w.add_object(
+            $w.add_object_single(
                 SOLDIERMAX,
                 Ant,{
                     type:'Soldier'
                 },
-                document.getElementById('target'),
-                W,H
+                i
             );
-            $w.add_object(
+            $w.add_object_single(
                 GATHERERMAX,
                 Ant,{
                     type:'Gatherer'
                 },
-                document.getElementById('target'),
-                W,H
+                i
             );
-            $w.add_object(
+            
+            $w.add_object_single(
                 EGGMAX,
                 Egg,{
                     queen:{
@@ -67,19 +66,18 @@ var AntSim = {
                         y:$w.objects.Ant[1].y
                     }
                 },
-                document.getElementById('target'),
-                W,H
+                i
             );
-            $w.add_object(
+            /*
+            $w.add_object_single(
                 MAXFOOD,
                 Food,{
                     
                 },
-                document.getElementById('target'),
-                W,H
-            );
-            $w.loop(true);
-            //console.log($w.objects);
+                $l
+            );*/
+            $w.loop(true,i,true);
+            console.log($w.objects);
         //});
     },
     /**

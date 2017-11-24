@@ -4,7 +4,6 @@
 * @returns {Void}
 * */
 var Ant = function(o) {
-    
     this.i = o.i;
     
     this.radius = 3;
@@ -54,7 +53,6 @@ var Ant = function(o) {
  * @returns {Void}
  * */
 Ant.prototype.loop = function() {
-    
     this.nearest = $w.collision.objectNearest(this.x,this.y);
     
     // check for collision
@@ -103,7 +101,6 @@ Ant.prototype.loop = function() {
     if (this.health <= 0) {
         this.die();
     }
-    $w.canvas.clear(this.i);
     $w.canvas.circle(this.i,this.x,this.y,this.radius,this.color);  
 }
 

@@ -1,5 +1,5 @@
 // @param {Number}
-var MAXBALLS = 120;
+var MAXBALLS = 1000;
 
 // make sure everything is loaded
 window.onload = function() {
@@ -8,17 +8,17 @@ window.onload = function() {
 
     $w.makeFPS();
     // 
-    var c = $w.add_object_single( 
+    var i = $w.add_object_single( 
         MAXBALLS,
         Ball,
         {
             x:500,
             y:500,
-            radius:10,
+            radius:5,
         },
         document.getElementById('target')
     );
-    $w.loop(true,c.i,true);
+    $w.loop(true,i,true);
 }
 /**
  * @param {Number} the reference ID to the canvas (also z-index)

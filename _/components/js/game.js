@@ -48,55 +48,39 @@ $w.game = {
         return ids;
     },
     /**
-     * @param {Number}
-     * @param {Object}
-     * @param {Object}
+     * @param {Number} [maxobjects] maximum objects to instantiate
+     * @param {Object} [$target] target game object to instantiate 
+     * @param {Object} [params] target object parameters
      * @param {Variant} DOM Node Object or Number (reference to existing canvas)
-     * @param {Number}
-     * @param {Number}
-     * @param {Boolean}
-     * @returns {Void}
+     * @param {Number} W
+     * @param {Number} H
+     *
+     * @returns {Number} Reference ID to the canvas
      * */
-    add_object_single: function(r,o,p,$t,w,h,noloop) {
-        // if the program is referencing a DOM node then add the canvas to it
-        var j;
-        if(typeof $t === 'object') {
-            j = $w.canvas.init($t,w,h);
+    add_object_single: function(maxobjects,$target,params,$container,w,h) {
+   
+        var i,j;
+        
+        // if $container does not have a reference then this is the first run
+        if(typeof $container === 'object') {
+            // create a canvas
+            i = $w.canvas.init($container,w,h);
         }else{
-            // otherwise reference the existing canvas by $t : an ID that should be an integer
-            j = $t;
+            // get the reference
+            i = $container;
         }
-        var ids = [];
         // run a loop to create all the objects
-        for(var i=0; i<r; i++){
-
-            p.i = j;
+        for(j=0; j<maxobjects; j++){
+           
+            params.i = i;
+            params.count = j;
             
-            p.count = i;
-            
-            if (typeof noloop === 'undefined' || noloop) {
-                // instaniate a new object
-                if (typeof $w.objects[o.name] === 'object') {
-                     $w.objects[o.name][i] = new o(p);
-                }else{
-                    $w.objects[o.name] = [];
-                    $w.objects[o.name][i] = new o(p);
-                }
-            }else{
-                // instaniate a new object
-                if (typeof $w.noloop[o.name] === 'object') {
-                     $w.noloop[o.name][j] = new o(p);
-                }else{
-                    $w.noloop[o.name] = [];
-                    $w.noloop[o.name][j] = new o(p);
-                }
-            }
-            ids.push(i);
+            // instaniate a new object
+            if (typeof $w.objects[$target.name] !== 'object')
+                $w.objects[$target.name] = [];
+            $w.objects[$target.name].push(new $target(params));
         }
-        return {
-            ids:ids,
-            i:j
-        };
+        return i;
     },
     /**
      * @param {Number}
