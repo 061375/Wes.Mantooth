@@ -569,6 +569,10 @@
             </tr>
         </table>
     </section>
+    <section id="pop">
+        <h3>pop <span> -> {Void}</span></h3>
+        <h4>remove last context</h4>
+    </section>
     <section id="set_error">
         <h3>set_error <span> -> {Void}</span></h3>
         <h4>appends an error message to an array</h4>
@@ -641,6 +645,9 @@
         </li>
         <li>
             <a href="#get">get</a>
+        </li>
+        <li>
+            <a href="#pop">pop</a>
         </li>
         <li>
             <a href="#set_error">set_error</a>

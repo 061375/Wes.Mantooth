@@ -123,7 +123,7 @@
     </section>
     <section id="inside">
         <h3>inside <span> -> {Boolean}</span></h3>
-        <h4>check if target coords are inside of a polygon</h4>
+        <h4>check if polygon is inside of another polygon</h4>
         <table>
             <tr>
                 <th>
@@ -164,6 +164,25 @@
             </tr>
         </table>
     </section>
+    <section id="objectnearest">
+        <h3>objectNearest <span> -> {Object}</span></h3>
+        <h4>find the nearest object to x,y</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php x(1); ?>
+            <?php y(1); ?>
+        </table>
+    </section>
 </div>
 <div class="right">
     <ul>
@@ -178,6 +197,9 @@
         </li>
         <li>
             <a href="#inside">inside</a>
+        </li>
+        <li>
+            <a href="#objectnearest">objectNearest</a>
         </li>
     </ul>
 </div>

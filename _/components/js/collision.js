@@ -48,6 +48,16 @@ $w.collision = {
         }
         return false;
     },
+    /**
+     * UNDER CONSTRUCTION
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * 
+     * */
     square: function(x1,y1,s1,x2,y2,s2) {
         var c = [
             {x:x1,y:y1},
@@ -57,6 +67,13 @@ $w.collision = {
         ];
         
     },
+    /**
+     * check collision with a polygon and a circle
+     * @param {Array}
+     * @param {Object}
+     *
+     * @returns {Boolean}
+     * */
     circle: function(p,c) {
         var b = false;
         var l = p.length;
@@ -66,6 +83,17 @@ $w.collision = {
         }
         return false;
     },
+    /**
+     * check collision of two circles
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     *
+     * @returns {Boolean}
+     * */
     checkCircle: function(x1,y1,r1,x2,y2,r2) {
         var d = $w.motion.distance_to_point(x1,y1,x2,y2);
         var s = r1 + r2;
@@ -75,6 +103,14 @@ $w.collision = {
             return false;
         }
     },
+    /**
+     * check if target coords are inside the referenced canvas area
+     * @param {Number}
+     * @param {Number}
+     * @param {Number}
+     *
+     * @returns {Boolean}
+     * */
     insideCanvas: function(i,x1,y1) {
         
         if (typeof i === 'undefined') i = 0;
@@ -86,6 +122,13 @@ $w.collision = {
          
          return 0;
     },
+    /**
+     * check if polygon is inside of another polygon
+     * @param {Array}
+     * @param {Array}
+     *
+     * @returns {Boolean}
+     * */
     inside: function (point, vs) {
       // ray-casting algorithm based on
       // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
@@ -108,6 +151,7 @@ $w.collision = {
      * find the nearest object to x,y
      * @param {Number}
      * @param {Number}
+     * 
      * @return {Object}
      * */
     objectNearest: function(x,y) {
