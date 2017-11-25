@@ -1,7 +1,103 @@
 <h2>Game</h2>
 <div class="left">
     <section id="add_object">
-        <h3>add_object <span> -> {Void}</span></h3>
+        <h3>add_object <span> -> {Array}</span></h3>
+        <h4>creates maxobjects instances of an object and canvas, initializes it and returns a list of IDs
+        <br />
+        this is intended for multiple canavases</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    maxobjects
+                </td>
+                <td>
+                    Integer
+                </td>
+                <td>
+                    the number of new objects of this type to add
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    $target
+                </td>
+                <td>
+                    Function
+                </td>
+                <td>
+                    the target object to duplicate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    params
+                </td>
+                <td>
+                    Object
+                </td>
+                <td>
+                    parameters to pass to the function
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    $container
+                </td>
+                <td>
+                    Object
+                </td>
+                <td>
+                    target object to attach the canvas DOM node
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    w
+                </td>
+                <td>
+                    Number
+                </td>
+                <td>
+                    width of the canvas to create
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    h
+                </td>
+                <td>
+                    Number
+                </td>
+                <td>
+                    height of the canvas to create
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    noloop
+                </td>
+                <td>
+                    Boolean
+                </td>
+                <td>
+                    if true the operation will add the object to a seperate array that will not be looped over
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section id="add_object_single">
+        <h3>add_object_single <span> -> {Number}</span></h3>
         <h4>creates and instance of an object and canvas, initializes it and returns an ID</h4>
         <table>
             <tr>
@@ -17,7 +113,7 @@
             </tr>
             <tr>
                 <td>
-                    r
+                    maxobjects
                 </td>
                 <td>
                     Integer
@@ -28,18 +124,18 @@
             </tr>
             <tr>
                 <td>
-                    o
+                    $target
                 </td>
                 <td>
                     Function
                 </td>
                 <td>
-                    the object to duplicate
+                    the target object to duplicate
                 </td>
             </tr>
             <tr>
                 <td>
-                    p
+                    params
                 </td>
                 <td>
                     Object
@@ -50,13 +146,74 @@
             </tr>
             <tr>
                 <td>
-                    $t
+                    $container
                 </td>
                 <td>
                     Object
                 </td>
                 <td>
                     target object to attach the canvas DOM node
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    w
+                </td>
+                <td>
+                    Number
+                </td>
+                <td>
+                    width of the canvas to create
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    h
+                </td>
+                <td>
+                    Number
+                </td>
+                <td>
+                    height of the canvas to create
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section id="remove_object">
+        <h3>remove_object <span> -> {Void}</span></h3>
+        <h4>removes an instance of an object from the loop and a canvas based on ID</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    f
+                </td>
+                <td>
+                    String
+                </td>
+                <td>
+                    the instance name
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    i
+                </td>
+                <td>
+                    Number
+                </td>
+                <td>
+                    an ID
                 </td>
             </tr>
         </table>
@@ -155,6 +312,12 @@
     <ul>
         <li>
             <a href="#add_object">add_object</a>
+        </li>
+        <li>
+            <a href="#add_object_single">add_object_single</a>
+        </li>
+        <li>
+            <a href="#remove_object">remove_object</a>
         </li>
         <li>
             <a href="#bindkeys">bindkeys</a>

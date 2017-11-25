@@ -11,36 +11,37 @@ $w.game = {
      * @param {Number}
      * @param {Number}
      * @param {Boolean}
-     * @returns {Void}
+     * 
+     * @returns {Array}
      * */
-    add_object: function(r,o,p,$t,w,h,noloop){ 
+    add_object: function(maxobjects,$target,params,$container,w,h,noloop){ 
         var ids = [];
         // run a loop to create all the objects
-        for(var i=0; i<r; i++){
+        for(var i=0; i<maxobjects; i++){
             // create a canvas context and assign the result to j
             // its true that this loop will result in the same as i
             // but it demonstrates that the funcxtion returns the ID of the canavas object
-            var j = $w.canvas.init($t,w,h);
+            var j = $w.canvas.init($container,w,h);
             
-            p.i = j;
+            params.i = j;
             
-            p.count = i;
+            params.count = i;
             
             if (typeof noloop === 'undefined' || noloop) {
                 // instaniate a new object
-                if (typeof $w.objects[o.name] === 'object') {
-                     $w.objects[o.name][j] = new o(p);
+                if (typeof $w.objects[$target.name] === 'object') {
+                     $w.objects[$target.name][j] = new $target(params);
                 }else{
-                    $w.objects[o.name] = [];
-                    $w.objects[o.name][j] = new o(p);
+                    $w.objects[$target.name] = [];
+                    $w.objects[$target.name][j] = new $target(params);
                 }
             }else{
                 // instaniate a new object
-                if (typeof $w.noloop[o.name] === 'object') {
-                     $w.noloop[o.name][j] = new o(p);
+                if (typeof $w.noloop[$target.name] === 'object') {
+                     $w.noloop[$target.name][j] = new $target(params);
                 }else{
-                    $w.noloop[o.name] = [];
-                    $w.noloop[o.name][j] = new o(p);
+                    $w.noloop[$target.name] = [];
+                    $w.noloop[$target.name][j] = new $target(params);
                 }
             }
             ids.push(j);
