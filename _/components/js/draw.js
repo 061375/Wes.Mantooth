@@ -3,11 +3,15 @@ $w.draw = (function() {
     "use strict";
     
     /**
+     * grid
+     * draws a grid to the canvas
      * @param {Number} i
      * @param {Number} w width
      * @param {Number} h height
      * @param {Number} u unit
+     * @param {Boolean}
      * @param {Function} callback
+     * 
      * @returns {Void}
      * */
     var grid = function(i,w,h,u,o,callback) {
@@ -38,6 +42,7 @@ $w.draw = (function() {
      * @param {Number} w width
      * @param {Number} h height
      * @param {Number} u unit
+     * @param {Number}
      * @param {Function} callback
      * @returns {Void}
      * */
