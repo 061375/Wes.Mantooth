@@ -1,8 +1,22 @@
 $w.color = {
+  /**
+   * returns a color hex value from an integer
+   * @param {Number}
+   *
+   * @returns {String}
+   * */
   componentToHex: function(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
   },
+  /**
+   * returns a color hex value from an 3 integers
+   * @param {Number}
+   * @param {Number}
+   * @param {Number}
+   *
+   * @returns {String}
+   * */
   rgbToHex: function(r, g, b) {
     return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
   },
