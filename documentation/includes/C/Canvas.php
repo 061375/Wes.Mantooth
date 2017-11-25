@@ -79,6 +79,7 @@
                 </td>
             </tr>
             <?php color(); ?>
+            <?php opacity(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -223,6 +224,7 @@
                     </span>
                 </td>
             </tr>
+            <?php echo color(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -275,18 +277,12 @@
             <?php echo $i; ?>
             <?php x(1); ?>
             <?php y(1); ?>
-            <?php x(2); ?>
-            <?php y(2); ?>
+            <?php x(2,'note: this is relative to the x1 coordinate'); ?>
+            <?php y(2,'note: this is relative to the y1 coordinate'); ?>
             <?php color(); ?>
             <?php echo $method; ?>
             <?php color(true); ?>
-            <tr>
-                <td>opacity</td>
-                <td>Float</td>
-                <td>
-                    ( 0 - 1 )   
-                </td>
-            </tr>
+            <?php opacity(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -325,13 +321,7 @@
             <?php color(); ?>
             <?php echo $method; ?>
             <?php color(true); ?>
-            <tr>
-                <td>opacity</td>
-                <td>Float</td>
-                <td>
-                    ( 0 - 1 )   
-                </td>
-            </tr>
+            <?php opacity(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -363,13 +353,7 @@
             <?php color(); ?>
             <?php echo $method; ?>
             <?php color(true); ?>
-            <tr>
-                <td>opacity</td>
-                <td>Float</td>
-                <td>
-                    ( 0 - 1 )   
-                </td>
-            </tr>
+            <?php opacity(); ?>
             <?php echo $fint; ?>
         </table>
     </section>
@@ -535,6 +519,31 @@
             </tr>
         </table>
     </section>
+    <section id="zindex">
+        <h3>zIndex <span> -> {Void}</span></h3>
+        <h4>Sets the z-index of the target canvas</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <?php echo $i; ?>
+            <tr>
+                <td>z</td>
+                <td>Integer</td>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+    </section>
     <section id="get">
         <h3>get <span> -> {Object}</span></h3>
         <h4>gets the referenced canvas or context</h4>
@@ -626,6 +635,9 @@
         </li>
         <li>
             <a href="#clear">clear</a>
+        </li>
+        <li>
+            <a href="#zindex">zIndex</a>
         </li>
         <li>
             <a href="#get">get</a>

@@ -61,6 +61,7 @@ $w.canvas = (function() {
      * @param {Number} canvas container width
      * @param {Number} canvas container height
      * @param {Function} callback
+     * 
      * @returns {Function(Number), Number}
      * */
     var init = function($t,w,h,callback) { 
@@ -98,6 +99,7 @@ $w.canvas = (function() {
      * @param {String} color (hex #000000)
      * @param {Number}
      * @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */
     var circle = function(i,x,y,r,c,o,fint) {
@@ -128,6 +130,7 @@ $w.canvas = (function() {
      * @param {Boolean} counterclockwize
      * @param {String} color (hex #000000)
      * @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */ 
     var arc = function(i,x,y,r,s,e,cc,color,fint) {
@@ -153,6 +156,7 @@ $w.canvas = (function() {
      * @param {Number} y3
      * @param {String} color (hex #000000)
      * @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */ 
     var qArc = function(i,x1,y1,x2,y2,x3,y3,color,fint) {
@@ -185,6 +189,7 @@ $w.canvas = (function() {
      * @param {Number} y4
      * @param {String} color (hex #000000)
      * @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */ 
     var bArc = function(i,x1,y1,x2,y2,x3,y3,x4,y4,color,fint) {
@@ -215,6 +220,7 @@ $w.canvas = (function() {
      * @param {String} font
      * @param {String}
      * @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */
     var text = function(i,x,y,txt,m,font,color,fint) {
@@ -246,6 +252,7 @@ $w.canvas = (function() {
      * @param {String} color 
      * @param {Number} linewidth
      * @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */
     var line = function(i,x1,y1,x2,y2,color,linewidth,fint) {
@@ -277,6 +284,7 @@ $w.canvas = (function() {
      * @param {String} hex color (alternate color)
      * @param {Number} opacity (Float 0 - 1)
      * @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */
     var rectangle = function(i,x1,y1,x2,y2,color,m,acolor,o,fint) {
@@ -321,6 +329,7 @@ $w.canvas = (function() {
      * @param {String} hex color (alternate color)
      * @param {Number} opacity (Float 0 - 1)
      * @todo @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */
     var roundRectangle = function(i, x, y, width, height, radius,color,m,acolor,o) {
@@ -366,6 +375,7 @@ $w.canvas = (function() {
      * @param {String} hex color (alternate color)
      * @param {Number} opacity (Float 0 - 1)
      * @param {Boolean} optional if true the operation allows float point numbers
+     * 
      * @returns {Void}
      * */
     var polygon = function(i,a,color,m,acolor,o,fint) {
@@ -404,8 +414,10 @@ $w.canvas = (function() {
         ctx[i].fill();
     }
     /**
+     * image
      * @param {Number}
      * @param {Object} obj
+     * 
      * @return {Boolean}
      * */
     var image = function(i,obj,fint,c){
@@ -426,7 +438,7 @@ $w.canvas = (function() {
                 obj.dy = Math.floor(obj.dy);
                 obj.dWidth = Math.floor(obj.dWidth);
                 obj.dHeight = Math.floor(obj.dHeight);
-            }
+            } 
             
             // 
             if (typeof obj.img === 'undefined') {
@@ -452,6 +464,7 @@ $w.canvas = (function() {
      * @todo experiment with clear just the section where the current element is (for speed)
      * @param {Number}
      * @param {Boolean} save
+     * 
      * @returns {Void}
      * */
     var clear = function(i,save) {
@@ -466,29 +479,16 @@ $w.canvas = (function() {
             }
   
     }
+    /**
+     * zIndex
+     * @param {Number}
+     * @param {Number}
+     *
+     * @returns {Void}
+     * */
     var zIndex = function(i,z) {
         document.getElementById('c'+i).style.zIndex = ~~z;
     }
-    /**
-     * @param {Object} list of parameters to be sent to callback
-     * @param {Function} callback
-     * */
-    var draw = function(o,callback) {
-        requestAnimationFrame(callback);
-        /*function() {
-            if (typeof callback === 'function') callback(o);
-        });*/
-    }
-    /**
-     * @param {Number} reference number to stop
-     * */
-    var stopdraw = function(_raf) {
-        if (typeof _raf !== 'undefined') {
-            window.cancelAnimationFrame(_raf);
-        }else{
-            window.cancelAnimationFrame(RAF);
-        }
-    } 
     /**
      * get a local reference 
      * @param {String} o

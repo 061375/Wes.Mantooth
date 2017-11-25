@@ -15,6 +15,8 @@ $w.buttons = (function() {
      * @param {Object} style
      * @param {String} text to display on the button
      * @param {Object} ( hover, click )
+     *
+     * @returns {Void}
      * */
     function pill(i,x,y,w,h,radius,style,text,events) {
         var r_x = x,
