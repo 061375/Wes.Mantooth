@@ -148,7 +148,7 @@ $w.collision = {
       return inside;
     },
     /***
-     * find the nearest object to x,y
+     * find the nearest object to x,y 
      * @param {Number}
      * @param {Number}
      * 
