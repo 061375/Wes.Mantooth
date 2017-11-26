@@ -63,7 +63,7 @@
     </section>
     <section id="load">
         <h3>load <span> -> {Void}</span></h3>
-        <h4>binds a function to a keyboard key</h4>
+        <h4>loads MIME type assets <br /><span>.jpg, .gif, .png, .svg, .bmp, .js, .json, .txt, .css, .ogg, .mp3</span></h4>
         <table>
             <tr>
                 <th>
@@ -211,7 +211,7 @@
         <h4>
             appends the link tag, generally used for css
             <br />
-            there is currently limited sopport for onload of stylesheets
+            there is currently limited support for onload of stylesheets
             <br />
             and frankly, I don't think its that important...css loads pretty fast
             <br />

@@ -71,10 +71,13 @@ $w.loading = (function() {
         return true;
     }
     /**
-    * @param {Object} list of assets to load
-    * @param {Function}
-    * @return {Function} callback
-    * */ 
+     * loads MIME type assets
+     * .jpg,'gif,.png,.svg,.bmp,.js,.json,.txt,.css,.ogg,.mp3
+     * @param {Object} list of assets to load
+     * @param {Function}
+     * 
+     * @return {Function} callback
+     * */ 
     var load = function(a,callback) {
         //var l = a.length;
         var l = Object.keys(a).length;
