@@ -23,6 +23,12 @@ $w.math = {
   },
   frandom: function(n) { 
     return ~~(Math.random() * n);
+  },
+  isFloat: function(n) {
+    return n === +n && n !== (n|0);  
+  },
+  isInt: function(n) {
+    return n === +n && n === (n|0);
   }
 }
 window.countFPS = (function () {

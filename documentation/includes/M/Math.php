@@ -133,6 +133,62 @@
             </tr>
         </table>
     </section>
+    <section id="isFloat">
+        <h3>isFloat <span> -> {Boolean}</span></h3>
+        <h4>is a number a float point number</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    n
+                </td>
+                <td>
+                    Number
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section id="isInt">
+        <h3>isInt <span> -> {Boolean}</span></h3>
+        <h4>is a number an integer</h4>
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    n
+                </td>
+                <td>
+                    Number
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+    </section>
 </div>
 <div class="right">
     <ul>

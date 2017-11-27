@@ -3,10 +3,27 @@
  * some game motion operations
  * */
 $w.motion = {
+  /**
+   * @param {Number}
+   * @param {Number}
+   * @param {Number}
+   * @param {Number}
+   *
+   * @returns {Number}
+   * */
   distance_to_point: function(x1,y1,x2,y2)
   {
     return Math.hypot(x2-x1, y2-y1);
   },
+  /**
+   * @param {Number}
+   * @param {Number}
+   * @param {Number}
+   * @param {Number}
+   * @param {Boolean}
+   *
+   * @returns {Number}
+   * */
   point_direction: function(x1,y1,x2,y2,radians)
   {
     var x = x2 - x1;
@@ -21,19 +38,33 @@ $w.motion = {
     }
     return angleInDegrees;
   },
-  motion_set: function(x,y,r,speed)
+  /**
+   * @param {Number}
+   * @param {Number}
+   * @param {Number}
+   * @param {Number}
+   *
+   * @returns {Array}
+   * */
+  motion_set: function(x,y,d,speed)
   {
-    var angle = r * (Math.PI/180);
+    // assumes that degrees are integer
+    if (!$w.math.isFloat(d)) {
+      // if degrees convert to radians
+      d = $w.math.radians(d);
+    }
     x += (Math.cos(angle) * Math.PI / 180) * speed;
     y += (Math.sin(angle) * Math.PI / 180) * speed;
 
     return [x,y];
   },
+  //  DEPRECATED ... DO NOT USE
+  /*
   motion_set_2: function(obj,speed)
   {
     var x = obj.position.x;
     var y = obj.position.y;
-    var angle = obj.rotation.z;// * (Math.PI/180);
+    var angle = obj.rotation.z;
     x += (Math.cos(angle) * Math.PI / 180) * speed;
     y += (Math.sin(angle) * Math.PI / 180) * speed;
     obj.position.x = x;
@@ -70,8 +101,8 @@ $w.motion = {
       obj1.y += (Math.sin(angle) * Math.PI / 180) * obj1.speed;
     }
   }
+  */
 }
-
 $w.mouse = {
     mouseX:0,
     mouseY:0,
