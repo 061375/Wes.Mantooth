@@ -102,8 +102,20 @@ var $w = {
         }
         for (var prop in this.objects) {
             if (this.objects.hasOwnProperty(prop)) {
-                for (var obj in this.objects[prop]) {
-                    this.objects[prop][obj].loop();
+                var l = this.objects[prop].length;
+                for(var j = 0; j < l; j++) {
+                    if (this.objects[prop][j] != null)
+                        this.objects[prop][j].loop();    
+                }
+                
+                for(var j = 0; j < l; j++) {
+                    // make sure our target to move is not null
+                    if (this.objects[prop][j] != null)
+                        // make sure this wants to be moved (i.e. an Object that has no z)
+                        if (typeof this.objects[prop][j].z !== 'undefined') {
+                            var remove = this.objects[prop].splice(j,1);
+                            this.objects[prop].splice(remove[0].z,0,remove[0]);
+                        }
                 }
             } 
         }

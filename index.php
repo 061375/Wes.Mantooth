@@ -290,6 +290,9 @@ if(true === $dev) {
                     <a href="examples/multiple_balls.php" >Multiple Balls</a>
                 </li>
                 <li>
+                    <a href="examples/multiple_balls_z.php" >Multiple Balls With Z-Index</a>
+                </li>
+                <li>
                     <a href="examples/multiple_canvases.php" >Multiple Canvases</a>
                 </li>
                 <li>
@@ -306,6 +309,9 @@ if(true === $dev) {
                 </li>
                 <li>
                     <a href="examples/rpg/simple.php" >Simple Top Down</a>
+                </li>
+                <li>
+                    <a href="wip/pseudo3D/index.php" >Pseudo 3D (Doom Style) Multiple Canvases</a>
                 </li>
             </ul>
             <h2>

@@ -70,16 +70,21 @@ $w.game = {
             // get the reference
             i = $container;
         }
+        
+        $w.objects[$target.name] = [];
         // run a loop to create all the objects
         for(j=0; j<maxobjects; j++){
            
             params.i = i;
             params.count = j;
-            
+            params.z = j;
             // instaniate a new object
-            if (typeof $w.objects[$target.name] !== 'object')
-                $w.objects[$target.name] = [];
+            //if (typeof $w.objects[$target.name] !== 'object')
+                //$w.objects[$target.name] = [];
             $w.objects[$target.name].push(new $target(params));
+        }
+        for (var z=maxobjects; z<9999;z++) {
+            $w.objects[$target.name][z] = null;
         }
         return i;
     },
