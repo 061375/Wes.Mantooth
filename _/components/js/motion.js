@@ -48,13 +48,15 @@ $w.motion = {
    * */
   motion_set: function(x,y,d,speed)
   {
+    
     // assumes that degrees are integer
     if (!$w.math.isFloat(d)) {
       // if degrees convert to radians
       d = $w.math.radians(d);
     }
-    x += (Math.cos(angle) * Math.PI / 180) * speed;
-    y += (Math.sin(angle) * Math.PI / 180) * speed;
+    
+    x += (Math.cos(d) * Math.PI / 180) * speed;
+    y += (Math.sin(d) * Math.PI / 180) * speed;
 
     return [x,y];
   },

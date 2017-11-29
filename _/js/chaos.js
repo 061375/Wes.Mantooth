@@ -124,7 +124,7 @@ var Chaos = (function() {
         var dis = $w.motion.distance_to_point(now_xy[0],now_xy[1],t[0],t[1]);
         
         // set the current origin to a point 1/2 the distance form the origin to the target
-        now_xy = $w.motion.motion_set(now_xy[0],now_xy[1],d,dis*30);
+        now_xy = $w.motion.motion_set(now_xy[0],now_xy[1],~~d,dis*30);
         
         // draw a dot at the new origin
         $w.canvas.circle(I,now_xy[0],now_xy[1],1);
