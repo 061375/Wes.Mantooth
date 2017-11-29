@@ -43,32 +43,68 @@ if(true === $dev) {
                                 // set the dev mode
                                 setMode();
                         });
+                        
                         /**
                          * @returns {Void}
                          * */
                         function setMode() {
-                                // get all the a tags in the examples node
-                                var a = document.getElementById('examples').getElementsByTagName("a");
-                                // loop the resulting object
-                                for (var prop in a) {
-                                        if (a.hasOwnProperty(prop)) {
-                                                // get the current link
-                                            var href = a[prop].getAttribute('href');
-                                            
-                                            if (devon) {
-                                                // append the query string
-                                                href = href + dev;
-                                            }else{
-                                                // remove the query string
-                                                href = href.replace(dev,'');
-                                            }
-                                            // set the new value
-                                            a[prop].setAttribute('href',href);
+                            // get all the a tags in the examples node
+                            var a = document.getElementById('examples').getElementsByTagName("a");
+                            // loop the resulting object
+                            for (var prop in a) {
+                                    if (a.hasOwnProperty(prop)) {
+                                            // get the current link
+                                        var href = a[prop].getAttribute('href');
+                                        
+                                        if (devon) {
+                                            // append the query string
+                                            href = href + dev;
+                                        }else{
+                                            // remove the query string
+                                            href = href.replace(dev,'');
                                         }
-                                }
-                           }
+                                        // set the new value
+                                        a[prop].setAttribute('href',href);
+                                    }
+                            }
+                        }
                 }
-                
+                /**
+                * @returns {Void}
+                * */
+                function showSection($t) {
+                    $t = $t.nextSibling.nextSibling;
+                    if($t.hasClass('show')) {
+                        $t.removeClass('show'); 
+                    }else{
+                        $t.addClass('show');
+                    }
+                }
+                HTMLElement.prototype.hasClass = function(c) {
+                    if (this.classList) {
+                        return this.classList.contains(c);
+                    }
+                    return !!this.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
+                }
+                HTMLElement.prototype.addClass = function(c) {
+                    if (this.classList) {
+                        this.classList.add(c);
+                    }else{
+                        if (!this.hasClass(c)) {
+                            this.className += c;
+                        }
+                    }
+                }
+                HTMLElement.prototype.removeClass = function(c) {
+                    if (this.classList) {
+                        this.classList.remove(c);
+                    }else{
+                        if (this.hasClass(c)) {
+                            var reg = new RegExp('(\\s|^)' + c + '(\\s|$)');
+                            this.className=this.className.replace(reg, ' ');
+                        }
+                    }
+                }
         </script>
 </head>
 <body class="wes_main">
@@ -264,56 +300,101 @@ if(true === $dev) {
                 <input type="checkbox" id="devmode" /> View demonstration in development mode (uncompressed with logs rendered in console)
                 
             </p>
-            <ul id="examples">
-                <li>
-                    <a href="examples/draw_simplegrid.php" >Draw a simple grid</a>
-                </li>
-                <li>
-                    <a href="examples/draw_text.php" >Draw Text</a>
-                </li>
-                <li>
-                    <a href="examples/buttons.php" >Buttons</a>
-                </li>
-                <li>
-                    <a href="examples/track_mousemove.php" >Track Mouse Movement</a>
-                </li>
-                <li>
-                    <a href="examples/collisions.php" >Collisions</a>
-                </li>
-                <li>
-                    <a href="examples/keyboard.php" >Keyboard Mapping</a>
-                </li>
-                <li>
-                    <a href="examples/sprite_animation.php" >Sprite Animation</a>
-                </li>
-                <li>
-                    <a href="examples/multiple_balls.php" >Multiple Balls</a>
-                </li>
-                <li>
-                    <a href="examples/multiple_balls_z.php" >Multiple Balls With Z-Index</a>
-                </li>
-                <li>
-                    <a href="examples/multiple_canvases.php" >Multiple Canvases</a>
-                </li>
-                <li>
-                    <a href="examples/chaos.php" >The Chaos Game (Sierpinski Triangle)</a>
-                </li>
-                <li>
-                    <a href="examples/fibonacci.php" >Fibonacci's Golden Ratio</a>
-                </li>
-                <li>
-                    <a href="examples/knearest.php" >K-Nearest Algorithm </a>
-                </li>
-                <li>
-                    <a href="examples/paint_program.php" >Paint Program</a>
-                </li>
-                <li>
-                    <a href="examples/rpg/simple.php" >Simple Top Down</a>
-                </li>
-                <li>
-                    <a href="wip/pseudo3D/index.php" >Pseudo 3D (Doom Style) Multiple Canvases</a>
-                </li>
-            </ul>
+            <div id="examples">
+                <ul>
+                    <li onclick="showSection(this)">
+                        <h3>Basic</h3>
+                    </li>
+                    <li class="section">
+                        <ul>
+                            <li>
+                                <a href="examples/draw_simplegrid.php" >Draw a simple grid</a>
+                            </li>
+                            <li>
+                                <a href="examples/draw_text.php" >Draw Text</a>
+                            </li>
+                            <li>
+                                <a href="examples/buttons.php" >Buttons</a>
+                            </li>
+                            <li>
+                                <a href="examples/track_mousemove.php" >Track Mouse Movement</a>
+                            </li>
+                            <li>
+                                <a href="examples/collisions.php" >Collisions</a>
+                            </li>
+                            <li>
+                                <a href="examples/keyboard.php" >Keyboard Mapping</a>
+                            </li>
+                        </ul>   
+                    </li> 
+                </ul>
+                <ul>
+                    <li onclick="showSection(this)">
+                        <h3>Animation</h3>
+                    </li>
+                    <li class="section">
+                        <ul>
+                            <li>
+                                <a href="examples/sprite_animation.php" >Sprite Animation</a>
+                            </li>
+                            <li>
+                                <a href="examples/multiple_balls.php" >Multiple Balls</a>
+                            </li>
+                            <li>
+                                <a href="examples/multiple_balls_z.php" >Multiple Balls With Z-Index</a>
+                            </li>
+                            <li>
+                                <a href="examples/multiple_canvases.php" >Multiple Canvases</a>
+                            </li>
+                        </ul>    
+                    </li>
+                </ul>
+                <ul>
+                    <li onclick="showSection(this)">
+                        <h3>Math</h3>
+                    </li>
+                    <li class="section">
+                        <ul>
+                            <li>
+                                <a href="examples/chaos.php" >The Chaos Game (Sierpinski Triangle)</a>
+                            </li>
+                            <li>
+                                <a href="examples/fibonacci.php" >Fibonacci's Golden Ratio</a>
+                            </li>
+                            <li>
+                                <a href="examples/knearest.php" >K-Nearest Algorithm </a>
+                            </li>
+                        </ul>   
+                    </li>
+                </ul>
+                <ul>
+                    <li onclick="showSection(this)">
+                        <h3>Game Style</h3>
+                    </li>
+                    <li class="section">
+                        <ul>
+                            <li>
+                                <a href="examples/rpg/simple.php" >Simple Top Down</a>
+                            </li>
+                            <li>
+                                <a href="wip/pseudo3D/index.php" >Pseudo 3D (Doom Style) Multiple Canvases</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li onclick="showSection(this)">
+                        <h3>Other</h3>
+                    </li>
+                    <li class="section">
+                        <ul>
+                            <li>
+                                <a href="examples/paint_program.php" >Paint Program</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             <h2>
                 <a href="documentation/">Documentation</a>
             </h2>
