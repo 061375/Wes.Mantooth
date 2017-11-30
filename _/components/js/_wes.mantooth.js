@@ -14,6 +14,7 @@ var $w = {
     objects:{},
     noloop:{},
     refs:[],
+    hasdepth:[], 
     // @param {Object} pre-load all the assets into this object
     assets: {
         img:[],
@@ -107,15 +108,17 @@ var $w = {
                     if (this.objects[prop][j] != null)
                         this.objects[prop][j].loop();    
                 }
-                
-                for(var j = 0; j < l; j++) {
-                    // make sure our target to move is not null
-                    if (this.objects[prop][j] != null)
-                        // make sure this wants to be moved (i.e. an Object that has no z)
-                        if (typeof this.objects[prop][j].z !== 'undefined') {
-                            var remove = this.objects[prop].splice(j,1);
-                            this.objects[prop].splice(remove[0].z,0,remove[0]);
-                        }
+                //
+                if ($w.hasdepth.indexOf(prop) > -1) {
+                    for(var j = 0; j < l; j++) {
+                        // make sure our target to move is not null
+                        if (this.objects[prop][j] != null)
+                            // make sure this wants to be moved (i.e. an Object that has no z)
+                            if (typeof this.objects[prop][j].z !== 'undefined') {
+                                var remove = this.objects[prop].splice(j,1);
+                                this.objects[prop].splice(remove[0].z,0,remove[0]);
+                            }
+                    }
                 }
             } 
         }

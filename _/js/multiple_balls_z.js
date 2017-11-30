@@ -41,6 +41,8 @@ var Ball = function(o) {
     // @param {Number}
     this.z = this.radius;
     
+    if($w.hasdepth.indexOf('Ball') == -1)$w.hasdepth.push('Ball');
+    
     // set the x and y speed of the ball
     // @param {Number}
     this.x_speed = ~~((Math.random() * 10) - 5);

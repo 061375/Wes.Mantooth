@@ -59,7 +59,7 @@ $w.game = {
      * @returns {Number} Reference ID to the canvas
      * */
     add_object_single: function(maxobjects,$target,params,$container,w,h) {
-   
+        
         var i,j;
         
         // if $container does not have a reference then this is the first run
@@ -70,19 +70,15 @@ $w.game = {
             // get the reference
             i = $container;
         }
-        
         $w.objects[$target.name] = [];
         // run a loop to create all the objects
         for(j=0; j<maxobjects; j++){
-           
             params.i = i;
             params.count = j;
             params.z = j;
-            // instaniate a new object
-            //if (typeof $w.objects[$target.name] !== 'object')
-                //$w.objects[$target.name] = [];
             $w.objects[$target.name].push(new $target(params));
         }
+        // redim the array to a length of 9999
         for (var z=maxobjects; z<9999;z++) {
             $w.objects[$target.name][z] = null;
         }
@@ -163,7 +159,7 @@ $w.game = {
                 }
             }
         }
-    },        
+    }
 }
 /**
  * Internet Explorer Hack
