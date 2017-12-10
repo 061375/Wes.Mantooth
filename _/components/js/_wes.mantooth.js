@@ -12,9 +12,13 @@ var $w = {
     boolLog:false,
     // @param {Object} each game object will be added to this main object so they can be looped through all at once
     objects:{},
+    // @param {Object} objects that are on the stage but will never be looped
     noloop:{},
+    // @param {Object} if set into the inits loop all objects will call an init function for all called by add_object
+    inits:{},
     refs:[],
-    hasdepth:[], 
+    hasdepth:[],
+    gamespeed:0, 
     // @param {Object} pre-load all the assets into this object
     assets: {
         img:[],
@@ -123,9 +127,27 @@ var $w = {
             } 
         }
         if(ra){
-            window.requestAnimationFrame(function(){
-                $w.loop(ra,i,fps);
-            });
+            window.setTimeout(function(){
+                window.requestAnimationFrame(function(){
+                    $w.loop(ra,i,fps);
+                });
+            },$w.gamespeed);
+        }
+    },
+    /**
+     * set a variable for all objects of type obj
+     * @param {String} the name of the target object
+     * @param {String} the name of the object to update
+     * @param {Variant} 
+     * @returns {Void}
+     * */ 
+    obj_set_var: function(obj,v,val) {
+        if (this.objects.hasOwnProperty(obj)) {
+            var l = this.objects[obj].length;
+            for(var j = 0; j < l; j++) {
+                if (this.objects[obj][j] != null)
+                    this.objects[obj][j][v] = val;    
+            }
         }
     },
     
