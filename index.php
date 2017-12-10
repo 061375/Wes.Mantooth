@@ -364,6 +364,12 @@ if(true === $dev) {
                             <li>
                                 <a href="examples/knearest.php" >K-Nearest Algorithm </a>
                             </li>
+                            <li>
+                                <a href="math/spirograph.php">Spriograph</a>
+                            </li>
+                            <li>
+                                <a href="math/spirograph-animated.php">Spriograph Animated</a>
+                            </li>
                         </ul>   
                     </li>
                 </ul>
