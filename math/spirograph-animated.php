@@ -15,8 +15,8 @@
             // init
             const L = 200,
             M = 2,
-            W = 800,
-            H = 800;
+            W = (window.innerHeight)-100,
+            H = W;
             // Wes mantooth function to create a list of functions
             var i = $w.add_object_single(
                 L,

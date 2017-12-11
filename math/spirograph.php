@@ -18,8 +18,8 @@
         window.onload = function() {
             const L = 200,
             M = 2,
-            W = 800,
-            H = 800;
+            W = (window.innerHeight)-100,
+            H = W;
             // Wes mantooth function to create a list of functions
             var i = $w.add_object_single(
                 L,
@@ -121,7 +121,7 @@
 <body>
     <div class="form">
         <p>
-            Some interesting numbers, in my opinion: 2, 3, 33, 50, 51, 99
+            Some interesting numbers, in my opinion: 2, 3, 33, 50, 51, 58, 99
         </p>
         <input type="text" id="m" placeholder="A number between 2 and 99" />
         <button type="button" onclick="setM()">Update</button>
