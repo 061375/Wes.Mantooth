@@ -62,6 +62,7 @@
                 var p = $this.getData(ctx);
                 // loop the pixels and act on them
                 p = $this.loopPixels(p,ctx);
+                p = $this.twoColors(p,ctx);
             }
             
         }
@@ -111,6 +112,70 @@
                     }
                 }   
             }
+            return p;
+        }
+        /**
+         * reduce the image to two colors
+         * @param {Array}
+         * @returns {Array}
+         * */
+        Map.prototype.twoColors = function(p,ctx) {
+            // @param {Object}
+            var maxa = {
+                i:0,
+                c:null
+            },
+            // @param {Object}
+            maxb = {
+                i:0,
+                c:null
+            },
+            // @param {Object}
+            c = {}
+            // loop all the pixels
+            for (var y = 0; y<this.h;y++) {
+                for (var x = 0; x<this.w;x++) {
+                    // count all the colors on the stage
+                    if (undefined === c[p[y][x][0]+p[y][x][1]+p[y][x][2]]) {
+                        c[p[y][x][0]+p[y][x][1]+p[y][x][2]] = {
+                            i:1,
+                            c:p[y][x]
+                        }
+                    }else{
+                        c[p[y][x][0]+p[y][x][1]+p[y][x][2]].i++;
+                    }
+                }   
+            }
+            // loop all the found colors
+            for(i in c) {
+                if (c.hasOwnProperty(i)) {
+                    // if this color was found more often than max then replace it
+                    if(c[i].i > maxa.i) {
+                        maxa.i = c[i].i
+                        maxa.c = c[i].c;
+                    }
+                    // if this color was found more often than max - 1 replace it
+                    if(c[i].i > maxb.i && c[i].i < maxa.i) {
+                        maxb.i = c[i].i
+                        maxb.c = c[i].c;
+                    } 
+                }
+            }
+            // looop the pixels again
+            for (var y = 0; y<this.h;y++) {
+                for (var x = 0; x<this.w;x++) {
+                    // if the current color is NOT the MAX color
+                    if (p[y][x][0] != maxa.c[0] && p[y][x][1] != maxa.c[1] && p[y][x][2] != maxa.c[2]) {
+                        // then set it to the next mst common color
+                        ctx.fillStyle=$w.color.rgbToHex(maxb.c[0],maxb.c[1],maxb.c[2]);
+                        ctx.fillRect(x,y,1,1);
+                        p[x][y][0] = maxb.c[0];
+                        p[x][y][1] = maxb.c[1];
+                        p[x][y][2] = maxb.c[2];
+                    }
+                }   
+            }
+            
             return p;
         }
         /**
