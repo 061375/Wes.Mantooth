@@ -147,7 +147,7 @@
                 }   
             }
             // loop all the found colors
-            for(i in c) {
+            for(var i in c) {
                 if (c.hasOwnProperty(i)) {
                     // if this color was found more often than max then replace it
                     if(c[i].i > maxa.i) {
@@ -169,9 +169,9 @@
                         // then set it to the next mst common color
                         ctx.fillStyle=$w.color.rgbToHex(maxb.c[0],maxb.c[1],maxb.c[2]);
                         ctx.fillRect(x,y,1,1);
-                        p[x][y][0] = maxb.c[0];
-                        p[x][y][1] = maxb.c[1];
-                        p[x][y][2] = maxb.c[2];
+                        p[y][x][0] = maxb.c[0];
+                        p[y][x][1] = maxb.c[1];
+                        p[y][x][2] = maxb.c[2];
                     }
                 }   
             }
