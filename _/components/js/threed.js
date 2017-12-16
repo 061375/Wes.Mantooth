@@ -10,11 +10,11 @@ $w.threed = {
       return point;
     },
     convertPointIn3DToPointIn2D: function(pointIn3D,focalLength){
-        var pointIn2D = new Object();
         var scaleRatio = focalLength/(focalLength + pointIn3D.z);
-        pointIn2D.x = pointIn3D.x * scaleRatio;
-        pointIn2D.y = pointIn3D.y * scaleRatio;
-      return pointIn2D;
+        return {
+          x:(pointIn3D.x * scaleRatio),
+          y:(pointIn3D.y * scaleRatio)
+        };
     },
     cP3dto2d: function(pointIn3D,camera,origin){
         var pointIn2D = [];
@@ -30,6 +30,6 @@ $w.threed = {
         pointIn2D[0] = (pointIn3D.x * scaleRatio) ;
         pointIn2D[1] = (pointIn3D.y * scaleRatio);
         
-      return pointIn2D; 
+      return pointIn2D;  
     }
 };
