@@ -155,24 +155,30 @@
             },1);
         }
         function move(obj) {
-            var max = 15;
-            var moved = false;
+            //@param {Number}
+            let max = 15;
+            //@param {Boolean}
+            let moved = false;
+            
+            // increment the current map locations weight
             obj.xy[obj.y][obj.x]++;
             obj.i = obj.xy[obj.y][obj.x];
-            var c = obj.xy[obj.y][obj.x] * 10;
-            var color = $w.color.rgbToHex(c*2,c*3,200);
-           
+            //@param {Number}
+            let c = obj.xy[obj.y][obj.x] * 10;
+            //@param {String}
+            let color = $w.color.rgbToHex(c*2,c*3,200);
+            // update the dot color on the map
             $w.canvas.rectangle(0,(obj.x)*10,(obj.y)*10,10,10,color,'fill');
-            
-            var dirs = [null,null,null,null];
+            //@param {Array}
+            let dirs = [null,null,null,null];
             
             if (undefined !== obj.xy[obj.y-1] && obj.xy[obj.y-1][obj.x] > 0)dirs[0] = obj.xy[obj.y-1][obj.x];
             if (undefined !== obj.xy[obj.y][obj.x+1] && obj.xy[obj.y][obj.x+1] > 0)dirs[1] = obj.xy[obj.y][obj.x+1];
             if (undefined !== obj.xy[obj.y+1] && obj.xy[obj.y+1][obj.x] > 0)dirs[2] = obj.xy[obj.y+1][obj.x];
             if (undefined !== obj.xy[obj.y][obj.x-1] && obj.xy[obj.y][obj.x-1] > 0)dirs[3] = obj.xy[obj.y][obj.x-1];
             
-            var min = max, dir = 0;
-            for(var i = 0; i<4; i++) {
+            let min = max, dir = 0;
+            for(let i = 0; i<4; i++) {
                 if (dirs[i] != null)
                     if (dirs[i] < min){
                         min = dirs[i];
@@ -400,32 +406,41 @@
                 },1);
             }
             function move(obj) {
-                var max = 15;
-                var moved = false;
+                //@param {Number}
+                let max = 15;
+                //@param {Boolean}
+                let moved = false;
+                
+                // increment the current map locations weight
                 obj.xy[obj.y][obj.x]++;
                 obj.i = obj.xy[obj.y][obj.x];
-                var c = obj.xy[obj.y][obj.x] * 10;
-                var color = $w.color.rgbToHex(c*2,c*3,200);
-               
+                //@param {Number}
+                let c = obj.xy[obj.y][obj.x] * 10;
+                //@param {String}
+                let color = $w.color.rgbToHex(c*2,c*3,200);
+                // update the dot color on the map
                 $w.canvas.rectangle(0,(obj.x)*10,(obj.y)*10,10,10,color,'fill');
+                //@param {Array}
+                let dirs = [null,null,null,null];
                 
-                var dirs = [null,null,null,null];
-                
+                // if the value of a key is set get its current weight
                 if (undefined !== obj.xy[obj.y-1] && obj.xy[obj.y-1][obj.x] > 0)dirs[0] = obj.xy[obj.y-1][obj.x];
                 if (undefined !== obj.xy[obj.y][obj.x+1] && obj.xy[obj.y][obj.x+1] > 0)dirs[1] = obj.xy[obj.y][obj.x+1];
                 if (undefined !== obj.xy[obj.y+1] && obj.xy[obj.y+1][obj.x] > 0)dirs[2] = obj.xy[obj.y+1][obj.x];
                 if (undefined !== obj.xy[obj.y][obj.x-1] && obj.xy[obj.y][obj.x-1] > 0)dirs[3] = obj.xy[obj.y][obj.x-1];
                 
+                // loop the directions to get the lowest weight
                 var min = max, dir = 0;
-                for(var i = 0; i&lt;4; i++) {
+                for(let i = 0; i&lt;4; i++) {
                     if (dirs[i] != null)
                         if (dirs[i] &lt; min){
                             min = dirs[i];
                             dir = i;
                         }
                 }
-                
+                // make sure that the weight is less than the max
                 if (min &lt; max) {
+                    // move the test based on the direction with the lowest weight
                     switch(dir) {
                         case 0:
                             obj.y--;
@@ -445,6 +460,8 @@
                             break;
                     }
                 }
+                
+                // if a move was made then pass that result back
                 if (!moved)obj.m = false;
                 
                 return obj;
