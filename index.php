@@ -397,6 +397,9 @@ if(true === $dev) {
                             <li>
                                 <a href="examples/paint_program.php" >Paint Program</a>
                             </li>
+                            <li>
+                                <a href="wip/findshapes/" >Path Find Algorithm</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
