@@ -223,6 +223,11 @@
              * This map can be a bitmap if code is added to get canvas img data
              * This is just a proof of concept for the [Find the length of a coastline] project
              *
+             * http://jeremyheminger.com/article/programming/find-length-coastline-hypothesis
+             * http://jeremyheminger.com/find-length-coastline-programming-part-1
+             * http://jeremyheminger.com/find-length-coastline-programming-part-2
+             * http://jeremyheminger.com/find-length-coastline-programming-part-3
+             *
              * To view the resulting array Right-Click and Inspect
              * */
              
