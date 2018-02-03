@@ -163,8 +163,10 @@
              * @returns {Void}
              * */
             Camera.prototype.Aup = function(e,s) {
+                console.log(s.d);
                 s.x+=Math.sin($w.math.radians(s.d))*WSPEED;
                 s.y+=Math.cos($w.math.radians(s.d))*WSPEED;
+                console.log(s.x);
             }
             /**
              * Adown

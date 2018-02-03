@@ -3,8 +3,8 @@
 
 // if this is my local machine the run Grunt auto-reload
 $local = '';
-if('192.168.1.157' == $_SERVER['REMOTE_ADDR'])
-$local = '<script src="http://192.168.1.154:35729/livereload.js"></script>';
+if('192.168.1.160' == $_SERVER['REMOTE_ADDR'])
+$local = '<script src="http://192.168.1.159:35729/livereload.js"></script>';
 
 // allow for sub-pathing as neccesary
 $path = isset($_GET['path']) ? $path : '../';

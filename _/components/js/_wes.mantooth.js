@@ -14,11 +14,13 @@ var $w = {
     objects:{},
     // @param {Object} objects that are on the stage but will never be looped
     noloop:{},
+    looprunning:true,
     // @param {Object} if set into the inits loop all objects will call an init function for all called by add_object
     inits:{},
     refs:[],
     hasdepth:[],
-    gamespeed:0, 
+    gamespeed:0,
+    global:{},
     // @param {Object} pre-load all the assets into this object
     assets: {
         img:[],
@@ -126,13 +128,16 @@ var $w = {
                 }
             } 
         }
-        if(ra){
+        if(ra && $w.looprunning){
             window.setTimeout(function(){
                 window.requestAnimationFrame(function(){
                     $w.loop(ra,i,fps);
                 });
             },$w.gamespeed);
         }
+    },
+    clearloop: function() {
+        $w.looprunning = false;  
     },
     /**
      * set a variable for all objects of type obj
@@ -141,7 +146,7 @@ var $w = {
      * @param {Variant} 
      * @returns {Void}
      * */ 
-    obj_set_var: function(obj,v,val) {
+    obj_set_var: function(obj,v,val,callback) {
         if (this.objects.hasOwnProperty(obj)) {
             var l = this.objects[obj].length;
             for(var j = 0; j < l; j++) {
@@ -149,8 +154,28 @@ var $w = {
                     this.objects[obj][j][v] = val;    
             }
         }
+        if (typeof callback === 'function')
+            callback();
     },
-    
+    /**
+     * runs a method for all instances of an object
+     * @param {String} the name of the target object
+     * @param {String} the name of the object to update
+     * @param {Variant} parameter to pass to the function (probably an object)
+     * @returns {Void}
+     * */ 
+    obj_run_method: function(obj,f,p,callback) {
+        if (this.objects.hasOwnProperty(obj)) {
+            var l = this.objects[obj].length;
+            for(var j = 0; j < l; j++) {
+                if (this.objects[obj][j] != null)
+                    if (typeof this.objects[obj][j][f] === 'function')
+                        this.objects[obj][j][f](p);    
+            }
+        }
+        if (typeof callback === 'function')
+            callback(); 
+    },
     
     /* Game Hooks */
     

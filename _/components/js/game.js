@@ -56,11 +56,13 @@ $w.game = {
      * @param {Number} W
      * @param {Number} H
      *
-     * @returns {Number} Reference ID to the canvas
+     * @returns {Number} Reference ID to the canvas 
      * */
-    add_object_single: function(maxobjects,$target,params,$container,w,h) {
+    add_object_single: function(maxobjects,$target,params,$container,w,h,nozindex) {
         
-        var i,j;
+        var i,j, redim = false;
+        
+        if (typeof nozindex === 'undefined') nozindex = true;
         
         // if $container does not have a reference then this is the first run
         if(typeof $container === 'object') {
@@ -70,7 +72,10 @@ $w.game = {
             // get the reference
             i = $container;
         }
-        $w.objects[$target.name] = [];
+        if (typeof $w.objects[$target.name] === 'undefined') {
+            $w.objects[$target.name] = [];
+            redim = true;
+        }
         // run a loop to create all the objects
         for(j=0; j<maxobjects; j++){
             params.i = i;
@@ -78,9 +83,12 @@ $w.game = {
             params.z = j;
             $w.objects[$target.name].push(new $target(params));
         }
-        // redim the array to a length of 9999
-        for (var z=maxobjects; z<9999;z++) {
-            $w.objects[$target.name][z] = null;
+        if (redim && nozindex) {
+            // redim the array to a length of 9999
+            for (var z=maxobjects; z<9999;z++) {
+                if (typeof $w.objects[$target.name][z] !== 'object' && $w.objects[$target.name][z] != null) 
+                    $w.objects[$target.name][z] = null;
+            }
         }
         return i;
     },
