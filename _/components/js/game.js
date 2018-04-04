@@ -77,7 +77,9 @@ $w.game = {
             redim = true;
         }
         // run a loop to create all the objects
-        for(j=0; j<maxobjects; j++){
+        var k = $w.objects[$target.name].length;
+        var l = (k+maxobjects);
+        for(j=k; j<l; j++){
             params.i = i;
             params.count = j;
             params.z = j;

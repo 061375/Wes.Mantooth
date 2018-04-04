@@ -6,6 +6,7 @@ $w.color = {
    * @returns {String}
    * */
   componentToHex: function(c) {
+    c = parseInt(c);
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
   },
@@ -18,7 +19,7 @@ $w.color = {
    * @returns {String}
    * */
   rgbToHex: function(r, g, b) {
-    return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
+    return "#" + $w.color.componentToHex(r) + $w.color.componentToHex(g) + $w.color.componentToHex(b);
   },
   /**
    * returns a random color

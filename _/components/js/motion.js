@@ -24,18 +24,21 @@ $w.motion = {
    *
    * @returns {Number}
    * */
-  point_direction: function(x1,y1,x2,y2,radians)
+  point_direction: function(x1,y1,x2,y2,radians,direction)
   {
+    if (undefined === direction) direction = 0;
+    if (undefined === radians) radians = false;
+    
     var x = x2 - x1;
     var y = y2 - y1;
     var angleInRadians = Math.atan2(y,x);
-    var angleInDegrees = angleInRadians * (180/ Math.PI);
-    if(angleInDegrees < 0){
-      angleInDegrees+=360;
-    }
-    if(radians){
-      return angleInRadians;
-    }
+    var angleInDegrees = angleInRadians * 180 / Math.PI + direction;
+    
+    if(angleInDegrees < 0)angleInDegrees+=360;
+    if(angleInDegrees > 360)angleInDegrees-=360;
+    
+    if(radians) return angleInRadians;
+  
     return angleInDegrees;
   },
   /**

@@ -422,6 +422,9 @@ if(true === $dev) {
             </p>
             <ul>
                 <li>
+                        <a href="http://demo.jeremyheminger.com/Battlezone/" target="_blank" rel="noopener">Battlezone</a>
+                </li>
+                <li>
                         <!--a href="examples/games/lunarlander.php" -->Lunar Lander<!--/a-->
                 </li>
                 <li>

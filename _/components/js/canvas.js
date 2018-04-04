@@ -98,11 +98,12 @@ $w.canvas = (function() {
      * @param {Number} radius
      * @param {String} color (hex #000000)
      * @param {Number}
+     * @param {Boolean} if false or undefined circle will be filled
      * @param {Boolean} optional if true the operation allows float point numbers
      * 
      * @returns {Void}
      * */
-    var circle = function(i,x,y,r,c,o,fint) {
+    var circle = function(i,x,y,r,c,o,stroke,fint) {
         // see fint
         if (typeof fint === 'undefined') {
             x = ~~x;
@@ -118,7 +119,11 @@ $w.canvas = (function() {
         ctx[i].beginPath();
         ctx[i].arc(x,y,r,0,Math.PI*2,true);
         ctx[i].closePath();
-        ctx[i].fill();
+        if (undefined === stroke || false == stroke) {
+            ctx[i].fill();
+        }else{
+            ctx[i].stroke();
+        }
     }
     /**
      * @param {Number}
@@ -412,6 +417,70 @@ $w.canvas = (function() {
             ctx[i].lineTo(a[j][0],a[j][1]);    
         }
         ctx[i].fill();
+        switch (m) {
+            case 'fill':
+                break;
+            case 'stroke':
+                ctx[i].stroke();
+                break;
+            default:
+                ctx[i].stroke();
+        }
+    }
+    /**
+     * @param {Number}
+     * @param {Array}
+     * @param {String} hex color
+     * @param {String} method ( fill , stroke, both )
+     * @param {String} hex color (alternate color)
+     * @param {Number} opacity (Float 0 - 1)
+     * @param {Boolean} optional if true the operation allows float point numbers
+     * 
+     * @returns {Void}
+     * */
+    var polygon2 = function(i,a,x,y,color,m,acolor,o,fint) {
+        // see fint
+        if (typeof fint === 'undefined') {
+            fint = false;
+        }
+        if (typeof m === 'undefined') m = 'stroke';
+        if (typeof color === 'undefined') color = _color;
+        if (typeof acolor === 'undefined') acolor = _acolor;
+        
+        switch (m) {
+            case 'fill':
+                ctx[i].fillStyle=color;
+                if (typeof o !== 'undefined') {
+                    ctx[i].globalAlpha = o;
+                }
+                break;
+            case 'stroke':
+                ctx[i].strokeStyle=color; 
+                
+                break;
+            default:
+                ctx[i].fillStyle=acolor;
+                if (typeof o !== 'undefined') {
+                    ctx[i].globalAlpha = o;
+                }
+                ctx[i].strokeStyle=color;
+        }
+        ctx[i].beginPath();
+        ctx[i].moveTo(x+a[0][0],y+a[0][1]);
+        var l = a.length;
+        for(var j=1;j<l;j++){
+            ctx[i].lineTo(x+a[j][0],y+a[j][1]);    
+        }
+        ctx[i].fill();
+        switch (m) {
+            case 'fill':
+                break;
+            case 'stroke':
+                ctx[i].stroke();
+                break;
+            default:
+                ctx[i].stroke();
+        }
     }
     /**
      * image
@@ -541,6 +610,7 @@ $w.canvas = (function() {
         rectangle:rectangle,
         roundRectangle:roundRectangle,
         polygon:polygon,
+        polygon2:polygon2,
         clear:clear,
         get:get,
         pop:pop,

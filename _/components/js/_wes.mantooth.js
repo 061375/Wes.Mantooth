@@ -12,6 +12,7 @@ var $w = {
     boolLog:false,
     // @param {Object} each game object will be added to this main object so they can be looped through all at once
     objects:{},
+    killobjects:{},
     // @param {Object} objects that are on the stage but will never be looped
     noloop:{},
     looprunning:true,
@@ -135,6 +136,7 @@ var $w = {
                 });
             },$w.gamespeed);
         }
+        $w.kill_players();
     },
     clearloop: function() {
         $w.looprunning = false;  
@@ -176,7 +178,17 @@ var $w = {
         if (typeof callback === 'function')
             callback(); 
     },
-    
+    kill_players: function() {
+        for (var prop in this.killobjects) {
+            if (this.killobjects.hasOwnProperty(prop)) {
+                var l = this.killobjects[prop].length;
+                for(var j = 0; j < l; j++) {
+                    this.objects[prop][this.killobjects[prop][j]] = null;
+                    //this.objects[prop].splice(this.killobjects[prop][j],1);
+                }
+            }
+        }
+    },
     /* Game Hooks */
     
     add_object: function(r,o,p,$t,w,h,noloop) {
@@ -187,6 +199,12 @@ var $w = {
     },
     remove_object: function(f,i) {
         return $w.game.remove_object(f,i);
+    },
+    kill_player: function(f,i) {
+        if(undefined === this.killobjects[f]) {
+            this.killobjects[f] = [];
+        }
+        this.killobjects[f].push(i);
     },
     all: function(ids,o,f,p) {
         var l = ids.length;
