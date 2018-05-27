@@ -495,18 +495,18 @@ $w.canvas = (function() {
                 clear(i);
             }
         
-            ctx[i].save();
+            //ctx[i].save();
         
             // see fint
             if (typeof fint === 'undefined') {
-                obj.sx = Math.floor(obj.sx);
-                obj.sy = Math.floor(obj.sy);
-                obj.sWidth = Math.floor(obj.sWidth);
-                obj.sHeight = Math.floor(obj.sHeight);
-                obj.dx = Math.floor(obj.dx);
-                obj.dy = Math.floor(obj.dy);
-                obj.dWidth = Math.floor(obj.dWidth);
-                obj.dHeight = Math.floor(obj.dHeight);
+                if(undefined !== obj.sx)obj.sx = Math.floor(obj.sx);
+                if(undefined !== obj.sy)obj.sy = Math.floor(obj.sy);
+                if(undefined !== obj.sWidth)obj.sWidth = Math.floor(obj.sWidth);
+                if(undefined !== obj.sHeight)obj.sHeight = Math.floor(obj.sHeight);
+                if(undefined !== obj.dx)obj.dx = Math.floor(obj.dx);
+                if(undefined !== obj.dx)obj.dy = Math.floor(obj.dy);
+                if(undefined !== obj.dWidth)obj.dWidth = Math.floor(obj.dWidth);
+                if(undefined !== obj.dHeight)obj.dHeight = Math.floor(obj.dHeight);
             } 
             
             // 
@@ -514,17 +514,44 @@ $w.canvas = (function() {
                 set_error('image not set');
                 return false;
             }
-            if (typeof obj.sWidth !== 'undefined' && obj.sWidth != false) {
+   
+            if (obj.sx !== undefined &&
+                obj.sy !== undefined &&
+                obj.sWidth !== undefined &&
+                obj.sHeight !== undefined &&
+                obj.dx !== undefined &&
+                obj.dy !== undefined &&
+                obj.dWidth !== undefined &&
+                obj.dHeight !== undefined) {
+              
                 ctx[i].drawImage(obj.img,obj.sx,obj.sy,obj.sWidth,obj.sHeight,obj.dx,obj.dy,obj.dWidth,obj.dHeight);
-            } else if (typeof obj.dWidth !== 'undefined' && obj.dWidth != false) {
+            } else  if (obj.sx === undefined &&
+                        obj.sy === undefined &&
+                        obj.sWidth === undefined &&
+                        obj.sHeight === undefined &&
+                        obj.dx !== undefined &&
+                        obj.dy !== undefined &&
+                        obj.dWidth !== undefined &&
+                        obj.dHeight !== undefined) {
+                
                 ctx[i].drawImage(obj.img,obj.dx,obj.dy,obj.dWidth,obj.dHeight);
-            } else {
+            } else  if (obj.sx === undefined &&
+                        obj.sy === undefined &&
+                        obj.sWidth === undefined &&
+                        obj.sHeight === undefined &&
+                        obj.dx !== undefined &&
+                        obj.dy !== undefined &&
+                        obj.dWidth === undefined &&
+                        obj.dHeight === undefined){
                 
                 ctx[i].drawImage(obj.img,obj.dx,obj.dy);
+            } else{
+                set_error('image settings unrecognized');
+                return false;
             }
             
             // Put it on the canvas
-            ctx[i].restore();
+            //ctx[i].restore();
             
             return true;
 
