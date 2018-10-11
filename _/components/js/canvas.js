@@ -79,8 +79,8 @@ $w.canvas = (function() {
         $t.appendChild(C);
         C.width = C.offsetWidth;
         C.height = C.offsetHeight;
-        C.style.width = C.width+"px";
-        C.style.height = C.height+"px";
+        //C.style.width = C.width+"px";
+        //C.style.height = C.height+"px";
         var i = ctx.length;
         ctx.push(C.getContext("2d"));
         
@@ -138,7 +138,7 @@ $w.canvas = (function() {
      * 
      * @returns {Void}
      * */ 
-    var arc = function(i,x,y,r,s,e,cc,color,fint) {
+    var arc = function(i,x,y,r,s,e,cc,color,m,fint) {
         // see fint
         if (typeof fint === 'undefined') {
             x = ~~x;
@@ -146,9 +146,24 @@ $w.canvas = (function() {
         }
         if (typeof color === 'undefined') color = _color;
         ctx[i].beginPath();
-        ctx[i].strokeStyle = color;
+        ctx[i].moveTo(x,y);
         ctx[i].arc(x,y,r,s,e,cc);
-        ctx[i].stroke();
+        if (typeof m === 'undefined') m = 'stroke';
+        switch (m) {
+            case 'fill':
+                ctx[i].fillStyle=color;
+                ctx[i].fill();
+                break;
+            case 'stroke':
+                ctx[i].strokeStyle=color;
+                ctx[i].stroke();
+                break;
+            default:
+                ctx[i].fillStyle=acolor;
+                ctx[i].fill();
+                ctx[i].strokeStyle=color;
+                ctx[i].stroke();
+        }
     }
     /**
      * Quadratic Curve
@@ -228,8 +243,8 @@ $w.canvas = (function() {
      * 
      * @returns {Void}
      * */
-    var text = function(i,x,y,txt,m,font,color,fint) {
-        $w.log('$w.text('+[i,x,y,txt,m,font,color,fint]+')');
+    var text = function(i,x,y,txt,m,font,color,acolor,o,rotate,fint) { 
+        $w.log('$w.text('+[i,x,y,txt,m,font,color,acolor,o,rotate,fint]+')');
         // see fint
         if (typeof fint === 'undefined') {
             x = ~~x;
@@ -247,6 +262,30 @@ $w.canvas = (function() {
         }else{
             ctx[i].strokeText(txt,x,y);
         }
+        if (typeof m === 'undefined') m = 'stroke';
+        switch (m) {
+            case 'fill':
+                ctx[i].fillStyle=color;
+                if (typeof o !== 'undefined') {
+                    ctx[i].globalAlpha = o;
+                }
+                ctx[i].fillText(txt,x,y);
+                break;
+            case 'stroke':
+                ctx[i].strokeStyle=color;
+                ctx[i].strokeText(txt,x,y);
+                break;
+            default:
+                ctx[i].fillStyle=acolor;
+                if (typeof o !== 'undefined') {
+                    ctx[i].globalAlpha = o;
+                }
+                ctx[i].fillText(txt,x,y);
+                ctx[i].strokeStyle=color;
+                ctx[i].strokeText(txt,x,y);
+        }
+        if (undefined !== rotate)
+            ctx[i].rotate(5);
     }
     /**
      * @param {Number}

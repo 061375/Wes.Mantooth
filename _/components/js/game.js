@@ -83,6 +83,11 @@ $w.game = {
             params.i = i;
             params.count = j;
             params.z = j;
+            if($w.objects[$target.name].length > 0) {
+                params.parent = $w.objects[$target.name].length - 1;
+            }else{
+                params.parent = 'root';
+            }
             $w.objects[$target.name].push(new $target(params));
         }
         if (redim && nozindex) {
