@@ -8,21 +8,23 @@
  * */
 
 var $w = {
-    // @param {Boolean} if true render log to the console (I suggest overiding this in your code)
+    // @var {Boolean} if true render log to the console (I suggest overiding this in your code)
     boolLog:false,
-    // @param {Object} each game object will be added to this main object so they can be looped through all at once
+    // @var {Object} each game object will be added to this main object so they can be looped through all at once
     objects:{},
     killobjects:{},
-    // @param {Object} objects that are on the stage but will never be looped
+    // @var {Object} objects that are on the stage but will never be looped
     noloop:{},
+    // @var {Array} list of objects that currently do not want to have their canvas cleared
+    noclear:[],
     looprunning:true,
-    // @param {Object} if set into the inits loop all objects will call an init function for all called by add_object
+    // @var {Object} if set into the inits loop all objects will call an init function for all called by add_object
     inits:{},
     refs:[],
     hasdepth:[],
     gamespeed:0,
     global:{},
-    // @param {Object} pre-load all the assets into this object
+    // @var {Object} pre-load all the assets into this object
     assets: {
         img:[],
         audio:[],
@@ -102,8 +104,10 @@ var $w = {
      * @returns {Void}
      * */
     loop: function(ra,i,fps) {
-        if (typeof i !== 'undefined' && !isNaN(i)) {
-            $w.canvas.clear(i);
+        if (typeof i !== 'undefined' && !isNaN(i)) { 
+            if(this.noclear.indexOf(i) == -1){
+                $w.canvas.clear(i);
+            }
         }
         if (typeof fps !== 'undefined' || fps) {
             $w.upFPS();
@@ -125,13 +129,13 @@ var $w = {
                                 var remove = this.objects[prop].splice(j,1);
                                 this.objects[prop].splice(remove[0].z,0,remove[0]);
                             }
-                    }
+                    } 
                 }
             } 
         }
         if(ra && $w.looprunning){
             window.setTimeout(function(){
-                window.requestAnimationFrame(function(){
+                window.requestAnimationFrame(function(){ 
                     $w.loop(ra,i,fps);
                 });
             },$w.gamespeed);
@@ -140,6 +144,18 @@ var $w = {
     },
     clearloop: function() {
         $w.looprunning = false;  
+    },
+    requestNoClear: function(i) {
+        if(this.noclear.indexOf(i) == -1)
+            this.noclear.push(i);
+    },
+    removeRequestNoClear: function(i) {
+        var ii = 0;
+        for(var j=0; j<this.noclear.length; j++) {
+            if(this.noclear[j]==i)
+                ii = j;
+        }
+        this.noclear.splice(ii,1);
     },
     /**
      * set a variable for all objects of type obj
